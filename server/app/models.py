@@ -25,9 +25,6 @@ class CreateDateBase:
                                                  nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
-    def __str__(self):
-        return str(self.id)
-
 
 class Users(Base, CreateDateBase):
     name: Mapped[str] = mapped_column(String(200))

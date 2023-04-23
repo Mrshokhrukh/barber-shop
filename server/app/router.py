@@ -9,7 +9,7 @@ auth = APIRouter(tags=['auth'])
 
 
 @auth.post('/register', summary='Register with email')
-async def register(form: schemas.Register = Depends(schemas.Register.as_form), db: Session = Depends(get_db)):
+async def register(form: schemas.Register, db: Session = Depends(get_db)):
     user = await register_worker(form, db)
     return user
 
@@ -18,6 +18,3 @@ async def register(form: schemas.Register = Depends(schemas.Register.as_form), d
 async def get_users(db: Session = Depends(get_db)):
     users = await get_users_worker(db)
     return users
-
-
-print('hello')
