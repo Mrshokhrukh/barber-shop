@@ -1,16 +1,14 @@
 from fastapi import FastAPI
 
-from app import models, auth
-from config.db import engine
-from config.settings import settings
+from server.app import models, auth
+from server.config.db import engine
+from server.config.settings import settings
 
 app = FastAPI(
     name=settings.PROJECT_NAME,
     description=settings.PROJECT_DESCRIPTION,
     version=settings.PROJECT_VERSION
 )
-
-print('hello')
 
 
 @app.on_event('startup')

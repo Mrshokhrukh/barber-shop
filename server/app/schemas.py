@@ -1,3 +1,5 @@
+import datetime
+
 from fastapi import Form
 from pydantic import BaseModel
 
@@ -5,7 +7,6 @@ from pydantic import BaseModel
 class Register(BaseModel):
     name: str
     email: str
-
 
     class Config:
         orm_mode = True
@@ -20,3 +21,4 @@ class Register(BaseModel):
             name=name,
             email=email,
         )
+
