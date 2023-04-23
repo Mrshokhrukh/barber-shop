@@ -12,6 +12,8 @@ app = FastAPI(
 
 print('hello')
 
+print('hello')
+
 
 @app.on_event('startup')
 async def startup_event():
