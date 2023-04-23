@@ -17,5 +17,3 @@ async def startup_event():
     # models.Base.metadata.create_all(engine)
     app.include_router(auth)
 
-
-print("salom")
