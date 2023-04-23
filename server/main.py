@@ -10,6 +10,8 @@ app = FastAPI(
     version=settings.PROJECT_VERSION
 )
 
+print('hello')
+
 
 @app.on_event('startup')
 async def startup_event():
