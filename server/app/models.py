@@ -29,7 +29,7 @@ class CreateDateBase:
 
 
 class Users(Base, CreateDateBase):
-    name: Mapped[str] = mapped_column(String(200))
+    first_name: Mapped[str] = mapped_column(String(200))
     last_name: Mapped[str] = mapped_column(String(200), nullable=True)
     phone: Mapped[str] = mapped_column(String(200), unique=True)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)

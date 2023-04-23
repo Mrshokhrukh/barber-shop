@@ -8,7 +8,7 @@ from server.config.db import get_db
 
 
 class Register(BaseModel):
-    name: str
+    first_name: str
     last_name: str | None
     phone: str
     service: dict | None
