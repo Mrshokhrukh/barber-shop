@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layout";
 import Home from "./pages/home/Home";
+import Main from "./pages/main/Main";
 import Masters from "./pages/masters/Masters";
 import Services from "./pages/services/Services";
 const App = () => {
@@ -11,7 +12,8 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="services" element={<Services />}></Route>
-          <Route path="masters" element={<Masters />}></Route>
+          <Route path="masters:id" element={<Masters />}></Route>
+          <Route path="main" element={<Main />}></Route>
 
           <Route path="auth">
             <Route path="login" element></Route>
