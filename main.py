@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+
 from server.app import models, auth
 from server.config.db import engine
 from server.config.settings import settings
@@ -16,4 +17,3 @@ async def startup_event():
     # models.Base.metadata.drop_all(engine)
     # models.Base.metadata.create_all(engine)
     app.include_router(auth)
-
