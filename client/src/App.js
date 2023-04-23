@@ -14,7 +14,7 @@ const App = () => {
           <Route path="services" element={<Services />}></Route>
           <Route path="masters:id" element={<Masters />}></Route>
           <Route path="main" element={<Main />}></Route>
-
+          console.log('sadsads');
           <Route path="auth">
             <Route path="login" element></Route>
             <Route path="register" element></Route>
