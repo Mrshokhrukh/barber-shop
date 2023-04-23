@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from pyclbr import Class
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from server.app import models, auth
 from server.config.db import engine
@@ -9,6 +11,18 @@ app = FastAPI(
     name=settings.PROJECT_NAME,
     description=settings.PROJECT_DESCRIPTION,
     version=settings.PROJECT_VERSION
+)
+
+origins = [
+    'http://localhost:3000'
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
 
 
