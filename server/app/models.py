@@ -1,8 +1,10 @@
+import json
 import typing as t
 from datetime import datetime
 
 from sqlalchemy import (DateTime, Integer, String,
-                        func)
+                        func, Boolean)
+from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -28,4 +30,13 @@ class CreateDateBase:
 
 class Users(Base, CreateDateBase):
     name: Mapped[str] = mapped_column(String(200))
-    email: Mapped[str] = mapped_column(String(200), unique=True)
+    last_name: Mapped[str] = mapped_column(String(200), nullable=True)
+    phone: Mapped[str] = mapped_column(String(200), unique=True)
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    service: Mapped[json] = mapped_column(JSONB, nullable=True)
+    image: Mapped[str] = mapped_column(String(300), nullable=True)
+
+# class MasterTime(Base, CreateDateBase):
+#     day: Mapped[datetime] = mapped_column(DateTime)  # kuni
+#     time: Mapped[datetime] = mapped_column(DateTime)  # boshlanish vaqti
+#     time_ordered: Mapped[datetime] = mapped_column(DateTime)  # tugash vaqti

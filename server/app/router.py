@@ -8,7 +8,7 @@ from server.config.db import get_db
 auth = APIRouter(tags=['auth'])
 
 
-@auth.post('/register', summary='Register with email')
+@auth.post('/register', summary='Register with phone')
 async def register(form: schemas.Register, db: Session = Depends(get_db)):
     user = await register_worker(form, db)
     return user
