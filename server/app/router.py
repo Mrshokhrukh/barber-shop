@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, UploadFile
 from sqlalchemy.orm import Session
 
 from server.app import schemas
@@ -9,8 +9,8 @@ auth = APIRouter(tags=['auth'])
 
 
 @auth.post('/register', summary='Register with phone')
-async def register(form: schemas.Register, db: Session = Depends(get_db)):
-    user = await register_worker(form, db)
+async def register(schema: schemas.Register, db: Session = Depends(get_db)):
+    user = await register_worker(schema, db)
     return user
 
 
