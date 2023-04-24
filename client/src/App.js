@@ -1,23 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AdminHome from "./admin/adminPages/adminHome/AdminHome";
+import List from "./admin/adminPages/list/List";
+import New from "./admin/adminPages/new/New";
+import { DarkModeContext } from "./admin/context/darkModeContext";
 import Layout from "./layout";
+import Auth from "./pages/auth/Auth";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 import Home from "./pages/home/Home";
 import Main from "./pages/main/Main";
 import Masters from "./pages/masters/Masters";
 import Services from "./pages/services/Services";
+import { productInputs, userInputs } from "./admin/formSource";
+import './admin/adminStyle/dark.scss'
+import "./style/main.style.scss";
+import AdminRoutes from "./admin/adminRoutes";
+import AdminTable from "./admin/adminComponents/table/Table";
+import SingleUser from "./admin/adminPages/single/Single";
 const App = () => {
+  const { darkMode } = useContext(DarkModeContext);
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
-          <Route path="barbershop" element={<Main />}>
+          <Route path="uz/barbershop" element={<Main />}>
             <Route path="services" element={<Services />}></Route>
             <Route path="masters:id" element={<Masters />}></Route>
           </Route>
-          <Route path="auth">
-            <Route path="login" element></Route>
-            <Route path="register" element></Route>
+          <Route path="auth" element={<Auth />}>
+            <Route path="login" element={<Login />}></Route>
+            <Route path="register" element={<Register />}></Route>
+          </Route>
+          <Route path="admin/dashboard" element={<AdminRoutes />}>
+            {/* <div className={darkMode ? "app dark" : "app"}> */}
+            <Route index element={<AdminHome />} />
+            <Route path="users">
+              <Route index element={<List />} />
+              <Route path=":userId" element={<SingleUser />} />
+              <Route path="new" element={<New  title="Add New User" />} />
+            </Route>
+            
+            {/* </div>   */}
           </Route>
         </Route>
       </Routes>

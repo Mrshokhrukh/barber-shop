@@ -7,7 +7,7 @@ const Api = () => {
     axios
       .get("http://127.0.0.1:8000/get-users")
       .then((res) => {
-        console.log(res.data);
+        setData(res.data);
       })
       .catch((error) => {
         console.log(error.message);
@@ -16,7 +16,15 @@ const Api = () => {
 
   return (
     <div>
-      <h1>sdsad</h1>
+      {data?.map((user, index) => {
+        return (
+          <div key={index}>
+            <h3>
+              {user.id}. {user.name}
+            </h3>
+          </div>
+        );
+      })}
     </div>
   );
 };
