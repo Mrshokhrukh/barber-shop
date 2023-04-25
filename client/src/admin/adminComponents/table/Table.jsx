@@ -65,12 +65,12 @@ const AdminTable = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">Product</TableCell>
-            <TableCell className="tableCell">Customer</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Payment Method</TableCell>
+            <TableCell className="tableCell">Id.</TableCell>
+            <TableCell className="tableCell">Mahsulotlar</TableCell>
+            <TableCell className="tableCell">Mijozlar</TableCell>
+            <TableCell className="tableCell">Sana</TableCell>
+            <TableCell className="tableCell">Miqdori</TableCell>
+            <TableCell className="tableCell">To'lov Usuli</TableCell>
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
