@@ -9,13 +9,13 @@ const Widget = ({ type }) => {
   let data;
 
   //temporary
-  const amount = 100;
+  const amount = 200;
   const diff = 20;
 
   switch (type) {
     case "user":
       data = {
-        title: "USERS",
+        title: "FOYDALANUVCHILAR",
         isMoney: false,
         link: "See all users",
         icon: (
@@ -31,7 +31,7 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "BUYURTMALAR",
         isMoney: false,
         link: "View all orders",
         icon: (
@@ -47,7 +47,7 @@ const Widget = ({ type }) => {
       break;
     case "earning":
       data = {
-        title: "EARNINGS",
+        title: "DAROMAD",
         isMoney: true,
         link: "View net earnings",
         icon: (
@@ -60,7 +60,7 @@ const Widget = ({ type }) => {
       break;
     case "balance":
       data = {
-        title: "BALANCE",
+        title: "HISOB",
         isMoney: true,
         link: "See details",
         icon: (
