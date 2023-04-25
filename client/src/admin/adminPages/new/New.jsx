@@ -18,7 +18,7 @@ const New = () => {
     e.preventDefault();
     let PostNewMasterData = { ...newMaster, image };
 
-    // console.log(PostNewMasterData);
+    console.log(PostNewMasterData);
     
     try {
       axios.post("http://127.0.0.1:8000/register", PostNewMasterData).then((response) => {
