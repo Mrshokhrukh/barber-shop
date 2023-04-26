@@ -4,7 +4,7 @@ import shutil
 from fastapi.responses import UJSONResponse
 from sqlalchemy.orm import Session
 
-from server.app import schemas, models
+from app import schemas, models
 
 
 async def register_worker(schema: schemas.Register, db: Session):
