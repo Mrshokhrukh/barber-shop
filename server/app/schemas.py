@@ -70,4 +70,4 @@ class Login(BaseModel):
 
 
 class Photo(BaseModel):
-    image: bytes
+    image: UploadFile = File(None)

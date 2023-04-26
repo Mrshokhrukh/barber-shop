@@ -2,6 +2,7 @@ import httpx
 
 from datetime import datetime
 
+from fastapi import UploadFile
 from fastapi.responses import UJSONResponse
 from sqlalchemy.orm import Session
 
@@ -47,5 +48,12 @@ def uploading_image(path_image):
     return result
 
 
-# def save_image(image):
-#     image_url = uploading_image(image.read())
+def save_image_worker(schema: schemas.Photo, db: Session):
+    data = schema.dict(exclude_none=True)
+    image = data.get('image')
+    image_url = uploading_image(image.read())
+    photo = models.Photos(image=image_url)  # noqa
+    db.add(photo)
+    db.commit()
+    db.close()
+    return UJSONResponse("Successfully added image", 200)
