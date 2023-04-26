@@ -11,7 +11,6 @@ app = FastAPI(
     version=settings.PROJECT_VERSION,
     debug=True
 )
-<<<<<<< HEAD
 
 origins = [
     'http://localhost:3000'
@@ -20,14 +19,6 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-=======
-origin = [
-    "http://localhost:3000"
-]
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origin,
->>>>>>> d0390fb387715b9c31e3c31ec563dd7f3a6d68ed
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
