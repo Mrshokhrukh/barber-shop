@@ -1,2 +1,2 @@
-start:
+run:
 	uvicorn main:app
