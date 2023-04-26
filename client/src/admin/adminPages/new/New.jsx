@@ -7,7 +7,7 @@ import Navbar from "../../adminComponents/navbar/Navbar";
 import axios from "axios";
 
 const New = () => {
-  const [file, setFile] = useState("");
+  const [image, setFile] = useState("");
   const [newMaster, setNewMaster] = useState({});
 
   const handleChange = (e) => {
@@ -16,11 +16,13 @@ const New = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let PostNewMasterData = { ...newMaster, profilePhoto: file };
+    let PostNewMasterData = { ...newMaster, image };
 
+    console.log(PostNewMasterData);
+    
     try {
-      axios.post("", PostNewMasterData).then((response) => {
-        console.log(response);
+      axios.post("http://127.0.0.1:8000/register", PostNewMasterData).then((response) => {
+        console.log(response.data);
       });
     } catch (error) {
       console.log(error);
@@ -32,14 +34,14 @@ const New = () => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add Master to the Barbershop</h1>
+          <h1>Add New Master to the Barbershop</h1>
         </div>
         <div className="bottom">
           <div className="left">
             <img
               src={
-                file
-                  ? URL.createObjectURL(file)
+                image
+                  ? URL.createObjectURL(image)
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
               alt=""
@@ -57,7 +59,6 @@ const New = () => {
                   id="file"
                   onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }}
-                  required
                 />
               </div>
 
@@ -94,7 +95,7 @@ const New = () => {
                   required
                 />
               </div>
-              <div className="formInput">
+              {/* <div className="formInput">
                 <label>Vazifalari: </label>
                 <input
                   type="text"
@@ -104,8 +105,9 @@ const New = () => {
                   placeholder="Vazifalaringizni kiriting"
                   required
                 />
-              </div>
-              <div className="formInput">
+              </div> */}
+
+              {/* <div className="formInput">
                 <label>Ish vaqti: </label>
                 <input
                   type="text"
@@ -115,9 +117,9 @@ const New = () => {
                   placeholder="Ish vaqtingizni kiriting"
                   required
                 />
-              </div>
+              </div> */}
 
-              <button>Send</button>
+              <button>Qo'shish</button>
             </form>
           </div>
         </div>

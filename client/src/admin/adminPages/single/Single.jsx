@@ -1,11 +1,13 @@
+import { useParams } from "react-router-dom";
 import AdminSidebar from "../../adminComponents/adminSidebar/adminSidebar";
 import Chart from "../../adminComponents/chart/Chart";
 import Navbar from "../../adminComponents/navbar/Navbar";
 import AdminTable from "../../adminComponents/table/Table";
-import List from "../list/List";
 import "./single.scss";
 
 const SingleUser = () => {
+  let param = useParams();
+
   return (
     <div className="single">
       <AdminSidebar />

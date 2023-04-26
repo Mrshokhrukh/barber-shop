@@ -5,7 +5,6 @@
   align-items: center;
   font-size: 14px;
   color: #555;
-
   .wrapper {
     width: 100%;
     padding: 20px;
@@ -17,15 +16,19 @@
       display: flex;
       align-items: center;
       border: 0.5px solid lightgray;
-      padding: 3px;
-
+      padding: 3px 6px;
+      border-radius: 5px;
+      .search-icon {
+        cursor: pointer;
+      }
       input {
         border: none;
         outline: none;
+        width: 250px;
         background: transparent;
 
         &::placeholder {
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }

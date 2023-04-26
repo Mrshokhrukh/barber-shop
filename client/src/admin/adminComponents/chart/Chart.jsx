@@ -2,12 +2,18 @@ import "./chart.scss";
 import { AreaChart, Area, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const data = [
-  { name: "January", Total: 1200 },
-  { name: "February", Total: 2100 },
-  { name: "March", Total: 800 },
-  { name: "April", Total: 1600 },
-  { name: "May", Total: 900 },
-  { name: "June", Total: 1700 },
+  { name: "Yanvar", Total: 500 },
+  { name: "Fevral", Total: 700 },
+  { name: "Mart", Total: 600 },
+  { name: "Aprel", Total: 900 },
+  { name: "May", Total: 600 },
+  { name: "Iyun", Total: 900 },
+  { name: "Iyul", Total: 700 },
+  { name: "August", Total: 800 },
+  { name: "Sentabr", Total: 600 },
+  { name: "Octabr", Total: 500 },
+  { name: "Noyabr", Total: 900 },
+  { name: "Dekabr", Total: 600 },
 ];
 
 const Chart = ({ aspect, title }) => {
@@ -19,12 +25,12 @@ const Chart = ({ aspect, title }) => {
           width={730}
           height={250}
           data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          margin={{ top: 10, right: 10, left: 5, bottom: 5 }}
         >
           <defs>
             <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              <stop offset="5%" stopColor="rgba(0, 119, 255,0.5)" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="rgba(142, 169, 243,0.3)" stopOpacity={0.2} />
             </linearGradient>
           </defs>
           <XAxis dataKey="name" stroke="gray" />
@@ -33,7 +39,7 @@ const Chart = ({ aspect, title }) => {
           <Area
             type="monotone"
             dataKey="Total"
-            stroke="#8884d8"
+            stroke="rgb(0, 119, 255)"
             fillOpacity={1}
             fill="url(#total)"
           />
