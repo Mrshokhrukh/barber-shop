@@ -29,3 +29,9 @@ async def login(form: schemas.Login, db: Session = Depends(get_db)):
 @auth.get('/time/{pk}', summary='get free time for master')
 async def get_time(pk: int, db: Session = Depends(get_db)):
     response = await get_time_worker(db, pk)
+    return response
+
+
+@auth.post('/image', summary='upload image')
+async def upload_image(schema: schemas.Photo):
+    pass

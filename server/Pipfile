@@ -13,6 +13,7 @@ pydantic = "*"
 python-multipart = "*"
 ujson = "*"
 pipfile = "*"
+httpx = "*"
 
 [dev-packages]
 
