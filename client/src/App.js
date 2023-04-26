@@ -12,7 +12,6 @@ import Home from "./pages/home/Home";
 import Main from "./pages/main/Main";
 import Masters from "./pages/masters/Masters";
 import Services from "./pages/services/Services";
-import { productInputs, userInputs } from "./admin/formSource";
 import "./admin/adminStyle/dark.scss";
 import "./style/main.style.scss";
 import AdminRoutes from "./admin/adminRoutes";
@@ -21,7 +20,7 @@ import SingleUser from "./admin/adminPages/single/Single";
 const App = () => {
   const { darkMode } = useContext(DarkModeContext);
   return (
-    <div className={darkMode ? "web-app dark-mode" : "web-app"}>
+    <div className={darkMode ? "mode dark-mode" : "mode "}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

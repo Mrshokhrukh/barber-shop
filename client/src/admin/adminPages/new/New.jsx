@@ -7,27 +7,36 @@ import Navbar from "../../adminComponents/navbar/Navbar";
 import axios from "axios";
 
 const New = () => {
-  const [image, setFile] = useState("");
+  const [file, setFile] = useState("");
   const [newMaster, setNewMaster] = useState({});
-
+  const [photo, setPhoto] = useState();
+  let reader = new FileReader();
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
-    let PostNewMasterData = { ...newMaster, image };
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      setPhoto({
+        image: reader.result,
+      });
+    };
+    let PostNewMasterData = { ...newMaster, photo };
 
     console.log(PostNewMasterData);
-    
-    try {
-      axios.post("http://127.0.0.1:8000/register", PostNewMasterData).then((response) => {
-        console.log(response.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+
+    // try {
+    //   axios.post("http://127.0.0.1:8000/register", PostNewMasterData).then((response) => {
+    //     console.log(response.data);
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
+
   return (
     <div className="new">
       <AdminSidebar />
@@ -40,8 +49,8 @@ const New = () => {
           <div className="left">
             <img
               src={
-                image
-                  ? URL.createObjectURL(image)
+                file
+                  ? URL.createObjectURL(file)
                   : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
               }
               alt=""
