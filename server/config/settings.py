@@ -10,10 +10,10 @@ class Settings:
     PROJECT_DESCRIPTION: str = "New project"
     PROJECT_VERSION: str = "1.0.0"
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", 'postgres')
-    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", '1')
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", '11111111')
     POSTGRES_SERVER: str = os.getenv("POSTGRES_SERVER", 'localhost')
     POSTGRES_PORT: str = os.getenv("POSTGRES_PORT", 5432)
-    POSTGRES_DB: str = os.getenv("POSTGRES_DB", 'fast_api_db')
+    POSTGRES_DB: str = os.getenv("POSTGRES_DB", 'postgres')
     PG_URL: str = f'{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}/{POSTGRES_DB}'
     DATABASE_URL: str = f"postgresql+psycopg2://{PG_URL}"
 
