@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services import register_worker, get_users_worker, login_user_worker
+from app.services import register_worker, get_users_worker, login_user_worker, get_time_worker
 from config.db import get_db
 
 auth = APIRouter(tags=['auth'])
@@ -24,3 +24,8 @@ async def get_users(db: Session = Depends(get_db)):
 async def login(form: schemas.Login, db: Session = Depends(get_db)):
     user = await login_user_worker(db, form)
     return user
+
+
+@auth.get('/time/{pk}', summary='get free time for master')
+async def get_time(pk: int, db: Session = Depends(get_db)):
+    response = await get_time_worker(db, pk)
