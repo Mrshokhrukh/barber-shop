@@ -17,13 +17,14 @@ const Widget = ({ type }) => {
       data = {
         title: "FOYDALANUVCHILAR",
         isMoney: false,
-        link: "See all users",
+        link: "Foydalanuvchilarni ko'rish",
         icon: (
           <PersonOutlinedIcon
             className="icon"
             style={{
               color: "crimson",
               backgroundColor: "rgba(255, 0, 0, 0.2)",
+              fontSize: "26px",
             }}
           />
         ),
@@ -33,13 +34,14 @@ const Widget = ({ type }) => {
       data = {
         title: "BUYURTMALAR",
         isMoney: false,
-        link: "View all orders",
+        link: "Buyurtmalarni ko'rish",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
               color: "goldenrod",
+              fontSize: "26px",
             }}
           />
         ),
@@ -49,11 +51,12 @@ const Widget = ({ type }) => {
       data = {
         title: "DAROMAD",
         isMoney: true,
-        link: "View net earnings",
+        link: "Daromadlarni ko'rish",
+
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
+            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green", fontSize: "26px" }}
           />
         ),
       };
@@ -62,13 +65,15 @@ const Widget = ({ type }) => {
       data = {
         title: "HISOB",
         isMoney: true,
-        link: "See details",
+        link: "Tafsilotlar",
+
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
             style={{
               backgroundColor: "rgba(128, 0, 128, 0.2)",
               color: "purple",
+              fontSize: "26px",
             }}
           />
         ),

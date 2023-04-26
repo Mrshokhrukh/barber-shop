@@ -16,7 +16,10 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
 const AdminSidebar = () => {
-  const { dispatch } = useContext(DarkModeContext);
+  const { setDarkmode } = useContext(DarkModeContext);
+
+  // const setDarkmode = () => {};
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -87,14 +90,8 @@ const AdminSidebar = () => {
         </ul>
       </div>
       <div className="bottom">
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "LIGHT" })}
-        ></div>
-        <div
-          className="colorOption"
-          onClick={() => dispatch({ type: "DARK" })}
-        ></div>
+        <div className="colorOption" onClick={() => setDarkmode({ type: "LIGHT" })}></div>
+        <div className="colorOption" onClick={() => setDarkmode({ type: "DARK" })}></div>
       </div>
     </div>
   );
