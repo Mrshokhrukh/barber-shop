@@ -20,7 +20,7 @@ class Register(BaseModel):
         if value and not re.search(regex, value, re.I):
             raise HTTPException(400, "Telefon raqam noto'g'ri kiritilgan !")
         db = next(get_db())
-        user = db.query(models.Users).filter_by(phone=value).first()
+        user = db.query(models.Masters).filter_by(phone=value).first()
         if user:
             raise HTTPException(400, "Phone is already registered !")
         db.close()
@@ -57,7 +57,7 @@ class Login(BaseModel):
         if phone and not re.search(regex, phone, re.I):
             raise HTTPException(404, "Telefon raqam noto'g'ri kiritilgan !")
 
-        user = db.query(models.Users).filter_by(phone=phone).first()
+        user = db.query(models.Masters).filter_by(phone=phone).first()
         if not user:
             raise HTTPException(404, "Phone is not registered !")
         if code != '123456' and code != '123':
