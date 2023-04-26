@@ -12,17 +12,29 @@ const Login = () => {
   const Submit = async (e) => {
     e.preventDefault();
 
-    try {
-      await axios.post("http://127.0.0.1:8000/login", loginUser).then((res) => {
-        if (res.data.is_admin) {
+    axios
+      .post("http://127.0.0.1:8000/login", loginUser)
+      .then((response) => {
+        
+        if (response.data.is_admin) {
           navigate("/admin/dashboard");
         } else {
           console.log("user");
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response) {
+          console.log(error.response.data.detail);
+        }
       });
-    } catch (error) {
-      console.log(error);
-    }
+
+    // try {
+    //   await axios
+
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
     setLoginUser({});
   };

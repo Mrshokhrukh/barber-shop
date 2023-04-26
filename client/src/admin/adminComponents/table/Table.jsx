@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const AdminTable = () => {
+  
   const rows = [
     {
       id: 1143155,
@@ -60,6 +61,7 @@ const AdminTable = () => {
       status: "Pending",
     },
   ];
+
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
