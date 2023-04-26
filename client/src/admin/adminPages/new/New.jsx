@@ -9,12 +9,12 @@ import axios from "axios";
 const New = () => {
   const [file, setFile] = useState("");
   const [newMaster, setNewMaster] = useState({});
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState();
   let reader = new FileReader();
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     reader.readAsDataURL(file);
