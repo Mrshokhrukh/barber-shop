@@ -3,8 +3,8 @@ import re
 from fastapi import HTTPException, UploadFile, Form, File
 from pydantic import BaseModel, validator, root_validator
 
-from server.app import models
-from server.config.db import get_db
+from app import models
+from config.db import get_db
 
 
 class Register(BaseModel):

@@ -3,9 +3,9 @@ from pyclbr import Class
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from server.app import models, auth
-from server.config.db import engine
-from server.config.settings import settings
+from app import models, auth
+from config.db import engine
+from config.settings import settings
 
 app = FastAPI(
     name=settings.PROJECT_NAME,

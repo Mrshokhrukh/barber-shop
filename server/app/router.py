@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, UploadFile
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from server.app import schemas
-from server.app.services import register_worker, get_users_worker, login_user_worker
-from server.config.db import get_db
+from app import schemas
+from app.services import register_worker, get_users_worker, login_user_worker
+from config.db import get_db
 
 auth = APIRouter(tags=['auth'])
 

@@ -1,1 +1,1 @@
-from server.app.router import auth
+from app.router import auth
