@@ -55,4 +55,4 @@ def save_image_worker(schema: schemas.Photo, db: Session):
     db.add(photo)
     db.commit()
     db.close()
-    return UJSONResponse("Successfully added image", 200)
+    return UJSONResponse("Successfully uploaded image", 200)
