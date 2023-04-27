@@ -49,7 +49,7 @@ def uploading_image(path_image):
 
 
 def save_image_worker(schema: schemas.Photo, db: Session):
-    image = schema
+    image = schema.file
     image_url = uploading_image(image.read())
     photo = models.Photos(image=image_url)  # noqa
     db.add(photo)
