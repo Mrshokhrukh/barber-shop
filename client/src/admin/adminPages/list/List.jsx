@@ -1,5 +1,5 @@
 import AdminSidebar from "../../adminComponents/adminSidebar/adminSidebar";
-import Datatable from "../../adminComponents/datatable/Datatable";
+import Masters from "../../adminComponents/masters/Masters";
 import Navbar from "../../adminComponents/navbar/Navbar";
 import "./list.scss";
 
@@ -9,7 +9,7 @@ const List = () => {
       <AdminSidebar />
       <div className="listContainer">
         <Navbar />
-        <Datatable />
+        <Masters />
       </div>
     </div>
   );

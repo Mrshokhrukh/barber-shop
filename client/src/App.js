@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AdminHome from "./admin/adminPages/adminHome/AdminHome";
 import List from "./admin/adminPages/list/List";
 import New from "./admin/adminPages/new/New";
-import { DarkModeContext } from "./admin/context/darkModeContext";
 import Layout from "./layout";
 import Auth from "./pages/auth/Auth";
 import Login from "./pages/auth/Login";
@@ -18,9 +17,9 @@ import AdminRoutes from "./admin/adminRoutes";
 import AdminTable from "./admin/adminComponents/table/Table";
 import SingleUser from "./admin/adminPages/single/Single";
 const App = () => {
-  const { darkMode } = useContext(DarkModeContext);
+  
   return (
-    <div className={darkMode ? "mode dark-mode" : "mode "}>
+    
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -35,16 +34,16 @@ const App = () => {
             </Route>
             <Route path="admin/dashboard" element={<AdminRoutes />}>
               <Route index element={<AdminHome />} />
-              <Route path="users">
+              <Route path="workers">
                 <Route index element={<List />} />
                 <Route path=":userId" element={<SingleUser />} />
-                <Route path="new" element={<New title="Add New User" />} />
+                <Route path="new" element={<New title="Add New Masters" />} />
               </Route>
             </Route>
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+  
   );
 };
 

@@ -12,13 +12,13 @@ import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSyst
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
-import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext } from "react";
+
+
 
 const AdminSidebar = () => {
-  const { setDarkmode } = useContext(DarkModeContext);
 
-  // const setDarkmode = () => {};
+
+  
 
   return (
     <div className="sidebar">
@@ -36,7 +36,7 @@ const AdminSidebar = () => {
             <span>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
-          <Link to="/admin/dashboard/users" style={{ textDecoration: "none" }}>
+          <Link to="/admin/dashboard/workers" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Masters</span>
@@ -90,8 +90,8 @@ const AdminSidebar = () => {
         </ul>
       </div>
       <div className="bottom">
-        <div className="colorOption" onClick={() => setDarkmode({ type: "LIGHT" })}></div>
-        <div className="colorOption" onClick={() => setDarkmode({ type: "DARK" })}></div>
+        <div className="colorOption" ></div>
+        <div className="colorOption" ></div>
       </div>
     </div>
   );

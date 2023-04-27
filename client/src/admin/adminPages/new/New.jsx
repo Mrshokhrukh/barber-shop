@@ -1,37 +1,36 @@
 import "./new.scss";
-
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AdminSidebar from "../../adminComponents/adminSidebar/adminSidebar";
 import Navbar from "../../adminComponents/navbar/Navbar";
 import axios from "axios";
 
 const New = () => {
-  const [file, setFile] = useState("");
+  const [file, setFile] = useState(null);
   const [newMaster, setNewMaster] = useState({});
-  const [photo, setPhoto] = useState("");
-  let reader = new FileReader();
+
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      setPhoto({
-        image: reader.result,
-      });
-    };
-    let PostNewMasterData = { ...newMaster, photo };
-
-    console.log(PostNewMasterData);
+    const formData = new FormData();
+    formData.append("file", file, file.name);
+    let postNewMasterData = { ...newMaster, formData };
 
     // try {
-    //   axios.post("http://127.0.0.1:8000/register", PostNewMasterData).then((response) => {
-    //     console.log(response.data);
-    //   });
+    //   axios
+    //     .post("http://127.0.0.1:8000/add", postNewMasterData)
+    //     .then((response) => {
+    //       console.log(response.data);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //       if (error.response) {
+    //         console.log(error.response.data.detail);
+    //       }
+    //     });
     // } catch (error) {
     //   console.log(error);
     // }
