@@ -48,7 +48,7 @@ def uploading_image(path_image):
     return result
 
 
-def save_image_worker(image: UploadFile, db: Session):
+def save_image_worker(image, db: Session):
     image_url = uploading_image(image.read())
     photo = models.Photos(image=image_url)  # noqa
     db.add(photo)
