@@ -2,6 +2,7 @@ import os
 import shutil
 from datetime import datetime
 
+import httpx
 from fastapi.responses import UJSONResponse
 from sqlalchemy.orm import Session
 
@@ -42,12 +43,12 @@ async def get_time_worker(db: Session, pk: int):
     #         if user.ordered_start ==
 
 
-# def uploading_image(path_image):
-#     result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
-#     return result
-#
+def uploading_image(path_image):
+    result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
+    return result
 
-def save_image_worker(image, db: Session):
+
+async def save_image_worker(image, db: Session):
     folder = 'media/users/'
     if not os.path.exists(folder):
         os.mkdir(folder)
