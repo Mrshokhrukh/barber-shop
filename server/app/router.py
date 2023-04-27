@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, UploadFile
 from sqlalchemy.orm import Session
 
 from app import schemas
@@ -33,6 +33,6 @@ async def get_time(pk: int, db: Session = Depends(get_db)):
 
 
 @auth.post('/image', summary='upload image')
-async def upload_image(schema: schemas.Photo, db: Session = Depends(get_db)):
-    response = await save_image_worker(schema, db)
+async def upload_image(file: UploadFile, db: Session = Depends(get_db)):
+    response = await save_image_worker(file, db)
     return response
