@@ -34,5 +34,6 @@ async def get_time(pk: int, db: Session = Depends(get_db)):
 
 @auth.post('/image', summary='upload image')
 async def upload_image(file: UploadFile, db: Session = Depends(get_db)):
+    print(file.filename)
     response = await save_image_worker(file, db)
     return response
