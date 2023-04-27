@@ -1,8 +1,7 @@
-import httpx
-
+import os
+import shutil
 from datetime import datetime
 
-from fastapi import UploadFile
 from fastapi.responses import UJSONResponse
 from sqlalchemy.orm import Session
 
@@ -43,14 +42,21 @@ async def get_time_worker(db: Session, pk: int):
     #         if user.ordered_start ==
 
 
-def uploading_image(path_image):
-    result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
-    return result
-
+# def uploading_image(path_image):
+#     result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
+#     return result
+#
 
 def save_image_worker(image, db: Session):
-    image_url = uploading_image(image.read())
-    photo = models.Photos(image=image_url)  # noqa
+    folder = 'media/users/'
+    if not os.path.exists(folder):
+        os.mkdir(folder)
+    file_url = folder + image.filename
+
+    with open(file_url, "wb") as buffer:
+        shutil.copyfileobj(image.file, buffer)
+    image_url = file_url
+    photo = models.Photos(image=image_url)
     db.add(photo)
     db.commit()
     db.close()
