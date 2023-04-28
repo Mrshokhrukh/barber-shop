@@ -4,6 +4,7 @@ from datetime import datetime
 
 import httpx
 from fastapi.responses import UJSONResponse
+from sqlalchemy import desc, update
 from sqlalchemy.orm import Session
 
 from app import schemas, models
@@ -15,7 +16,16 @@ async def add_master_worker(schema: schemas.Register, db: Session):
     db.add(user)
     db.commit()
     db.close()
-    return UJSONResponse("Successful added user", status_code=200)
+    return UJSONResponse("Successful added master", status_code=200)
+
+
+async def get_master_worker(pk: int, db: Session):
+    user = db.query(models.Masters).filter_by(id=pk).first()
+    return user
+
+
+async def update_master_worker(pk: int, db: Session):
+    pass
 
 
 async def get_users_worker(db: Session):

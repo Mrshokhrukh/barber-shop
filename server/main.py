@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import models
-from app.routers import auth
+from app.routers import master
 from config.db import engine
 from config.settings import settings
 
@@ -30,4 +30,4 @@ app.add_middleware(
 async def startup_event():
     # models.Base.metadata.drop_all(engine)
     # models.Base.metadata.create_all(engine)
-    app.include_router(auth)
+    app.include_router(master)

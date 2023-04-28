@@ -21,7 +21,7 @@ class Register(BaseModel):
         db = next(get_db())
         user = db.query(models.Masters).filter_by(phone=value).first()
         if user:
-            raise HTTPException(400, "Phone is already registered !")
+            raise HTTPException(400, "Telefon raqam allaqachon ro'yxatdan o'tgan")
         db.close()
         return value
 
