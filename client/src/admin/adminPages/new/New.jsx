@@ -13,27 +13,38 @@ const New = () => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file, file.name);
-    let postNewMasterData = { ...newMaster, formData };
+    
+    await axios
+      .post("http://127.0.0.1:8000/image", formData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response) {
+          console.log(error.response.data.detail);
+        }
+      });
 
-    // try {
-    //   axios
-    //     .post("http://127.0.0.1:8000/add", postNewMasterData)
-    //     .then((response) => {
-    //       console.log(response.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //       if (error.response) {
-    //         console.log(error.response.data.detail);
-    //       }
-    //     });
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      axios
+        .post("http://127.0.0.1:8000/add", newMaster)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.response) {
+            console.log(error.response.data.detail);
+          }
+        });
+    } catch (error) {
+      return error;
+    }
   };
 
   return (
