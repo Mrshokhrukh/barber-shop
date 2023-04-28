@@ -9,8 +9,8 @@ auth = APIRouter(tags=['auth'])
 
 
 @auth.post('/add-master', summary='Add master with phone')
-async def add_master(file: UploadFile, schema: schemas.Register, db: Session = Depends(get_db)):
-    user = await add_master_worker(file, schema, db)
+async def add_master(schema: schemas.Register, db: Session = Depends(get_db)):
+    user = await add_master_worker(schema, db)
     return user
 
 

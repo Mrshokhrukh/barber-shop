@@ -9,22 +9,13 @@ from sqlalchemy.orm import Session
 from app import schemas, models
 
 
-async def add_master_worker(image, schema: schemas.Register, db: Session):
+async def add_master_worker(schema: schemas.Register, db: Session):
     data: dict = schema.dict(exclude_none=True)
-    folder = 'media/users/'
-    if not os.path.exists(folder):
-        os.mkdir(folder)
-    file_url = folder + image.filename
-    with open(file_url, "wb") as buffer:
-        shutil.copyfileobj(image.file, buffer)
-    data.update({'image': file_url})
     user = models.Masters(**data)
     db.add(user)
     db.commit()
     db.close()
     return UJSONResponse("Successful added user", status_code=200)
-
-    pass
 
 
 async def get_users_worker(db: Session):

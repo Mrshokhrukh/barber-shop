@@ -25,21 +25,6 @@ class Register(BaseModel):
         db.close()
         return value
 
-    # @classmethod
-    # def as_form(
-    #         cls,
-    #         first_name: str = Form(...),
-    #         last_name: str | None = Form(None),
-    #         phone: str = Form(...),
-    #         image: UploadFile = File(...),
-    # ):
-    #     return cls(
-    #         first_name=first_name,
-    #         last_name=last_name,
-    #         phone=phone,
-    #         image=image
-    #     )
-
 
 class Login(BaseModel):
     phone: str
