@@ -19,7 +19,6 @@ import SingleUser from "./admin/adminPages/single/Single";
 const App = () => {
   
   return (
-    
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

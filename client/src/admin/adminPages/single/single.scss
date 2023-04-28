@@ -9,24 +9,25 @@
       display: flex;
       gap: 20px;
 
+      .details {
+        .editButton {
+          text-align: center;
+          padding: 5px;
+          margin: 25px 5px;
+          font-size: 20px;
+          color: var(--main-color);
+          background-color: #0873ee71;
+          cursor: pointer;
+          border-radius: 0px 10px 0px 10px;
+        }
+      }
+
       .left {
         flex: 1;
         -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
         box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
         padding: 20px;
         position: relative;
-
-        .editButton {
-          position: absolute;
-          top: 0;
-          right: 0;
-          padding: 5px;
-          font-size: 12px;
-          color: #7451f8;
-          background-color: #7551f818;
-          cursor: pointer;
-          border-radius: 0px 0px 0px 5px;
-        }
 
         .item {
           display: flex;
@@ -79,6 +80,107 @@
       font-size: 16px;
       color: lightgray;
       margin-bottom: 20px;
+    }
+  }
+}
+.closeBtn {
+  position: absolute;
+  line-height: 0px;
+  right: 5%;
+  top: 5%;
+  font-size: 35px;
+  cursor: pointer;
+  color: rgb(138, 137, 137);
+  transition: 0.3s;
+  &:hover{
+    color: rgb(61, 61, 61);
+  }
+}
+
+.updateMaster {
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+
+  h1 {
+    color: lightgray;
+    font-size: 20px;
+  }
+
+  .left {
+    flex: 1;
+    text-align: center;
+    .uploadImg {
+      width: 80%;
+      margin: 25px auto;
+
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 13px;
+        font-size: 18px;
+        .icon {
+          cursor: pointer;
+        }
+      }
+    }
+    .profileImg {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  .right {
+    flex: 2;
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 30px;
+      justify-content: space-around;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+      .formInput {
+        width: 80%;
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 18px;
+          .icon {
+            cursor: pointer;
+          }
+        }
+
+        input {
+          font-family: "Poppins", sans-serif;
+          width: 100%;
+          padding: 5px;
+          border: none;
+          border-bottom: 1px solid gray;
+          outline: none;
+          font-size: 16px;
+          // border-radius: 5px;
+        }
+      }
+
+      button {
+        width: 200px;
+        padding: 10px;
+        border: none;
+        background-color: teal;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+      }
     }
   }
 }
