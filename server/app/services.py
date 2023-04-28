@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from app import schemas, models
 
 
-async def add_master_worker(schema: schemas.Register, db: Session):
+async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     data: dict = schema.dict(exclude_none=True)
     user = models.Masters(**data)
     db.add(user)

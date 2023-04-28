@@ -10,7 +10,7 @@ master = APIRouter(tags=['master'])
 
 
 @master.post('/add-master', summary='Add master with phone')
-async def add_master(schema: schemas.Register, db: Session = Depends(get_db)):
+async def add_master(schema: schemas.MasterSchema, db: Session = Depends(get_db)):
     user = await add_master_worker(schema, db)
     return user
 
@@ -21,10 +21,15 @@ async def get_users(db: Session = Depends(get_db)):
     return users
 
 
-@master.get('/get-master/{pk}', summary='update master')
+@master.put('/get-master/{pk}', summary='get master with id')
 async def get_master(pk: int, db: Session = Depends(get_db)):
     response = await get_master_worker(pk, db)
     return response
+
+
+@master.post('/update-master/{pk}', summary='update master')
+async def update_master(pk: int, schema: schemas.MasterSchema, db: Session = Depends(get_db)):
+    pass
 
 
 @master.post('/login', summary='login')

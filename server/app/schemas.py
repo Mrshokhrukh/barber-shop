@@ -8,7 +8,7 @@ from app import models
 from config.db import get_db
 
 
-class Register(BaseModel):
+class MasterSchema(BaseModel):
     first_name: str
     last_name: str | None
     phone: str
