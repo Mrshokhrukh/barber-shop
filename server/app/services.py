@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session
 from app import schemas, models
 
 
-async def register_worker(image, schema: schemas.Register, db: Session):
+async def add_master_worker(image, schema: schemas.Register, db: Session):
     data: dict = schema.dict(exclude_none=True)
     folder = 'media/users/'
     if not os.path.exists(folder):

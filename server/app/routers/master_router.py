@@ -2,15 +2,15 @@ from fastapi import APIRouter, Depends, UploadFile
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services import register_worker, get_users_worker, login_user_worker, get_time_worker, save_image_worker
+from app.services import add_master_worker, get_users_worker, login_user_worker, get_time_worker, save_image_worker
 from config.db import get_db
 
 auth = APIRouter(tags=['auth'])
 
 
-@auth.post('/register', summary='Register with phone')
-async def register(file: UploadFile, schema: schemas.Register, db: Session = Depends(get_db)):
-    user = await register_worker(file, schema, db)
+@auth.post('/add-master', summary='Register with phone')
+async def add_master(file: UploadFile, schema: schemas.Register, db: Session = Depends(get_db)):
+    user = await add_master_worker(file, schema, db)
     return user
 
 
