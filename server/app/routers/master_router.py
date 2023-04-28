@@ -8,13 +8,13 @@ from config.db import get_db
 auth = APIRouter(tags=['auth'])
 
 
-@auth.post('/add-master', summary='Register with phone')
+@auth.post('/add-master', summary='Add master with phone')
 async def add_master(file: UploadFile, schema: schemas.Register, db: Session = Depends(get_db)):
     user = await add_master_worker(file, schema, db)
     return user
 
 
-@auth.get('/get-users', summary='get all users')
+@auth.get('/get-masters', summary='get all masters')
 async def get_users(db: Session = Depends(get_db)):
     users = await get_users_worker(db)
     return users

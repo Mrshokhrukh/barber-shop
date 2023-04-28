@@ -12,7 +12,6 @@ class Register(BaseModel):
     first_name: str
     last_name: str | None
     phone: str
-    image: str | None
 
     @validator("phone")
     def phone_validation(cls, value):
