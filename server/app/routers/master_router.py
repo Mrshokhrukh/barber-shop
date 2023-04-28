@@ -21,7 +21,7 @@ async def get_users(db: Session = Depends(get_db)):
     return users
 
 
-@master.put('/get-master/{pk}', summary='get master with id')
+@master.get('/get-master/{pk}', summary='get master with id')
 async def get_master(pk: int, db: Session = Depends(get_db)):
     response = await get_master_worker(pk, db)
     return response
