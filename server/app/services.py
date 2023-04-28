@@ -9,12 +9,15 @@ from sqlalchemy.orm import Session
 from app import schemas, models
 
 
-async def register_worker(schema: schemas.Register, db: Session):
+async def register_worker(image, schema: schemas.Register, db: Session):
     data: dict = schema.dict(exclude_none=True)
-    if data.get('image'):
-        image = data.get('image')
-        image_url = uploading_image(image.read())
-        data.update({'image': image_url})
+    folder = 'media/users/'
+    if not os.path.exists(folder):
+        os.mkdir(folder)
+    file_url = folder + image.filename
+    with open(file_url, "wb") as buffer:
+        shutil.copyfileobj(image.file, buffer)
+    data.update({'image': file_url})
     user = models.Masters(**data)
     db.add(user)
     db.commit()

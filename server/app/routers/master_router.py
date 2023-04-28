@@ -9,8 +9,8 @@ auth = APIRouter(tags=['auth'])
 
 
 @auth.post('/register', summary='Register with phone')
-async def register(schema: schemas.Register, db: Session = Depends(get_db)):
-    user = await register_worker(schema, db)
+async def register(file: UploadFile, schema: schemas.Register, db: Session = Depends(get_db)):
+    user = await register_worker(file, schema, db)
     return user
 
 
@@ -25,15 +25,15 @@ async def login(form: schemas.Login, db: Session = Depends(get_db)):
     user = await login_user_worker(db, form)
     return user
 
+#
+# @auth.get('/time/{pk}', summary='get free time for master')
+# async def get_time(pk: int, db: Session = Depends(get_db)):
+#     response = await get_time_worker(db, pk)
+#     return response
 
-@auth.get('/time/{pk}', summary='get free time for master')
-async def get_time(pk: int, db: Session = Depends(get_db)):
-    response = await get_time_worker(db, pk)
-    return response
 
-
-@auth.post('/image', summary='upload image')
-async def upload_image(file: UploadFile, db: Session = Depends(get_db)):
-    print(file.filename)
-    response = await save_image_worker(file, db)
-    return response
+# @auth.post('/image', summary='upload image')
+# async def upload_image(file: UploadFile, db: Session = Depends(get_db)):
+#     print(file.filename)
+#     response = await save_image_worker(file, db)
+#     return response
