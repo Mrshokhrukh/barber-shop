@@ -13,13 +13,7 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 
-
-
 const AdminSidebar = () => {
-
-
-  
-
   return (
     <div className="sidebar">
       <div className="top">
@@ -42,7 +36,7 @@ const AdminSidebar = () => {
               <span>Masters</span>
             </li>
           </Link>
-          {/* <Link to="/products" style={{ textDecoration: "none" }}>
+          <Link to="/products" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
               <span>Products</span>
@@ -86,12 +80,12 @@ const AdminSidebar = () => {
           <li>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
-          </li> */}
+          </li>
         </ul>
       </div>
       <div className="bottom">
-        <div className="colorOption" ></div>
-        <div className="colorOption" ></div>
+        <div className="colorOption"></div>
+        <div className="colorOption"></div>
       </div>
     </div>
   );

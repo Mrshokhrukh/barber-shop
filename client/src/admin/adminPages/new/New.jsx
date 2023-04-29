@@ -8,16 +8,12 @@ import axios from "axios";
 const New = () => {
   const [file, setFile] = useState(null);
   const [newMaster, setNewMaster] = useState({});
-
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let data = { ...newMaster, image: file };
-
     try {
       axios
         .post("http://127.0.0.1:8000/add-master", data, {
@@ -35,7 +31,6 @@ const New = () => {
     } catch (error) {
       return error;
     }
-
     setNewMaster({});
   };
 
@@ -72,7 +67,6 @@ const New = () => {
                   style={{ display: "none" }}
                 />
               </div>
-
               <div className="formInput">
                 <label>Ism :</label>
                 <input
@@ -129,7 +123,6 @@ const New = () => {
                   required
                 />
               </div> */}
-
               <button>Qo'shish</button>
             </form>
           </div>

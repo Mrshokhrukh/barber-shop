@@ -10,7 +10,7 @@ import "./single.scss";
 const SingleUser = () => {
   let location = useLocation();
   const [open, setOpen] = useState(false);
-
+  let user = location.state;
   const handleOpen = () => {
     setOpen(true);
   };
@@ -28,22 +28,22 @@ const SingleUser = () => {
           <div className="left">
             <h1 className="title">Information</h1>
             <div className="item">
-              <img src={location.state.image} alt="" className="itemImg" />
+              <img src={user.image} alt="" className="itemImg" />
               <div className="details">
-                <h1 className="itemTitle">{location.state.first_name}</h1>
+                <h1 className="itemTitle">{user.first_name}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
                   <span className="itemValue">janedoe@gmail.com</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
-                  <span className="itemValue">{location.state.phone}</span>
+                  <span className="itemValue">{user.phone}</span>
                 </div>
 
                 <div className="editButton" onClick={handleOpen}>
                   Update
                 </div>
-                <UserUpdate handleClose={() => handleClose()} open={open} data={location.state} />
+                <UserUpdate handleClose={() => handleClose()} open={open} data={user} />
               </div>
             </div>
           </div>
