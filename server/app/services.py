@@ -1,24 +1,34 @@
-import os
 import shutil
 from datetime import datetime
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import desc, update
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 
 from app import schemas, models
+
+
+def uploading_image(path_image):
+    result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
+    return result
+
+
+"""
+        image = request.FILES.get('image')
+        if image is not None:
+            result = uploading_image(image.read())
+            image = 'https://telegra.ph' + result[0]['src']
+"""
 
 
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
     data = schema.dict(exclude_none=True)
     if image := data.get('image'):
-        folder = 'media/users/'
-        file_url = folder + image.filename
-        with open(file_url, "wb") as buffer:
-            shutil.copyfileobj(image.file, buffer)
-            data.update({'image': file_url})
+        result = uploading_image(image.file.read())
+        imager_url = 'https://telegra.ph' + result[0]['src']
+        data.update({'image': imager_url})
     user = models.Masters(**data)
     db.add(user)
     db.commit()
@@ -63,11 +73,6 @@ async def get_time_worker(db: Session, pk: int):
     # for _ in range(10):
     #     for user in master:
     #         if user.ordered_start ==
-
-
-def uploading_image(path_image):
-    result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
-    return result
 
 
 async def delete_master_worker(pk: int, db: Session):

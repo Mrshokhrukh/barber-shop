@@ -47,6 +47,3 @@ class MasterOrder(Base, CreateDateBase):
     master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'))
     master: Mapped['Masters'] = relationship(back_populates='master_time')
 
-
-class Photos(Base):
-    image: Mapped[str] = mapped_column(String(250), nullable=True)
