@@ -1,9 +1,8 @@
-import shutil
 from datetime import datetime
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import update, desc
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 
 from app import schemas, models
