@@ -26,11 +26,15 @@ const UserUpdate = (props) => {
   const handleChange = (e) => {
     setUpdateMaster({ ...updateMaster, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file, file.name);
+    updateMaster({})
   };
+
+
   return (
     <Modal
       open={props.open}

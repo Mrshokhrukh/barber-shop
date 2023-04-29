@@ -33,6 +33,7 @@ const Datatable = () => {
         <thead>
           <tr>
             <th>No.</th>
+            <th>photo.</th>
             <th>Name</th>
             <th>Phone number</th>
             <th>Service</th>

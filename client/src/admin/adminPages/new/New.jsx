@@ -15,26 +15,14 @@ const New = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file, file.name);
 
-    // await axios
-    //   .post("http://127.0.0.1:8000/image", formData)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     if (error.response) {
-    //       console.log(error.response.data.detail);
-    //     }
-    //   });
-
-    
+    let data = { ...newMaster, image: file };
 
     try {
       axios
-        .post("http://127.0.0.1:8000/add-master", newMaster)
+        .post("http://127.0.0.1:8000/add-master", data, {
+          headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
+        })
         .then((response) => {
           console.log(response.data);
         })
@@ -47,6 +35,8 @@ const New = () => {
     } catch (error) {
       return error;
     }
+
+    setNewMaster({});
   };
 
   return (

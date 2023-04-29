@@ -7,7 +7,7 @@ const UserDetails = (props) => {
 
   const updatingUser = (id) => {
     axios
-      .put(`http://127.0.0.1:8000/get-master/${id}`)
+      .get(`http://127.0.0.1:8000/get-master/${id}`)
       .then((res) => {
         console.log(res.data);
         navigate(`/admin/dashboard/workers/${id}`, { state: res.data });
@@ -20,6 +20,10 @@ const UserDetails = (props) => {
   return (
     <tr>
       <td>{props.master.id}</td>
+      <td>
+        <img src={props.master.image} alt="404" />
+        
+      </td>
       <td>{props.master.first_name}</td>
       <td>{props.master.phone}</td>
       <td>oo</td>

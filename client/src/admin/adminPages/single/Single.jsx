@@ -19,6 +19,7 @@ const SingleUser = () => {
     setOpen(false)
   };
 
+  
   return (
     <div className="single">
       <AdminSidebar />
