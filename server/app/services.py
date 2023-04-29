@@ -1,9 +1,8 @@
-import shutil
 from datetime import datetime
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import update, desc
+from sqlalchemy import update
 from sqlalchemy.orm import Session
 
 from app import schemas, models
@@ -12,14 +11,6 @@ from app import schemas, models
 def uploading_image(path_image):
     result = httpx.post('https://telegra.ph/upload', files={'file': path_image}).json()
     return result
-
-
-"""
-        image = request.FILES.get('image')
-        if image is not None:
-            result = uploading_image(image.read())
-            image = 'https://telegra.ph' + result[0]['src']
-"""
 
 
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
@@ -45,11 +36,9 @@ async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Sessio
     # update master
     data: dict = schema.dict(exclude_unset=True)
     if image := data.get('image'):
-        folder = 'media/users/'
-        file_url = folder + image.filename
-        with open(file_url, "wb") as buffer:
-            shutil.copyfileobj(image.file, buffer)
-            data.update({'image': file_url})
+        result = uploading_image(image.file.read())
+        imager_url = 'https://telegra.ph' + result[0]['src']
+        data.update({'image': imager_url})
     query = update(models.Masters).values(**data).where(models.Masters.id == pk)
     db.execute(query)
     db.commit()
