@@ -13,6 +13,12 @@ from app import schemas, models
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
     data = schema.dict(exclude_none=True)
+    image = data.get('image')
+    folder = 'media/users/'
+    file_url = folder + image.filename
+    with open(file_url, "wb") as buffer:
+        shutil.copyfileobj(image.file, buffer)
+        data.update({'image': file_url})
     user = models.Masters(**data)
     db.add(user)
     db.commit()

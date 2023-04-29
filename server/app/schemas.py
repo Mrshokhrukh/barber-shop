@@ -12,6 +12,7 @@ class MasterSchema(BaseModel):
     first_name: str
     last_name: str | None
     phone: str
+    image: UploadFile
 
     class Config:
         orm_mode = True
@@ -38,14 +39,16 @@ class MasterSchema(BaseModel):
     @classmethod
     def as_form(
             cls,
-            first_name: str = Form(),
+            first_name: str = Form(...),
             last_name: str = Form(None),
-            phone: str = Form(),
+            phone: str = Form(...),
+            image: UploadFile = File(...),
     ):
         return cls(
             first_name=first_name,
             last_name=last_name,
-            phone=phone
+            phone=phone,
+            image=image,
         )
 
 
