@@ -6,7 +6,7 @@ import Modal from "@mui/material/Modal";
 import { IoClose } from "react-icons/io5";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-
+import { MdModeEdit } from "react-icons/md";
 const style = {
   position: "absolute",
   top: "50%",
@@ -22,18 +22,22 @@ const style = {
 
 const UserUpdate = (props) => {
   const [updateMaster, setUpdateMaster] = useState({});
+
+  const [isEdit, setIsEdit] = useState(false);
+
   const [file, setFile] = useState();
   const handleChange = (e) => {
     setUpdateMaster({ ...updateMaster, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file, file.name);
-    updateMaster({})
+  const editMaster = () => {
+    setIsEdit(true);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateMaster({});
+  };
 
   return (
     <Modal
@@ -54,17 +58,13 @@ const UserUpdate = (props) => {
           <div className="updateMaster">
             <div className="left">
               <img
-                src={
-                  file
-                    ? URL.createObjectURL(file)
-                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                }
+                src={file ? URL.createObjectURL(file) : props.data.image}
                 alt=""
                 className="profileImg"
               />
               <div className="uploadImg">
                 <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
+                  Image: <MdModeEdit className="icon" />
                 </label>
                 <input
                   type="file"
@@ -74,6 +74,7 @@ const UserUpdate = (props) => {
                 />
               </div>
             </div>
+
             <div className="right">
               <form onSubmit={handleSubmit}>
                 <div className="formInput">
@@ -86,9 +87,13 @@ const UserUpdate = (props) => {
                     placeholder="Ismingizni kiriting"
                     required
                   />
+                  <button className="editBtn" onClick={editMaster}>
+                    <MdModeEdit />
+                  </button>
                 </div>
                 <div className="formInput">
                   <label>Familiya: </label>
+
                   <input
                     type="text"
                     name="last_name"
@@ -97,6 +102,9 @@ const UserUpdate = (props) => {
                     placeholder="Familiyangizni kiriting"
                     required
                   />
+                  <button className="editBtn" onClick={editMaster}>
+                    <MdModeEdit />
+                  </button>
                 </div>
                 <div className="formInput">
                   <label>Telefon Raqam: </label>
@@ -108,6 +116,9 @@ const UserUpdate = (props) => {
                     placeholder="Telefon raqamingizni kiriting"
                     required
                   />
+                  <button className="editBtn" onClick={editMaster}>
+                    <MdModeEdit />
+                  </button>
                 </div>
 
                 <button>Update</button>

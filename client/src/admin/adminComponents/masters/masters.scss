@@ -37,9 +37,17 @@
     tbody {
       text-align: center;
       tr {
+        .alert {
+          position: absolute;
+          top: 5%;
+          right: 5%;
+          width: 400px;
+          display: none;
+        }
+
         td {
           border-bottom: 1px solid gray;
-          padding: 10px 0;
+          padding: 5px 0;
           .viewButton,
           .updateButton,
           .deleteButton {
@@ -48,7 +56,14 @@
             color: darkblue;
             border: 1px dotted rgba(0, 0, 139, 0.596);
             cursor: pointer;
-          
+          }
+          .user-img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
           }
         }
       }

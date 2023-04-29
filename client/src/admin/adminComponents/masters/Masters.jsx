@@ -39,7 +39,7 @@ const Datatable = () => {
             <th>Service</th>
             <th>Actions</th>
             <th></th>
-            <th></th>
+         
           </tr>
         </thead>
         <tbody>

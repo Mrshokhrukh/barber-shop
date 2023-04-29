@@ -16,10 +16,9 @@ const SingleUser = () => {
   };
 
   const handleClose = () => {
-    setOpen(false)
+    setOpen(false);
   };
 
-  
   return (
     <div className="single">
       <AdminSidebar />
@@ -29,11 +28,7 @@ const SingleUser = () => {
           <div className="left">
             <h1 className="title">Information</h1>
             <div className="item">
-              <img
-                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-                alt=""
-                className="itemImg"
-              />
+              <img src={location.state.image} alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">{location.state.first_name}</h1>
                 <div className="detailItem">
@@ -48,7 +43,7 @@ const SingleUser = () => {
                 <div className="editButton" onClick={handleOpen}>
                   Update
                 </div>
-                <UserUpdate handleClose={() => handleClose()} open={open} />
+                <UserUpdate handleClose={() => handleClose()} open={open} data={location.state} />
               </div>
             </div>
           </div>
@@ -59,7 +54,6 @@ const SingleUser = () => {
 
         <div className="bottom">
           <h1 className="title">Last Transactions</h1>
-          {/* <List /> */}
           <AdminTable />
         </div>
       </div>
