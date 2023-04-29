@@ -13,15 +13,16 @@ from app import schemas, models
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
     data = schema.dict(exclude_none=True)
-    image = data.get('image')
-    folder = 'media/users/'
-    file_url = folder + image.filename
-    with open(file_url, "wb") as buffer:
-        shutil.copyfileobj(image.file, buffer)
-        data.update({'image': file_url})
+    if image := data.get('image'):
+        folder = 'media/users/'
+        file_url = folder + image.filename
+        with open(file_url, "wb") as buffer:
+            shutil.copyfileobj(image.file, buffer)
+            data.update({'image': file_url})
     user = models.Masters(**data)
     db.add(user)
     db.commit()
+    user = db.query(models.Masters).filter_by(id=user.id).first()
     return user
 
 
@@ -31,11 +32,17 @@ async def get_master_worker(pk: int, db: Session):
 
 
 async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Session):
+    # update master
     data: dict = schema.dict(exclude_unset=True)
+    if image := data.get('image'):
+        folder = 'media/users/'
+        file_url = folder + image.filename
+        with open(file_url, "wb") as buffer:
+            shutil.copyfileobj(image.file, buffer)
+            data.update({'image': file_url})
     query = update(models.Masters).values(**data).where(models.Masters.id == pk)
     db.execute(query)
     db.commit()
-    db.close()
     return UJSONResponse("Successfully updated master", 200)
 
 
