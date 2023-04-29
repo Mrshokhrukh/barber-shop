@@ -22,7 +22,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     user = models.Masters(**data)
     db.add(user)
     db.commit()
-    return UJSONResponse("Successful added master", status_code=200)
+    return user
 
 
 async def get_master_worker(pk: int, db: Session):
