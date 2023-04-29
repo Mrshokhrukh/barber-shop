@@ -11,11 +11,11 @@ from app import schemas, models
 
 
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
-    data: dict = schema.dict(exclude_none=True)
+    # save database
+    data = schema.dict(exclude_none=True)
     user = models.Masters(**data)
     db.add(user)
     db.commit()
-    db.close()
     return UJSONResponse("Successful added master", status_code=200)
 
 
@@ -24,8 +24,13 @@ async def get_master_worker(pk: int, db: Session):
     return user
 
 
-async def update_master_worker(pk: int, db: Session):
-    pass
+async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Session):
+    data: dict = schema.dict(exclude_unset=True)
+    query = update(models.Masters).values(**data).where(models.Masters.id == pk)
+    db.execute(query)
+    db.commit()
+    db.close()
+    return UJSONResponse("Successfully updated master", 200)
 
 
 async def get_users_worker(db: Session):
@@ -52,7 +57,8 @@ def uploading_image(path_image):
     return result
 
 
-async def save_image_worker(image, db: Session):
+async def save_image_worker(schema: schemas.Photo, db: Session):
+    image = schema.file
     folder = 'media/users/'
     if not os.path.exists(folder):
         os.mkdir(folder)

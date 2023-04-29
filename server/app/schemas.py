@@ -13,6 +13,16 @@ class MasterSchema(BaseModel):
     last_name: str | None
     phone: str
 
+    class Config:
+        orm_mode = True
+        schema_extra = {
+            "example": {
+                "first_name": "Ali",
+                "last_name": "Valiyev",
+                "phone": '+998900169724',
+            }
+        }
+
     @validator("phone")
     def phone_validation(cls, value):
         regex = r"^(\+)[1-9][0-9\-\(\)\.]{9,15}$"
@@ -24,6 +34,19 @@ class MasterSchema(BaseModel):
             raise HTTPException(400, "Telefon raqam allaqachon ro'yxatdan o'tgan")
         db.close()
         return value
+
+    @classmethod
+    def as_form(
+            cls,
+            first_name: str = Form(),
+            last_name: str = Form(None),
+            phone: str = Form(),
+    ):
+        return cls(
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone
+        )
 
 
 class Login(BaseModel):
@@ -55,3 +78,12 @@ class Login(BaseModel):
 
 class Photo(BaseModel):
     file: UploadFile = File(None)
+
+    @classmethod
+    def as_form(
+            cls,
+            file: UploadFile = File(None),
+    ):
+        return cls(
+            file=file,
+        )

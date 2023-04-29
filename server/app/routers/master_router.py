@@ -1,16 +1,19 @@
-from fastapi import APIRouter, Depends, UploadFile
+from typing import Annotated
+
+from fastapi import APIRouter, Depends, Body
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services import add_master_worker, get_users_worker, login_user_worker, get_time_worker, save_image_worker, \
-    get_master_worker
+from app.services import add_master_worker, get_users_worker, login_user_worker, get_master_worker, \
+    update_master_worker, save_image_worker
 from config.db import get_db
 
 master = APIRouter(tags=['master'])
 
 
 @master.post('/add-master', summary='Add master with phone')
-async def add_master(schema: schemas.MasterSchema, db: Session = Depends(get_db)):
+async def add_master(schema: schemas.MasterSchema = Depends(schemas.MasterSchema.as_form),
+                     db: Session = Depends(get_db)):
     user = await add_master_worker(schema, db)
     return user
 
@@ -27,15 +30,17 @@ async def get_master(pk: int, db: Session = Depends(get_db)):
     return response
 
 
-@master.post('/update-master/{pk}', summary='update master')
+@master.put('/update-master/{pk}', summary='update master')
 async def update_master(pk: int, schema: schemas.MasterSchema, db: Session = Depends(get_db)):
-    pass
+    response = await update_master_worker(pk, schema, db)
+    return response
 
 
 @master.post('/login', summary='login')
 async def login(form: schemas.Login, db: Session = Depends(get_db)):
     user = await login_user_worker(db, form)
     return user
+
 
 #
 # @master.get('/time/{pk}', summary='get free time for master')
@@ -44,8 +49,7 @@ async def login(form: schemas.Login, db: Session = Depends(get_db)):
 #     return response
 
 
-# @master.post('/image', summary='upload image')
-# async def upload_image(file: UploadFile, db: Session = Depends(get_db)):
-#     print(file.filename)
-#     response = await save_image_worker(file, db)
-#     return response
+@master.post('/image', summary='upload image')
+async def upload_image(schema: schemas.Photo = Depends(schemas.Photo.as_form), db: Session = Depends(get_db)):
+    response = await save_image_worker(schema, db)
+    return response
