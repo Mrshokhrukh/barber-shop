@@ -3,7 +3,7 @@ from datetime import datetime
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import update
+from sqlalchemy import update, desc
 from sqlalchemy.orm import Session
 
 from app import schemas, models
@@ -57,7 +57,7 @@ async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Sessio
 
 
 async def get_users_worker(db: Session):
-    users = db.query(models.Masters).all()
+    users = db.query(models.Masters).order_by(models.Masters.updated_at or models.Masters.created_at).all()
     return users
 
 

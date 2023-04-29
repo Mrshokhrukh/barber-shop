@@ -31,7 +31,8 @@ async def get_master(pk: int, db: Session = Depends(get_db)):
 
 
 @master.put('/update-master/{pk}', summary='update master')
-async def update_master(pk: int, schema: schemas.MasterSchema = Depends(schemas.MasterSchema.as_form), db: Session = Depends(get_db)):
+async def update_master(pk: int, schema: schemas.MasterSchema = Depends(schemas.MasterSchema.as_form),
+                        db: Session = Depends(get_db)):
     response = await update_master_worker(pk, schema, db)
     return response
 
