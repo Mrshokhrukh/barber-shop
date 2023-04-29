@@ -63,18 +63,7 @@ def uploading_image(path_image):
     return result
 
 
-async def save_image_worker(schema: schemas.Photo, db: Session):
-    image = schema.file
-    folder = 'media/users/'
-    if not os.path.exists(folder):
-        os.mkdir(folder)
-    file_url = folder + image.filename
-
-    with open(file_url, "wb") as buffer:
-        shutil.copyfileobj(image.file, buffer)
-    image_url = file_url
-    photo = models.Photos(image=image_url)
-    db.add(photo)
+async def delete_master_worker(pk: int, db: Session):
+    db.query(models.Masters).filter_by(id=pk).delete()
     db.commit()
-    db.close()
-    return UJSONResponse("Successfully uploaded image", 200)
+    return UJSONResponse('Successfully deleted master', status_code=200)

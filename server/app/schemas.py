@@ -1,5 +1,4 @@
 import re
-from typing import Optional
 
 from fastapi import HTTPException, UploadFile, Form, File
 from pydantic import BaseModel, validator, root_validator
@@ -16,13 +15,6 @@ class MasterSchema(BaseModel):
 
     class Config:
         orm_mode = True
-        schema_extra = {
-            "example": {
-                "first_name": "Ali",
-                "last_name": "Valiyev",
-                "phone": '+998900169724',
-            }
-        }
 
     @validator("phone")
     def phone_validation(cls, value):
@@ -56,6 +48,9 @@ class Login(BaseModel):
     phone: str
     code: str
 
+    class Config:
+        orm_mode = True
+
     @root_validator()
     def validation(cls, values):
         code = values.get('code')
@@ -77,16 +72,3 @@ class Login(BaseModel):
             db.commit()
         db.close()
         return values
-
-
-class Photo(BaseModel):
-    file: UploadFile = File(None)
-
-    @classmethod
-    def as_form(
-            cls,
-            file: UploadFile = File(None),
-    ):
-        return cls(
-            file=file,
-        )
