@@ -1,8 +1,10 @@
-import httpx
 from datetime import datetime
+
+import httpx
 from fastapi.responses import UJSONResponse
 from sqlalchemy import update
 from sqlalchemy.orm import Session
+
 from app import schemas, models
 
 
@@ -13,7 +15,19 @@ def uploading_image(path_image):
 
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
-    data = schema.dict(exclude_none=True)
+    data: dict = schema.dict(exclude_none=True)
+    services: dict = data.pop('services')
+    master_services = []
+    for key, value in services.items():
+        if value:
+            master_services.append(
+                models.MasterServices(
+                    name={f"{key}": f"{value}"},
+                    master_id=data.get('id')
+                )
+            )
+    db.add_all(master_services)
+    db.commit()
     if image := data.get('image'):
         result = uploading_image(image.file.read())
         imager_url = 'https://telegra.ph' + result[0]['src']
@@ -39,7 +53,7 @@ async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Sessio
     query = update(models.Masters).values(**data).where(models.Masters.id == pk)
     db.execute(query)
     db.commit()
-    return UJSONResponse("Muvaffaqiyatli tahrirlandi !", 200)
+    return UJSONResponse("Muvaffaqiyatli yangilandi !", 200)
 
 
 async def get_users_worker(db: Session):

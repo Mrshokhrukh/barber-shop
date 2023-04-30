@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services import add_master_worker, get_users_worker, login_user_worker, get_master_worker, \
+from app.services.services_master import add_master_worker, get_users_worker, login_user_worker, get_master_worker, \
     update_master_worker, delete_master_worker
 from config.db import get_db
 

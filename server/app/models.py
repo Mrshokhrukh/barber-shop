@@ -1,9 +1,7 @@
-import json
 import typing as t
-from datetime import datetime, date
+from datetime import datetime, date, time
 
-from sqlalchemy import (DateTime, Integer, String,
-                        func, Boolean, ForeignKey, Time, Date)
+from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -33,17 +31,29 @@ class Masters(Base, CreateDateBase):
     last_name: Mapped[str] = mapped_column(String(200), nullable=True)
     phone: Mapped[str] = mapped_column(String(200), unique=True)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
-    services: Mapped[json] = mapped_column(JSONB, nullable=True)
     image: Mapped[str] = mapped_column(String(300), nullable=True)
 
-    master_time: Mapped[list['MasterOrder']] = relationship(back_populates='master', lazy='selectin')
+    # master_time: Mapped[list['MasterOrder']] = relationship(back_populates='master', lazy='selectin')
+
+    master_services: Mapped[list['MasterServices']] = relationship(back_populates='master',
+                                                                   lazy='selectin')
 
 
-class MasterOrder(Base, CreateDateBase):
-    date: Mapped[date] = mapped_column(Date)
-    ordered_start = mapped_column(DateTime)
-    ordered_end = mapped_column(DateTime)
+class MasterServices(Base):
+    name: Mapped[dict] = mapped_column(JSONB)
+    master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'), nullable=True)
+    master: Mapped[list['Masters']] = relationship(back_populates='master_services')
 
-    master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'))
-    master: Mapped['Masters'] = relationship(back_populates='master_time')
 
+class Services(Base):
+    name: Mapped[str] = mapped_column(String(200), unique=True)
+    price: Mapped[int] = mapped_column(Integer)
+    busy_time: Mapped[time] = mapped_column(Time)
+
+# class MasterOrder(Base, CreateDateBase):
+#     date: Mapped[date] = mapped_column(Date)
+#     ordered_start = mapped_column(DateTime)
+#     ordered_end = mapped_column(DateTime)
+#
+#     master_id: Mapped[int] = mapped_column(Integer, ForeignKey('Master.id', ondelete='CASCADE'))
+#     master: Mapped['Masters'] = relationship(back_populates='master_time')
