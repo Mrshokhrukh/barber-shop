@@ -1,10 +1,8 @@
-from datetime import datetime
-
 import httpx
+from datetime import datetime
 from fastapi.responses import UJSONResponse
 from sqlalchemy import update
 from sqlalchemy.orm import Session
-
 from app import schemas, models
 
 
@@ -23,8 +21,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     user = models.Masters(**data)
     db.add(user)
     db.commit()
-    user = db.query(models.Masters).filter_by(id=user.id).first()
-    return user
+    return UJSONResponse("Muvaffaqiyatli qo'shildi !", 200)
 
 
 async def get_master_worker(pk: int, db: Session):
@@ -42,7 +39,7 @@ async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Sessio
     query = update(models.Masters).values(**data).where(models.Masters.id == pk)
     db.execute(query)
     db.commit()
-    return UJSONResponse("Successfully updated master", 200)
+    return UJSONResponse("Muvaffaqiyatli tahrirlandi !", 200)
 
 
 async def get_users_worker(db: Session):
@@ -67,4 +64,4 @@ async def get_time_worker(db: Session, pk: int):
 async def delete_master_worker(pk: int, db: Session):
     db.query(models.Masters).filter_by(id=pk).delete()
     db.commit()
-    return UJSONResponse('Successfully deleted master', status_code=200)
+    return UJSONResponse("Muvaffaqiyatli o'chirilidi !", status_code=200)
