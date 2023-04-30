@@ -1,7 +1,8 @@
 import typing as t
 from datetime import datetime, date, time
+from typing import Type
 
-from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date)
+from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date, ARRAY)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -40,7 +41,7 @@ class Masters(Base, CreateDateBase):
 
 
 class MasterServices(Base):
-    name: Mapped[dict] = mapped_column(JSONB)
+    name: Mapped[str] = mapped_column(String(200))
     master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'), nullable=True)
     master: Mapped[list['Masters']] = relationship(back_populates='master_services')
 
