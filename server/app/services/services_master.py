@@ -17,17 +17,6 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
     data: dict = schema.dict(exclude_none=True)
     services: dict = data.pop('services')
-    master_services = []
-    for key, value in services.items():
-        if value:
-            master_services.append(
-                models.MasterServices(
-                    name={f"{key}": f"{value}"},
-                    master_id=data.get('id')
-                )
-            )
-    db.add_all(master_services)
-    db.commit()
     if image := data.get('image'):
         result = uploading_image(image.file.read())
         imager_url = 'https://telegra.ph' + result[0]['src']
@@ -35,6 +24,19 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     user = models.Masters(**data)
     db.add(user)
     db.commit()
+    master_services = []
+    for service in services:
+        names = service.split(',')
+        for name in names:
+            master_services.append(
+                models.MasterServices(
+                    name=name,
+                    master_id=user.id
+                )
+            )
+    db.add_all(master_services)
+    db.commit()
+
     return UJSONResponse("Muvaffaqiyatli qo'shildi !", 200)
 
 

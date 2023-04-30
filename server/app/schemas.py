@@ -1,6 +1,4 @@
-import json
 import re
-from typing import Optional
 
 from fastapi import HTTPException, UploadFile, Form, File
 from pydantic import BaseModel, validator, root_validator
@@ -14,7 +12,7 @@ class MasterSchema(BaseModel):
     last_name: str | None
     phone: str
     image: UploadFile
-    services: Optional[dict]
+    services: list
 
     class Config:
         orm_mode = True
@@ -38,7 +36,7 @@ class MasterSchema(BaseModel):
             last_name: str = Form(None),
             phone: str = Form(...),
             image: UploadFile = File(...),
-            services: Optional[dict] = Form(...)
+            services: list = Form(...)
     ):
         return cls(
             first_name=first_name,
