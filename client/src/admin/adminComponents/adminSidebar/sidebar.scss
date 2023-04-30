@@ -1,8 +1,8 @@
 .sidebar {
-  flex: 1;
   border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
   background-color: white;
+  width: 230px;
   .top {
     height: 50px;
     display: flex;
@@ -14,6 +14,7 @@
       font-weight: bold;
       color: rgb(29, 122, 243);
     }
+
   }
 
   hr {

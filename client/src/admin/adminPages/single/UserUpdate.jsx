@@ -31,7 +31,7 @@ const UserUpdate = (props) => {
   };
 
   const editMaster = () => {
-    setIsEdit(true);
+    setIsEdit(!isEdit);
   };
 
   const handleSubmit = (e) => {
@@ -93,7 +93,6 @@ const UserUpdate = (props) => {
                 </div>
                 <div className="formInput">
                   <label>Familiya: </label>
-
                   <input
                     type="text"
                     name="last_name"

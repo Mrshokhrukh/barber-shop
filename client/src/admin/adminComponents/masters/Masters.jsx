@@ -33,11 +33,11 @@ const Datatable = () => {
         <thead>
           <tr>
             <th>No.</th>
-            <th>photo.</th>
-            <th>Name</th>
-            <th>Phone number</th>
-            <th>Service</th>
-            <th>Actions</th>
+            <th>Surat.</th>
+            <th>Ism Familiya</th>
+            <th>Telefon Raqam</th>
+            <th>Vazifa</th>
+            <th></th>
             <th></th>
          
           </tr>

@@ -41,7 +41,7 @@ const SingleUser = () => {
                 </div>
 
                 <div className="editButton" onClick={handleOpen}>
-                  Update
+                  Yangilash
                 </div>
                 <UserUpdate handleClose={() => handleClose()} open={open} data={user} />
               </div>

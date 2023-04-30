@@ -4,34 +4,38 @@ import { useEffect, useState } from "react";
 import AdminSidebar from "../../adminComponents/adminSidebar/adminSidebar";
 import Navbar from "../../adminComponents/navbar/Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const New = () => {
   const [file, setFile] = useState(null);
   const [newMaster, setNewMaster] = useState({});
+  let navigate = useNavigate();
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let data = { ...newMaster, image: file };
-    try {
-      axios
-        .post("http://127.0.0.1:8000/add-master", data, {
-          headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
-        })
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-          if (error.response) {
-            console.log(error.response.data.detail);
-          }
-        });
-    } catch (error) {
-      return error;
-    }
-    setNewMaster({});
+
+    await axios
+      .post("http://127.0.0.1:8000/add-master", data, {
+        headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
+      })
+      .then((response) => {
+        const notify = () => toast.success(response.data.detail);
+        notify();
+        setTimeout(() => {
+          navigate("/admin/dashboard/workers/");
+        }, 3000);
+      })
+      .catch((error) => {
+        if (error.response) {
+          const notify = () => toast.error(error.response.data.detail);
+          notify();
+        }
+      });
   };
 
   return (
@@ -42,6 +46,17 @@ const New = () => {
         <div className="top">
           <h1>Add New Master to the Barbershop</h1>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={2200}
+          hideProgressBar={false}
+          newestOnTop={false}
+          rtl={false}
+          draggable
+          theme="dark"
+          className="alert-msg"
+        />
+
         <div className="bottom">
           <div className="left">
             <img

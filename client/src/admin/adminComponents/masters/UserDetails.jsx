@@ -1,18 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserDetails = (props) => {
   let navigate = useNavigate();
-  let alert = useRef(null);
-  const [data, setData] = useState("");
+
   const updatingUser = (id) => {
     axios
       .get(`http://127.0.0.1:8000/get-master/${id}`)
       .then((res) => {
-        console.log(res.data);
         navigate(`/admin/dashboard/workers/${id}`, { state: res.data });
       })
       .catch((err) => {
@@ -23,18 +21,17 @@ const UserDetails = (props) => {
   const deleteUser = (id) => {
     axios
       .delete(`http://127.0.0.1:8000/delete-master/${id}`)
-      .then((res) => {
-        setData(res.data);
+      .then((response) => {
+        const notify = () => toast.success(response.data);
+        notify();
+    
+        setTimeout(() => {
+          window.location.reload(true);
+        }, 1700);
       })
       .catch((err) => {
         console.log(err);
       });
-
-    const alerting = () => {
-      alert.current.style.display = "block";
-      window.location.reload(true);
-    };
-    alerting();
 
     // setTimeout(() => {
     //   alert.current.style.display = "none";
@@ -53,20 +50,22 @@ const UserDetails = (props) => {
       <td>oo</td>
       <td>
         <button className="deleteButton" onClick={() => deleteUser(props.master.id)}>
-          Delete
+          O'chirish
         </button>
+        <ToastContainer
+          position="top-right"
+          autoClose={900}
+          hideProgressBar={false}
+          newestOnTop={false}
+          rtl={false}
+          draggable
+          theme="dark"
+          className="alert-msg"
+        />
       </td>
-      <Stack
-        sx={{ width: "100%" }}
-        spacing={2}
-        className="animate__animated animate__bounceInRight alert"
-        ref={alert}
-      >
-        <Alert severity="success">{data} !</Alert>
-      </Stack>
       <td>
         <button className="updateButton" onClick={() => updatingUser(props.master.id)}>
-          View
+          Ko'rish
         </button>
       </td>
     </tr>
