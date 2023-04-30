@@ -28,6 +28,6 @@ app.add_middleware(
 
 @app.on_event('startup')
 async def startup_event():
-    models.Base.metadata.drop_all(engine)
-    models.Base.metadata.create_all(engine)
+    # models.Base.metadata.drop_all(engine)
+    # models.Base.metadata.create_all(engine)
     app.include_router(master)

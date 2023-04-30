@@ -108,11 +108,24 @@
   }
 
   .left {
-    flex: 1;
+    width: 25%;
     text-align: center;
     .uploadImg {
       width: 80%;
       margin: 25px auto;
+      .editBtn {
+        padding: 5px 5px;
+        border-radius: 5px;
+        color: rgb(0, 0, 0);
+        border: 1px dotted rgba(0, 0, 139, 0.596);
+        width: 35px;
+        height: 35px;
+        border-radius: 5px;
+        margin-left: 10px;
+        cursor: pointer;
+        background-color: white;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
 
       label {
         display: flex;
@@ -136,8 +149,8 @@
     }
   }
   .right {
-    flex: 2;
-
+    flex: 75%;
+    background-color: rebeccapurple;
     form {
       display: flex;
       flex-wrap: wrap;
@@ -147,13 +160,17 @@
       align-items: center;
       font-family: "Poppins", sans-serif;
       .formInput {
-        width: 90%;
-
+        width: 95%;
+        background-color: rgb(57, 15, 245);
+        display: flex;
+        border-bottom: 1px solid gray;
+        gap: 10px;
         label {
           display: flex;
           align-items: center;
-          gap: 10px;
           font-size: 18px;
+          background-color: red;
+          
           .icon {
             cursor: pointer;
           }
@@ -161,25 +178,22 @@
 
         input {
           font-family: "Poppins", sans-serif;
-          width: 80%;
           padding: 5px;
           border: none;
-          border-bottom: 1px solid gray;
           outline: none;
-          font-size: 16px;
+          font-size: 18px;
           border-radius: 2px;
         }
+
         .editBtn {
           padding: 2px 2px;
           border-radius: 5px;
           color: rgb(0, 0, 0);
           border: 1px dotted rgba(0, 0, 139, 0.596);
-          width: 50px;
-          height: 40px;
-          font-size: 25px;
+          width: 35px;
+          height: 30px;
+          font-size: 20px;
           border-radius: 5px;
-          margin-bottom: -10px;
-          margin-left: 10px;
           cursor: pointer;
           background-color: white;
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

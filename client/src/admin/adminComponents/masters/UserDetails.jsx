@@ -7,6 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 const UserDetails = (props) => {
   let navigate = useNavigate();
 
+  let user = props.master;
+
   const updatingUser = (id) => {
     axios
       .get(`http://127.0.0.1:8000/get-master/${id}`)
@@ -24,10 +26,6 @@ const UserDetails = (props) => {
       .then((response) => {
         const notify = () => toast.success(response.data);
         notify();
-    
-        setTimeout(() => {
-          window.location.reload(true);
-        }, 1700);
       })
       .catch((err) => {
         console.log(err);
@@ -41,15 +39,22 @@ const UserDetails = (props) => {
 
   return (
     <tr>
-      <td>{props.master.id}</td>
+      <td>{user.id}</td>
       <td>
-        <img src={props.master.image} alt="404" className="user-img" />
+        <img src={user.image} alt="404" className="user-img" />
       </td>
-      <td>{props.master.first_name}</td>
-      <td>{props.master.phone}</td>
+      <td>
+        {user.first_name} {user.last_name}
+      </td>
+      <td>{user.phone}</td>
       <td>oo</td>
       <td>
-        <button className="deleteButton" onClick={() => deleteUser(props.master.id)}>
+        <button className="updateButton" onClick={() => updatingUser(user.id)}>
+          Ko'rish
+        </button>
+      </td>
+      <td>
+        <button className="deleteButton" onClick={() => deleteUser(user.id)}>
           O'chirish
         </button>
         <ToastContainer
@@ -62,11 +67,6 @@ const UserDetails = (props) => {
           theme="dark"
           className="alert-msg"
         />
-      </td>
-      <td>
-        <button className="updateButton" onClick={() => updatingUser(props.master.id)}>
-          Ko'rish
-        </button>
       </td>
     </tr>
   );

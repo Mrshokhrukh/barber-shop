@@ -37,19 +37,23 @@
     tbody {
       text-align: center;
       tr {
-     
-
         td {
           border-bottom: 1px solid gray;
           padding: 5px 0;
-          .viewButton,
+          text-transform: capitalize;
+
           .updateButton,
           .deleteButton {
             padding: 2px 5px;
             border-radius: 5px;
-            color: darkblue;
-            border: 1px dotted rgba(0, 0, 139, 0.596);
+            color: green;
             cursor: pointer;
+            border: 1px dotted green;
+            background-color: rgba(99, 165, 241, 0.144);
+          }
+          .deleteButton {
+            color: crimson;
+            border: 1px dotted crimson;
           }
           .user-img {
             width: 55px;

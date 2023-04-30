@@ -33,7 +33,7 @@ const SingleUser = () => {
                 <h1 className="itemTitle">{user.first_name}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">janedoe@gmail.com</span>
+                  <span className="itemValue">{user.services} email </span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>

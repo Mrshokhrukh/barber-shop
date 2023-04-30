@@ -12,6 +12,7 @@ const Datatable = () => {
       .get("http://127.0.0.1:8000/get-masters")
       .then((response) => {
         setMasterData(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -39,13 +40,12 @@ const Datatable = () => {
             <th>Vazifa</th>
             <th></th>
             <th></th>
-         
           </tr>
         </thead>
         <tbody>
           {masterData &&
-            masterData.map((master,index) => {
-              return <UserDetails master={master} key={index}/>;
+            masterData.map((master, index) => {
+              return <UserDetails master={master} key={index} />;
             })}
         </tbody>
       </table>

@@ -7,6 +7,7 @@ import { IoClose } from "react-icons/io5";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import { MdModeEdit } from "react-icons/md";
+import { BiUpload } from "react-icons/bi";
 const style = {
   position: "absolute",
   top: "50%",
@@ -22,21 +23,34 @@ const style = {
 
 const UserUpdate = (props) => {
   const [updateMaster, setUpdateMaster] = useState({});
-
+  const [prevData, setPrevData] = useState(props.data);
   const [isEdit, setIsEdit] = useState(false);
 
   const [file, setFile] = useState();
+
   const handleChange = (e) => {
     setUpdateMaster({ ...updateMaster, [e.target.name]: e.target.value });
   };
 
-  const editMaster = () => {
-    setIsEdit(!isEdit);
+  const editMaster = (e) => {
+    // setIsEdit(!isEdit);
+    // console.log(isEdit);
+    // let inputs = document.querySelector("#update");
+    // if (isEdit) {
+    //   inputs.removeAttribute("readOnly");
+    //   inputs.style.color = "red";
+    //   setPrevData();
+    // } else {
+    //   inputs.setAttribute("readOnly", "readOnly");
+    //   inputs.style.color = "black";
+    //   // setPrevData("hello");
+    // }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateMaster({});
+
+    setUpdateMaster({});
   };
 
   return (
@@ -64,7 +78,7 @@ const UserUpdate = (props) => {
               />
               <div className="uploadImg">
                 <label htmlFor="file">
-                  Image: <MdModeEdit className="icon" />
+                  Image: <BiUpload className="editBtn" />
                 </label>
                 <input
                   type="file"
@@ -81,11 +95,13 @@ const UserUpdate = (props) => {
                   <label>Ism:</label>
                   <input
                     type="text"
+                    id="update"
                     name="first_name"
-                    value={updateMaster.first_name || ""}
+                    value={updateMaster.first_name || prevData.first_name}
                     onChange={handleChange}
-                    placeholder="Ismingizni kiriting"
+                    placeholder="Ismni o'zgartirish"
                     required
+                    readOnly
                   />
                   <button className="editBtn" onClick={editMaster}>
                     <MdModeEdit />
@@ -95,11 +111,13 @@ const UserUpdate = (props) => {
                   <label>Familiya: </label>
                   <input
                     type="text"
+                    id="update"
                     name="last_name"
-                    value={updateMaster.last_name || ""}
+                    value={updateMaster.last_name || prevData.last_name}
                     onChange={handleChange}
-                    placeholder="Familiyangizni kiriting"
+                    placeholder="Familiyani o'zgartirish"
                     required
+                    readOnly
                   />
                   <button className="editBtn" onClick={editMaster}>
                     <MdModeEdit />
@@ -109,18 +127,20 @@ const UserUpdate = (props) => {
                   <label>Telefon Raqam: </label>
                   <input
                     type="text"
+                    id="update"
                     name="phone"
-                    value={updateMaster.phone || ""}
+                    value={updateMaster.phone || prevData.phone}
                     onChange={handleChange}
-                    placeholder="Telefon raqamingizni kiriting"
+                    placeholder="Telefon raqamni o'zgartirish"
                     required
+                    readOnly
                   />
                   <button className="editBtn" onClick={editMaster}>
                     <MdModeEdit />
                   </button>
                 </div>
 
-                <button>Update</button>
+                <button>Yagilash</button>
               </form>
             </div>
           </div>

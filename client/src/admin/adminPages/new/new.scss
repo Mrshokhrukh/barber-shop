@@ -13,6 +13,7 @@
       padding: 10px;
       margin: 20px;
       display: flex;
+      flex-wrap: wrap;
 
       h1 {
         color: lightgray;
@@ -20,7 +21,9 @@
       }
 
       .left {
-        flex: 1;
+        width: 25%;
+        height: 25%;
+
         text-align: center;
         .profileImg {
           width: 120px;
@@ -33,16 +36,41 @@
         }
       }
       .right {
-        flex: 2;
-        form {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 30px;
-          justify-content: space-around;
-          font-family: "Poppins", sans-serif;
-          .formInput {
-            width: 40%;
+        width: 75%;
 
+        display: flex;
+        form {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          gap: 30px;
+          font-family: "Poppins", sans-serif;
+          .master-services {
+            width: 85%;
+            margin-left: 80px;
+            font-size: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .services {
+              .service {
+                display: flex;
+                gap: 15px;
+                padding: 5px;
+                input[type="checkbox"] {
+                  width: 25px;
+                }
+                // input[type="checkbox"]:checked {
+                //   color: black !important;
+                //   background-color: #7a02dd !important;
+                // }
+              }
+            }
+          }
+          .formInput {
+            width: 70%;
             label {
               display: flex;
               align-items: center;

@@ -1,6 +1,6 @@
 import "./new.scss";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AdminSidebar from "../../adminComponents/adminSidebar/adminSidebar";
 import Navbar from "../../adminComponents/navbar/Navbar";
 import axios from "axios";
@@ -11,14 +11,22 @@ import "react-toastify/dist/ReactToastify.css";
 const New = () => {
   const [file, setFile] = useState(null);
   const [newMaster, setNewMaster] = useState({});
+  let serviceData = useRef([]);
+
   let navigate = useNavigate();
+
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
+
+  const serviceChange = (e) => {
+    serviceData.current = [...serviceData.current, e.target.name];
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let data = { ...newMaster, image: file };
-
+    let data = { ...newMaster, services: serviceData.current, image: file };
+    
     await axios
       .post("http://127.0.0.1:8000/add-master", data, {
         headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
@@ -28,7 +36,7 @@ const New = () => {
         notify();
         setTimeout(() => {
           navigate("/admin/dashboard/workers/");
-        }, 3000);
+        }, 2000);
       })
       .catch((error) => {
         if (error.response) {
@@ -48,7 +56,7 @@ const New = () => {
         </div>
         <ToastContainer
           position="top-right"
-          autoClose={2200}
+          autoClose={1000}
           hideProgressBar={false}
           newestOnTop={false}
           rtl={false}
@@ -115,6 +123,94 @@ const New = () => {
                   required
                 />
               </div>
+              <div className="master-services">
+                <label>Hizmatlar</label>
+                <div className="services">
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="full-haircut"
+                      value={""}
+                      onChange={serviceChange}
+                      id="full-haircut"
+                    />
+                    <label htmlFor="full-haircut">To'liq soch - soqol</label>
+                  </div>
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="haircut"
+                      value={""}
+                      onChange={serviceChange}
+                      id="haircut"
+                    />
+                    <label htmlFor="haircut">Soch olish</label>
+                  </div>
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="beard"
+                      value={""}
+                      onChange={serviceChange}
+                      id="beard"
+                    />
+                    <label htmlFor="beard">Soqol olish</label>
+                  </div>
+
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="beard-hair-coloring"
+                      value={""}
+                      onChange={serviceChange}
+                      id="beard-hair-coloring"
+                    />
+                    <label htmlFor="beard-hair-coloring">Soch - Soqol bo'yash</label>
+                  </div>
+
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="wedding-hairstyles"
+                      value={""}
+                      onChange={serviceChange}
+                      id="wedding-hairstyles"
+                    />
+                    <label htmlFor="wedding-hairstyles">Kuyov soch soqol stil</label>
+                  </div>
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="childeren-haircut"
+                      value={""}
+                      onChange={serviceChange}
+                      id="childeren-haircut"
+                    />
+                    <label htmlFor="childeren-haircut">Bolalar soch turmagi (11 yoshgacha)</label>
+                  </div>
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="face-cleaning"
+                      value={""}
+                      onChange={serviceChange}
+                      id="face-cleaning"
+                    />
+                    <label htmlFor="face-cleaning">Yuz tozalash</label>
+                  </div>
+                  <div className="service">
+                    <input
+                      type="checkbox"
+                      name="black-mask"
+                      value={""}
+                      onChange={serviceChange}
+                      id="black-mask"
+                    />
+                    <label htmlFor="black-mask">Qora maska</label>
+                  </div>
+                </div>
+              </div>
+
               {/* <div className="formInput">
                 <label>Vazifalari: </label>
                 <input
