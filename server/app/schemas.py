@@ -1,5 +1,5 @@
 import re
-from typing import Any
+from typing import Any, Optional
 
 import typing
 from fastapi import HTTPException, UploadFile, Form, File
@@ -14,7 +14,7 @@ class MasterSchema(BaseModel):
     last_name: str | None
     phone: str
     image: UploadFile
-    master_services: list[str]
+    master_services: list
 
     class Config:
         orm_mode = True
@@ -38,7 +38,7 @@ class MasterSchema(BaseModel):
             last_name: str = Form(None),
             phone: str = Form(...),
             image: UploadFile = File(...),
-            master_services: list[str] = Form(...)
+            master_services: list = Form(...)
     ):
         return cls(
             first_name=first_name,
