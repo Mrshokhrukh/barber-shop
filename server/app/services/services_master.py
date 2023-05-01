@@ -1,4 +1,5 @@
 from datetime import datetime
+from time import sleep
 
 import httpx
 from fastapi.responses import UJSONResponse
@@ -15,9 +16,11 @@ def uploading_image(path_image):
 
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
+
     data: dict = schema.dict(exclude_none=True)
-    print(data)
     services: dict = data.pop('master_services')
+    print(services)
+    sleep(200)
     if image := data.get('image'):
         result = uploading_image(image.file.read())
         imager_url = 'https://telegra.ph' + result[0]['src']
@@ -26,7 +29,10 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     db.add(user)
     db.commit()
     master_services = []
-    for name in services:
+    services_data = list(services.keys())
+    print(services_data)
+    sleep(100)
+    for name in services_data:
         master_services.append(
             models.MasterServices(
                 name=name,
