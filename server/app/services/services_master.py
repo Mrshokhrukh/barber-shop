@@ -39,6 +39,13 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
                 master_id=user.id
             )
         )
+    else:
+        master_services.append(
+            models.MasterServices(
+                name="default qo'shdim",
+                master_id=user.id
+            )
+        )
     db.add_all(master_services)
     db.commit()
 
