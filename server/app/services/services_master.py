@@ -16,6 +16,7 @@ def uploading_image(path_image):
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
     data: dict = schema.dict(exclude_none=True)
+    print(data)
     services: dict = data.pop('master_services')
     if image := data.get('image'):
         result = uploading_image(image.file.read())
@@ -25,9 +26,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     db.add(user)
     db.commit()
     master_services = []
-    print(services)
     for name in services:
-        print(name)
         master_services.append(
             models.MasterServices(
                 name=name,
