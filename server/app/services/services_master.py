@@ -20,7 +20,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
 
     data: dict = schema.dict(exclude_none=True)
     print(data)
-    services: list = data.pop('master_services')
+    services: dict = data.pop('master_services')
     print(services)
     if image := data.get('image'):
         result = uploading_image(image.file.read())
@@ -39,13 +39,6 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
                 master_id=user.id
             )
         )
-    # else:
-    #     master_services.append(
-    #         models.MasterServices(
-    #             name="default qo'shdim",
-    #             master_id=user.id
-    #         )
-    #     )
     db.add_all(master_services)
     db.commit()
 

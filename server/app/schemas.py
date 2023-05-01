@@ -1,8 +1,9 @@
 import re
 from typing import Any
 
+import typing
 from fastapi import HTTPException, UploadFile, Form, File
-from pydantic import BaseModel, validator, root_validator
+from pydantic import BaseModel, validator, root_validator, json, Json
 
 from app import models
 from config.db import get_db
@@ -13,7 +14,7 @@ class MasterSchema(BaseModel):
     last_name: str | None
     phone: str
     image: UploadFile
-    master_services: Any
+    master_services: Json
 
     class Config:
         orm_mode = True
@@ -37,7 +38,7 @@ class MasterSchema(BaseModel):
             last_name: str = Form(None),
             phone: str = Form(...),
             image: UploadFile = File(...),
-            master_services: Any = Form(...)
+            master_services: Json = Form(...)
     ):
         return cls(
             first_name=first_name,
