@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services.services_master import add_master_worker, get_users_worker, login_user_worker, get_master_worker, \
-    update_master_worker, delete_master_worker
+from app.services.services_master import add_master_worker, get_masters_worker, login_user_worker, get_master_worker, \
+    update_master_worker, delete_master_worker, get_all_services_worker
 from config.db import get_db
 
 master = APIRouter(tags=['master'])
@@ -20,8 +20,8 @@ async def add_master(
 
 @master.get('/get-masters', summary='get all masters')
 async def get_users(db: Session = Depends(get_db)):
-    users = await get_users_worker(db)
-    return users
+    masters = await get_masters_worker(db)
+    return masters
 
 
 @master.get('/get-master/{pk}', summary='get master with id')
@@ -40,6 +40,12 @@ async def update_master(pk: int, schema: schemas.MasterSchema = Depends(schemas.
 @master.delete('/delete-master/{pk}', summary='delete master')
 async def delete_master(pk: int, db: Session = Depends(get_db)):
     response = await delete_master_worker(pk, db)
+    return response
+
+
+@master.get('/services', summary='get all services')
+async def get_all_services(db: Session = Depends(get_db)):
+    response = await get_all_services_worker(db)
     return response
 
 

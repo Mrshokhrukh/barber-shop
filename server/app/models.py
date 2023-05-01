@@ -2,7 +2,7 @@ import typing as t
 from datetime import datetime, date, time
 from typing import Type
 
-from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date, ARRAY)
+from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date, ARRAY, Text)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -41,15 +41,21 @@ class Masters(Base, CreateDateBase):
 
 
 class MasterServices(Base):
-    name: Mapped[str] = mapped_column(String(200))
     master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'), nullable=True)
     master: Mapped[list['Masters']] = relationship(back_populates='master_services')
+    services_id: Mapped[int] = mapped_column(Integer, ForeignKey('services.id', ondelete='CASCADE'),
+                                               nullable=True)
+    services: Mapped['Services'] = relationship(back_populates='master_service')
 
 
 class Services(Base):
-    name: Mapped[str] = mapped_column(String(200), unique=True)
+    name: Mapped[str] = mapped_column(String(200))
     price: Mapped[int] = mapped_column(Integer)
-    busy_time: Mapped[time] = mapped_column(Time)
+    busy_time: Mapped[time] = mapped_column(Time, nullable=True)
+    master_service: Mapped[list['MasterServices']] = relationship(back_populates='services', lazy='selectin')
+
+
+
 
 # class MasterOrder(Base, CreateDateBase):
 #     date: Mapped[date] = mapped_column(Date)

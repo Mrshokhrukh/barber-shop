@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app import models
 from app.routers import master
+from app.services.services_master import add_services_worker
 from config.db import engine
 from config.settings import settings
 
@@ -30,4 +31,5 @@ app.add_middleware(
 async def startup_event():
     # models.Base.metadata.drop_all(engine)
     # models.Base.metadata.create_all(engine)
+    # await add_services_worker()
     app.include_router(master)
