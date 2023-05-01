@@ -25,7 +25,9 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     db.add(user)
     db.commit()
     master_services = []
+    print(services)
     for name in services:
+        print(name)
         master_services.append(
             models.MasterServices(
                 name=name,
