@@ -21,7 +21,6 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     data: dict = schema.dict(exclude_none=True)
     services: list = data.pop('master_services')
     print(services)
-    sleep(100)
     if image := data.get('image'):
         result = uploading_image(image.file.read())
         imager_url = 'https://telegra.ph' + result[0]['src']
@@ -32,7 +31,6 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     master_services = []
     services_data = list(chain(*services))
     print(services_data)
-    sleep(100)
     for name in services_data:
         master_services.append(
             models.MasterServices(
