@@ -13,7 +13,7 @@ class MasterSchema(BaseModel):
     last_name: str | None
     phone: str
     image: UploadFile
-    master_services: Any
+    master_services: dict
 
     class Config:
         orm_mode = True
@@ -37,7 +37,7 @@ class MasterSchema(BaseModel):
             last_name: str = Form(None),
             phone: str = Form(...),
             image: UploadFile = File(...),
-            master_services: Any = Form(...)
+            master_services: dict = Form(...)
     ):
         return cls(
             first_name=first_name,
