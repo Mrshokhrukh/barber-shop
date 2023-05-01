@@ -11,7 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 const New = () => {
   const [file, setFile] = useState(null);
   const [newMaster, setNewMaster] = useState({});
-  let serviceData = useRef([]);
+  let serviceData = useRef({});
+  // const [serviceData, setServiceDate] = useState([{ name: "eshmat" }, { surname: "toshmatov" }]);
 
   let navigate = useNavigate();
 
@@ -20,19 +21,28 @@ const New = () => {
   };
 
   const serviceChange = (e) => {
-    serviceData.current = [...serviceData.current, e.target.name];
+    // setNewMaster({ ...newMaster, });
+    serviceData.current = { ...serviceData.current, [e.target.name]: "" };
+    // let a = JSON.stringify(Object.keys(serviceData.current));
+    let str = "";
+    for (let i in serviceData.current) {
+      if (Object.prototype.hasOwnProperty.call(serviceData.current, i)) {
+        str += i + "," + `${serviceData.current[i]}`;
+      }
+    }
+    
+    setNewMaster({ ...newMaster, master_services: str });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let data = { ...newMaster, services: serviceData.current, image: file };
-    
+    let data = { ...newMaster, image: file };
     await axios
       .post("http://127.0.0.1:8000/add-master", data, {
         headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
       })
       .then((response) => {
-        const notify = () => toast.success(response.data.detail);
+        const notify = () => toast.success(response.data);
         notify();
         setTimeout(() => {
           navigate("/admin/dashboard/workers/");

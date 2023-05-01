@@ -4,7 +4,7 @@ import AdminSidebar from "../../adminComponents/adminSidebar/adminSidebar";
 import Chart from "../../adminComponents/chart/Chart";
 import Navbar from "../../adminComponents/navbar/Navbar";
 import AdminTable from "../../adminComponents/table/Table";
-import UserUpdate from "./UserUpdate";
+import UserUpdate from "./updateUser/UserUpdate";
 import "./single.scss";
 
 const SingleUser = () => {

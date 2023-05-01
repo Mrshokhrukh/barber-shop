@@ -6,8 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const UserDetails = (props) => {
   let navigate = useNavigate();
-
   let user = props.master;
+
 
   const updatingUser = (id) => {
     axios
@@ -47,7 +47,7 @@ const UserDetails = (props) => {
         {user.first_name} {user.last_name}
       </td>
       <td>{user.phone}</td>
-      <td>oo</td>
+      <td>{''}</td>
       <td>
         <button className="updateButton" onClick={() => updatingUser(user.id)}>
           Ko'rish

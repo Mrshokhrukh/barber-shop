@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./masters.scss";
 import axios from "axios";
 import UserDetails from "./UserDetails";
+import AllMasterServices from "../../Services/AllMasterServices";
 
 const Datatable = () => {
   const [masterData, setMasterData] = useState();
@@ -12,7 +13,6 @@ const Datatable = () => {
       .get("http://127.0.0.1:8000/get-masters")
       .then((response) => {
         setMasterData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -37,9 +37,8 @@ const Datatable = () => {
             <th>Surat.</th>
             <th>Ism Familiya</th>
             <th>Telefon Raqam</th>
-            <th>Vazifa</th>
             <th></th>
-            <th></th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +48,13 @@ const Datatable = () => {
             })}
         </tbody>
       </table>
+
+      <div>
+        {masterData &&
+          masterData.map((datas, index) => {
+            return <AllMasterServices key={index} services={datas.master_services} />;
+          })}
+      </div>
     </div>
   );
 };

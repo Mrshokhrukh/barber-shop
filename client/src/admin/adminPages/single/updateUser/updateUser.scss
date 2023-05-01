@@ -1,0 +1,26 @@
+.modal-box {
+  background-color: red;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 70%;
+  padding: 15px;
+  outline: none;
+  background-color: white;
+}
+.closeBtn {
+  position: absolute;
+  line-height: 0px;
+  right: 4%;
+  top: 5%;
+  font-size: 40px;
+  cursor: pointer;
+  font-weight: 400;
+  color: rgb(138, 137, 137);
+  transition: 0.3s;
+  &:hover {
+    color: rgb(61, 61, 61);
+  }
+}
