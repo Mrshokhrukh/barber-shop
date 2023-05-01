@@ -1,4 +1,5 @@
 from datetime import datetime
+from itertools import chain
 from time import sleep
 
 import httpx
@@ -18,9 +19,9 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
 
     data: dict = schema.dict(exclude_none=True)
-    services: dict = data.pop('master_services')
+    services: list = data.pop('master_services')
     print(services)
-    sleep(200)
+    sleep(100)
     if image := data.get('image'):
         result = uploading_image(image.file.read())
         imager_url = 'https://telegra.ph' + result[0]['src']
@@ -29,7 +30,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     db.add(user)
     db.commit()
     master_services = []
-    services_data = list(services.keys())
+    services_data = list(chain(*services))
     print(services_data)
     sleep(100)
     for name in services_data:
