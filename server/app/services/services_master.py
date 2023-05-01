@@ -20,7 +20,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
 
     data: dict = schema.dict(exclude_none=True)
     print(data)
-    services: dict = data.pop('master_services')
+    services: list[str] = data.pop('master_services')
     print(services)
     if image := data.get('image'):
         result = uploading_image(image.file.read())
