@@ -4,7 +4,7 @@ from time import sleep
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import update
+from sqlalchemy import update, desc
 from sqlalchemy.orm import Session
 
 from app import schemas, models
@@ -19,9 +19,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
 
     data: dict = schema.dict(exclude_none=True)
-    print(data)
     services: str = data.pop('master_services')
-    print(services)
     if image := data.get('image'):
         result = uploading_image(image.file.read())
         imager_url = 'https://telegra.ph' + result[0]['src']
@@ -30,9 +28,8 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     db.add(user)
     db.commit()
     master_services = []
-    # services_data = list(chain(*services))
-    # print(services_data)
-    for name in services:
+    services_data = services.split(',')
+    for name in services_data:
         master_services.append(
             models.MasterServices(
                 name=name,
@@ -64,7 +61,7 @@ async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Sessio
 
 
 async def get_users_worker(db: Session):
-    users = db.query(models.Masters).order_by(models.Masters.updated_at or models.Masters.created_at).all()
+    users = db.query(models.Masters).order_by(desc(models.Masters.created_at or models.Masters.updated_at)).all()
     return users
 
 

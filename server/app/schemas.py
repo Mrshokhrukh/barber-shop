@@ -1,9 +1,8 @@
 import re
-from typing import Any, Optional
+from typing import List
 
-import typing
 from fastapi import HTTPException, UploadFile, Form, File
-from pydantic import BaseModel, validator, root_validator, json, Json
+from pydantic import BaseModel, validator, root_validator, Json
 
 from app import models
 from config.db import get_db
