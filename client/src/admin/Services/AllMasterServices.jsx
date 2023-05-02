@@ -1,13 +1,17 @@
 import React from "react";
 
 const AllMasterServices = (props) => {
-  //   console.log(props.services);
+
 
   return (
     <div>
       <div>
-        {props.services.map((item) => {
-          return <p>{item.name}</p>;
+        {props.serviceDatas.map((item, index) => {
+          return (
+            <p key={index}>
+              {index + 1}. {item.services.name}
+            </p>
+          );
         })}
       </div>
     </div>

@@ -8,12 +8,15 @@ const UserDetails = (props) => {
   let navigate = useNavigate();
   let user = props.master;
 
-
   const updatingUser = (id) => {
     axios
       .get(`http://127.0.0.1:8000/get-master/${id}`)
       .then((res) => {
-        navigate(`/admin/dashboard/workers/${id}`, { state: res.data });
+        if (res.status === 200) {
+          navigate(`/admin/dashboard/workers/${id}`, { state: res.data });
+        } else {
+          console.log("user topilmadi");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +50,7 @@ const UserDetails = (props) => {
         {user.first_name} {user.last_name}
       </td>
       <td>{user.phone}</td>
-      <td>{''}</td>
+      <td>{""}</td>
       <td>
         <button className="updateButton" onClick={() => updatingUser(user.id)}>
           Ko'rish
