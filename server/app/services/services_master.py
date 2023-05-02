@@ -1,7 +1,5 @@
 from datetime import datetime
-from itertools import chain
 from random import randint
-from time import sleep
 
 import httpx
 from fastapi.responses import UJSONResponse

@@ -44,7 +44,7 @@ class MasterServices(Base):
     master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'), nullable=True)
     master: Mapped[list['Masters']] = relationship(back_populates='master_services')
     services_id: Mapped[int] = mapped_column(Integer, ForeignKey('services.id', ondelete='CASCADE'),
-                                               nullable=True)
+                                             nullable=True)
     services: Mapped['Services'] = relationship(back_populates='master_service')
 
 
@@ -53,9 +53,6 @@ class Services(Base):
     price: Mapped[int] = mapped_column(Integer)
     busy_time: Mapped[time] = mapped_column(Time, nullable=True)
     master_service: Mapped[list['MasterServices']] = relationship(back_populates='services', lazy='selectin')
-
-
-
 
 # class MasterOrder(Base, CreateDateBase):
 #     date: Mapped[date] = mapped_column(Date)

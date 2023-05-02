@@ -31,6 +31,11 @@ class MasterSchema(BaseModel):
         return value
 
     @classmethod
+    def from_orm(cls, obj):
+        data = obj.__dict__.copy()
+        return cls(**data)
+
+    @classmethod
     def as_form(
             cls,
             first_name: str = Form(...),
