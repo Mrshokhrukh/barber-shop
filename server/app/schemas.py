@@ -56,8 +56,10 @@ class MasterSchema(BaseModel):
 class Login(BaseModel):
     phone: str
     code: str
+
     class Config:
         orm_mode = True
+
     @root_validator()
     def validation(cls, values):
         code = values.get('code')
