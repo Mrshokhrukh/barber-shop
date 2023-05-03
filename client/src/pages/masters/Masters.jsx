@@ -27,16 +27,15 @@ const Masters = () => {
               <div className="master">
                 <div className="left-in-responsive">
                   <div className="photo">
-                    <img
-                      src={user_image}
-                      alt=""
-                    />
+                    <img src={user_image} alt="" />
                     <div>
                       <HiOutlineExclamationCircle className="i" />
                     </div>
                   </div>
                   <div className="master_name">
-                    <p className="name">{user.first_name} {user.last_name}</p>
+                    <p className="name">
+                      {user.first_name} {user.last_name}
+                    </p>
                     <p className="duty">Barber</p>
                   </div>
                 </div>
