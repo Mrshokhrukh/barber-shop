@@ -5,15 +5,15 @@ import Login from "../auth/Login";
 import "./style.scss";
 const Main = () => {
   let mainApp = useRef();
-  const [isOpen, setIsOpen] = useState(true);
+  let isOpen = useRef(false);
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleWidth = () => {
       setWidth(window.innerWidth);
-      if (width < 769 && isOpen) {
-        setIsOpen(false);
+      if (width < 768) {
+        isOpen = false;
       } else {
-        setIsOpen(true);
+        isOpen = true;
       }
     };
     window.addEventListener("resize", handleWidth);
@@ -23,7 +23,8 @@ const Main = () => {
   }, [width]);
 
   const openSidebar = () => {
-    setIsOpen(!isOpen);
+    isOpen = !isOpen;
+    console.log(isOpen);
   };
   return (
     <div className="main-app-wrapper">
