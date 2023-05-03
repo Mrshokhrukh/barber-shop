@@ -1,11 +1,12 @@
-import React from 'react'
-
+import React from "react";
+import "./service.scss";
 const Services = () => {
+  console.log("service");
   return (
-    <div>
-      <h1>dsdsd</h1>
+    <div className="services">
+      {/* <h1>salom</h1> */}
     </div>
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

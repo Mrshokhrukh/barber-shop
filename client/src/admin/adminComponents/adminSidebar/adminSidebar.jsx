@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 const AdminSidebar = () => {
   return (
-    <div className="sidebar">
+    <div className="adminSidebar">
       <div className="top">
         <Link to="/admin/dashboard" style={{ textDecoration: "none" }}>
           <span className="logo">Barbershop Admin</span>
