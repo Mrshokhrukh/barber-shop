@@ -11,18 +11,24 @@ import "react-toastify/dist/ReactToastify.css";
 const New = () => {
   const [file, setFile] = useState(null);
   const [newMaster, setNewMaster] = useState({});
+  const [checkBoxes, setCheckBoxes] = useState();
   let serviceData = useRef({});
   // const [serviceData, setServiceDate] = useState([{ name: "eshmat" }, { surname: "toshmatov" }]);
 
   let navigate = useNavigate();
-
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    axios.get(`http://127.0.0.1:8000/services`).then((response) => {
+      setCheckBoxes(response.data);
+    });
+  }, []);
+
   const serviceChange = (e) => {
     // setNewMaster({ ...newMaster, });
-    serviceData.current = { ...serviceData.current, [e.target.name]: "" };
+    serviceData.current = { ...serviceData.current, [e.target.id]: "" };
     // let a = JSON.stringify(Object.keys(serviceData.current));
     let str = "";
     for (let i in serviceData.current) {
@@ -30,7 +36,6 @@ const New = () => {
         str += i + "," + `${serviceData.current[i]}`;
       }
     }
-    
     setNewMaster({ ...newMaster, master_services: str });
   };
 
@@ -136,88 +141,21 @@ const New = () => {
               <div className="master-services">
                 <label>Hizmatlar</label>
                 <div className="services">
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="full-haircut"
-                      value={""}
-                      onChange={serviceChange}
-                      id="full-haircut"
-                    />
-                    <label htmlFor="full-haircut">To'liq soch - soqol</label>
-                  </div>
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="haircut"
-                      value={""}
-                      onChange={serviceChange}
-                      id="haircut"
-                    />
-                    <label htmlFor="haircut">Soch olish</label>
-                  </div>
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="beard"
-                      value={""}
-                      onChange={serviceChange}
-                      id="beard"
-                    />
-                    <label htmlFor="beard">Soqol olish</label>
-                  </div>
-
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="beard-hair-coloring"
-                      value={""}
-                      onChange={serviceChange}
-                      id="beard-hair-coloring"
-                    />
-                    <label htmlFor="beard-hair-coloring">Soch - Soqol bo'yash</label>
-                  </div>
-
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="wedding-hairstyles"
-                      value={""}
-                      onChange={serviceChange}
-                      id="wedding-hairstyles"
-                    />
-                    <label htmlFor="wedding-hairstyles">Kuyov soch soqol stil</label>
-                  </div>
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="childeren-haircut"
-                      value={""}
-                      onChange={serviceChange}
-                      id="childeren-haircut"
-                    />
-                    <label htmlFor="childeren-haircut">Bolalar soch turmagi (11 yoshgacha)</label>
-                  </div>
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="face-cleaning"
-                      value={""}
-                      onChange={serviceChange}
-                      id="face-cleaning"
-                    />
-                    <label htmlFor="face-cleaning">Yuz tozalash</label>
-                  </div>
-                  <div className="service">
-                    <input
-                      type="checkbox"
-                      name="black-mask"
-                      value={""}
-                      onChange={serviceChange}
-                      id="black-mask"
-                    />
-                    <label htmlFor="black-mask">Qora maska</label>
-                  </div>
+                  {checkBoxes &&
+                    checkBoxes.map((item, index) => {
+                      return (
+                        <div className="service" key={index + 1}>
+                          <input
+                            type="checkbox"
+                            name={item.name}
+                            value={""}
+                            onChange={serviceChange}
+                            id={item.id}
+                          />
+                          <label htmlFor={item.name}>{item.name}</label>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
 
