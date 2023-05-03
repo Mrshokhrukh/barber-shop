@@ -10,7 +10,7 @@ const Main = () => {
   useEffect(() => {
     const handleWidth = () => {
       setWidth(window.innerWidth);
-      if (width < 769 && true) {
+      if (width < 769 && isOpen) {
         setIsOpen(false);
       } else {
         setIsOpen(true);
