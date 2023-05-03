@@ -16,7 +16,6 @@ const Main = () => {
         setIsOpen(true);
       }
     };
-
     window.addEventListener("resize", handleWidth);
     return () => {
       window.removeEventListener("resize", handleWidth);
