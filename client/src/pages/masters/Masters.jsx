@@ -27,7 +27,7 @@ const Masters = () => {
               <div className="master">
                 <div className="left-in-responsive">
                   <div className="photo">
-                    <img src={user_image} alt="" />
+                    <img src={user.image} alt="" />
                     <div>
                       <HiOutlineExclamationCircle className="i" />
                     </div>
