@@ -24,7 +24,6 @@ const Main = () => {
 
   const openSidebar = () => {
     setIsOpen(!isOpen);
-   
   };
   return (
     <div className="main-app-wrapper">
