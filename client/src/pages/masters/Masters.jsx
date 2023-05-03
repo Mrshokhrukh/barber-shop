@@ -10,7 +10,6 @@ const Masters = () => {
       .get("http://127.0.0.1:8000/get-masters")
       .then((response) => {
         setMasterData(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -127,8 +126,6 @@ const Masters = () => {
             <HiOutlineChevronRight className="icon" />
           </div>
         </div>
-
-        
       </div>
     </div>
   );
