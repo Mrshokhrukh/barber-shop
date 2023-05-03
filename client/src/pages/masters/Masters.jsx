@@ -29,8 +29,8 @@ const Masters = () => {
                 src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
                 alt=""
               />
-              <div className="i">
-                <HiOutlineExclamationCircle />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
               </div>
             </div>
             <div className="master_name">
@@ -38,8 +38,65 @@ const Masters = () => {
               <p className="duty">Barber</p>
             </div>
 
-            <div className="icon">
-              <HiOutlineChevronRight />
+            <div>
+              <HiOutlineChevronRight className="icon" />
+            </div>
+          </div>
+          <div className="master">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+
+            <div>
+              <HiOutlineChevronRight className="icon" />
+            </div>
+          </div>
+          <div className="master">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+
+            <div>
+              <HiOutlineChevronRight className="icon" />
+            </div>
+          </div>
+          <div className="master">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+
+            <div>
+              <HiOutlineChevronRight className="icon" />
             </div>
           </div>
         </div>

@@ -1,6 +1,108 @@
-// 1px solid #e7e7e7
-
 .masters_list_container {
-  width: 80%;
-  
+  position: relative;
+  left: 0;
+//   width: 100%;
+  background-color: rebeccapurple;
+  .masters_list {
+    width: 100%;
+    height: 100vh;
+    padding: 10px 15px;
+    background: rgb(245, 245, 245);
+
+    .master_data {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px 10px;
+      .master {
+        width: 310px;
+        height: 97px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: 0.3s;
+        border: 1px solid #e7e7e7;
+
+        .photo {
+          position: relative;
+          top: 3px;
+          img {
+            border: 2px solid rgb(221, 220, 220);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-position: center;
+            background-size: cover;
+          }
+          .i {
+            position: absolute;
+            bottom: 5px;
+            right: 0px;
+            color: #fff;
+            background-color: dodgerblue;
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .master_name {
+          .name {
+            font-size: 15px;
+            line-height: 24px;
+          }
+          .duty {
+            font-size: 12px;
+            line-height: 20px;
+            color: #39394f;
+          }
+        }
+
+        .icon {
+          color: #39394f;
+          font-size: 20px;
+          font-weight: 900;
+          margin-top: 3px;
+        }
+
+        &:hover {
+          background-color: var(--main-color);
+          cursor: pointer;
+          * {
+            color: white !important;
+            img {
+              border-color: white;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+@media (min-width: 1100px) {
+  .masters_list_container {
+    .masters_list {
+      .master_data {
+        flex-wrap: wrap;
+        justify-content: center;
+        .master {
+          width: 45%;
+          height: 100px;
+          .master_name {
+            .name {
+              font-size: 18px;
+            }
+            .duty {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// @media()
