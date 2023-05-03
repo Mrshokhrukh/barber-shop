@@ -20,10 +20,10 @@ const Masters = () => {
       });
   }, []);
   return (
-    <div className="masters_list_container">
-      <div className="masters_list">
-        <div className="master_data">
-          <div className="master">
+    <div className="masters_list">
+      <div className="master_data">
+        <div className="master">
+          <div className="left-in-responsive">
             <div className="photo">
               <img
                 src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
@@ -36,70 +36,99 @@ const Masters = () => {
             <div className="master_name">
               <p className="name">Akobir Baxodirovich</p>
               <p className="duty">Barber</p>
-            </div>
-
-            <div>
-              <HiOutlineChevronRight className="icon" />
             </div>
           </div>
-          <div className="master">
-            <div className="photo">
-              <img
-                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
-                alt=""
-              />
-              <div>
-                <HiOutlineExclamationCircle className="i" />
-              </div>
-            </div>
-            <div className="master_name">
-              <p className="name">Akobir Baxodirovich</p>
-              <p className="duty">Barber</p>
-            </div>
 
-            <div>
-              <HiOutlineChevronRight className="icon" />
-            </div>
-          </div>
-          <div className="master">
-            <div className="photo">
-              <img
-                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
-                alt=""
-              />
-              <div>
-                <HiOutlineExclamationCircle className="i" />
-              </div>
-            </div>
-            <div className="master_name">
-              <p className="name">Akobir Baxodirovich</p>
-              <p className="duty">Barber</p>
-            </div>
-
-            <div>
-              <HiOutlineChevronRight className="icon" />
-            </div>
-          </div>
-          <div className="master">
-            <div className="photo">
-              <img
-                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
-                alt=""
-              />
-              <div>
-                <HiOutlineExclamationCircle className="i" />
-              </div>
-            </div>
-            <div className="master_name">
-              <p className="name">Akobir Baxodirovich</p>
-              <p className="duty">Barber</p>
-            </div>
-
-            <div>
-              <HiOutlineChevronRight className="icon" />
-            </div>
+          <div>
+            <HiOutlineChevronRight className="icon" />
           </div>
         </div>
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img
+                src="https://i.pinimg.com/originals/82/9e/6d/829e6d37c5845732e657d25ff8950a67.jpg"
+                alt=""
+              />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">Akobir Baxodirovich</p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+
+        
       </div>
     </div>
   );

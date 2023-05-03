@@ -7,7 +7,7 @@ import "./sidebar.scss";
 
 const Sidebar = (props) => {
   return (
-    <div className={props.isOpen ? "sidebar" : "sidebar open"}>
+    <div className={props.isOpen ? "sidebar open" : " sidebar"}>
       <div className="sidebar-image">
         <img src="https://widget.sonline.su/i/place_picture.jpg" alt="sidebar" />
       </div>
@@ -20,7 +20,7 @@ const Sidebar = (props) => {
         </div>
         {/* <div className="layer-line"></div> */}
         <div className="sidebar_lists">
-          <button >
+          <button>
             <NavLink to="/uz/barbershop/services">
               Hizmatlar
               <span>
