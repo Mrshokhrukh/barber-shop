@@ -22,9 +22,9 @@ const Masters = () => {
     <div className="masters_list">
       <div className="master_data">
         {masterData &&
-          masterData.map((user) => {
+          masterData.map((user,index) => {
             return (
-              <div className="master">
+              <div className="master" key={index}>
                 <div className="left-in-responsive">
                   <div className="photo">
                     <img src={user.image} alt="" />

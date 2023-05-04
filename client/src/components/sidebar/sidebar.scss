@@ -8,8 +8,23 @@
   flex-direction: column;
   align-items: center;
   background-color: rgb(233, 233, 233);
-  transition: 0.1s;
+
+  transition: 0.3s;
   left: -200%;
+  overflow-x: hidden;
+
+  .close-icon {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    font-size: 30px;
+    cursor: pointer;
+    background-color: #74c7fa;
+    border-radius: 50%;
+    color: #fff;
+    display: none;
+  }
+
   .sidebar-image {
     width: 100%;
     img {
@@ -95,6 +110,8 @@
     }
   }
 }
+
+
 .open {
   left: 0;
 }
@@ -102,5 +119,17 @@
 @media (max-width: 768px) {
   .sidebar {
     position: fixed;
+    top: 0;
+    .close-icon {
+      position: absolute;
+      right: 3%;
+      top: 3%;
+      font-size: 30px;
+      cursor: pointer;
+      background-color: #74c7fa;
+      border-radius: 50%;
+      color: #fff;
+      display: block;
+    }
   }
 }
