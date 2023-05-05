@@ -12,9 +12,13 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      axios.post("http://127.0.0.1:8000/register", registeredUser).then((res) => {
-        console.log(res.data);
-      });
+      axios
+        .post("http://127.0.0.1:8000/register", registeredUser, {
+          headers: { "content-type": "application/x-www-form-urlencoded" }
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
     } catch (error) {
       console.log(error);
     }

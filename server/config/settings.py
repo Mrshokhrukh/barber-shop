@@ -3,7 +3,7 @@ import os
 import redis
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv('.env')
 
 
 class Settings:
