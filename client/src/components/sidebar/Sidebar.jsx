@@ -6,9 +6,14 @@ import { SlLogin } from "react-icons/sl";
 import "./sidebar.scss";
 import { MdClose } from "react-icons/md";
 const Sidebar = (props) => {
+  const close = () => {
+    if (window.innerWidth < 768) {
+      props.closeSidebar(false);
+    }
+  };
   return (
     <div className={props.isOpen ? "sidebar open" : " sidebar"}>
-      <MdClose className="close-icon" onClick={() => props.closeSidebar(false)} />
+      <MdClose className="close-icon" onClick={close} />
       <div className="sidebar-image">
         <img src="https://widget.sonline.su/i/place_picture.jpg" alt="sidebar" />
       </div>
@@ -21,7 +26,7 @@ const Sidebar = (props) => {
         </div>
         {/* <div className="layer-line"></div> */}
         <div className="sidebar_lists">
-          <button onClick={() => props.closeSidebar(false)}>
+          <button onClick={close}>
             <NavLink to="/uz/barbershop/services">
               Hizmatlar
               <span>
@@ -29,7 +34,7 @@ const Sidebar = (props) => {
               </span>
             </NavLink>
           </button>
-          <button onClick={() => props.closeSidebar(false)}>
+          <button onClick={close}>
             <NavLink to="/uz/barbershop/masters">
               Ishchilar
               <span>

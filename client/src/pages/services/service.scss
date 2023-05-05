@@ -1,3 +1,94 @@
-.services{
-    
+.services {
+  padding: 15px 20px;
+
+  .search {
+    margin-top: 15px;
+    width: 600px;
+    height: 50px;
+    form {
+      border-bottom: var(--bottom-line);
+      height: 33px;
+
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      .search-icon {
+        color: #888888;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      input {
+        width: 90%;
+        outline: none;
+        border: none;
+        font-size: 16px;
+        color: #888888;
+        height: 100%;
+        &::placeholder {
+          font-size: 16px;
+          color: #888888;
+        }
+      }
+    }
+  }
+
+  .service-details {
+    width: 100%;
+
+    .entry-text {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .details {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: var(--bottom-line);
+
+      .left {
+        display: grid;
+        color: black;
+        .service_name {
+          font-size: 16px;
+        }
+        .time_price {
+          margin-top: 5px;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          .price {
+            font-size: 13px;
+          }
+          .time {
+            font-size: 13px;
+            color: #888888;
+          }
+        }
+      }
+      .right-checkbox {
+        .check {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background-color: #fff;
+          border: var(--bottom-line);
+        }
+      }
+    }
+    .details:hover {
+      cursor: pointer;
+      .left {
+        color: var(--main-color);
+        .time_price .time {
+          color: var(--main-color);
+        }
+      }
+      .right-checkbox .check {
+        border-color: var(--main-color);
+      }
+    }
+  }
 }
