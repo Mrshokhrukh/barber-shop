@@ -15,8 +15,8 @@ const Verify = () => {
         console.log(res.data);
       })
       .catch((err) => {
-        console.log(err);
-        
+        // console.log(err);
+
       });
   };
   return (
