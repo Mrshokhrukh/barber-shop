@@ -15,8 +15,7 @@ ujson = "*"
 pipfile = "*"
 httpx = "*"
 redis = "*"
-passlib = "*"
-bcrypt = "*"
+
 
 [dev-packages]
 

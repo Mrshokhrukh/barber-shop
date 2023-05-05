@@ -4,7 +4,7 @@ from fastapi import HTTPException, UploadFile, Form, File
 from pydantic import BaseModel, validator, root_validator
 
 from app import models
-from app.hashing import Hasher
+
 from config.db import get_db
 
 
@@ -121,7 +121,7 @@ class RegisterSchema(BaseModel):
 
 class ActivateSchema(BaseModel):
     email: str
-    code: int
+    code: str
 
     class Config:
         orm_mode = True

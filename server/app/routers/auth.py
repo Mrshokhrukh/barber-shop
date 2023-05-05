@@ -19,6 +19,9 @@ async def register(
 
 
 @auth.post('/activate-email', summary='activate email')
-async def activate_email(schema: schemas.ActivateSchema, db: Session = Depends(get_db)):
+async def activate_email(
+        schema: schemas.ActivateSchema = Depends(schemas.ActivateSchema.as_form),
+        db: Session = Depends(get_db)
+):
     response = await activate_email_worker(schema, db)
     return response
