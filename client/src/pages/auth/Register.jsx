@@ -26,24 +26,17 @@ const Register = () => {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          name="first_name"
-          value={registeredUser.first_name || ""}
+          name="name"
+          value={registeredUser.name || ""}
           onChange={handleChange}
           placeholder="first name"
         />
         <input
-          type="text"
-          name="last_name"
-          value={registeredUser.last_name || ""}
+          type="email"
+          name="email"
+          value={registeredUser.email || ""}
           onChange={handleChange}
-          placeholder="last name"
-        />
-        <input
-          type="text"
-          name="phone"
-          value={registeredUser.phone || ""}
-          onChange={handleChange}
-          placeholder="phone"
+          placeholder="email"
         />
         <button>submit</button>
       </form>

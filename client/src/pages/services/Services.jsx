@@ -10,7 +10,7 @@ const Services = () => {
       .get("http://127.0.0.1:8000/get-masters")
       .then((response) => {
         setServiceData(response.data);
-        console.log(response.data);
+   
       })
       .catch((error) => {
         if (error.response) {
