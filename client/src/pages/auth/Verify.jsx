@@ -16,6 +16,7 @@ const Verify = () => {
       })
       .catch((err) => {
         console.log(err);
+        
       });
   };
   return (
