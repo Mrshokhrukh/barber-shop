@@ -11,7 +11,7 @@ master = APIRouter(tags=['master'])
 
 @master.post('/add-master', summary='Add master with phone')
 async def add_master(
-        schema: schemas.MasterSchema = Depends(schemas.MasterSchema.as_form),
+        schema: schemas.MasterSchema = Depends(),
         db: Session = Depends(get_db)
 ):
     user = await add_master_worker(schema, db)

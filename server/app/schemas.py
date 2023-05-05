@@ -1,10 +1,10 @@
 import re
-from typing import List
 
 from fastapi import HTTPException, UploadFile, Form, File
-from pydantic import BaseModel, validator, root_validator, Json
+from pydantic import BaseModel, validator, root_validator
 
 from app import models
+from app.hashing import Hasher
 from config.db import get_db
 
 
@@ -81,3 +81,70 @@ class Login(BaseModel):
             db.commit()
         db.close()
         return values
+
+
+class RegisterSchema(BaseModel):
+    name: str
+    email: str
+
+    class Config:
+        orm_mode = True
+
+    @validator("email")
+    def validation(cls, value):
+        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        if not re.search(regex, value):
+            raise HTTPException(400, "Email yaroqsiz !")
+        db = next(get_db())
+        user = db.query(models.Users).filter_by(email=value).first()
+        if user:
+            raise HTTPException(400, "Email allaqachon ro'yxatdan o'tgan !")
+        return value
+
+    @classmethod
+    def from_orm(cls, obj):
+        data = obj.__dict__.copy()
+        return cls(**data)
+
+    @classmethod
+    def as_form(
+            cls,
+            name: str = Form(...),
+            email: str = Form(...),
+
+    ):
+        return cls(
+            name=name,
+            email=email,
+        )
+
+
+class ActivateSchema(BaseModel):
+    email: str
+    code: int
+
+    class Config:
+        orm_mode = True
+
+    @validator("email")
+    def validation(cls, value):
+        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        if not re.search(regex, value):
+            raise HTTPException(400, "Email yaroqsiz !")
+        db = next(get_db())
+        user = db.query(models.Users).filter_by(email=value).first()
+        if not user:
+            raise HTTPException(400, "Email ro'yxatdan o'tmagan !")
+        return value
+
+    @classmethod
+    def as_form(
+            cls,
+            name: str = Form(...),
+            code: str = Form(...),
+
+    ):
+        return cls(
+            name=name,
+            code=code,
+        )
