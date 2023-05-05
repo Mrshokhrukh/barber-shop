@@ -111,7 +111,6 @@
   }
 }
 
-
 .open {
   left: 0;
 }
@@ -131,5 +130,12 @@
       color: #fff;
       display: block;
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    position: absolute;
+    width: 100%;
   }
 }
