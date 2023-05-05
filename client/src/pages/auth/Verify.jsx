@@ -12,11 +12,11 @@ const Verify = () => {
       .post("http://127.0.0.1:8000/activate-email", {})
       .then((res) => {
         ref = res.data;
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
-        // console.log(err);
-
+        console.log(err);
+        
       });
   };
   return (
