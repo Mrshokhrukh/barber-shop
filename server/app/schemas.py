@@ -140,11 +140,11 @@ class ActivateSchema(BaseModel):
     @classmethod
     def as_form(
             cls,
-            name: str = Form(...),
+            email: str = Form(...),
             code: str = Form(...),
 
     ):
         return cls(
-            name=name,
+            email=email,
             code=code,
         )
