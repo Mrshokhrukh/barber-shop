@@ -12,7 +12,6 @@ const Masters = () => {
         setMasterData(response.data);
       })
       .catch((error) => {
-        console.log(error);
         if (error.response) {
           console.log(error.response.data.detail);
         }
@@ -21,7 +20,68 @@ const Masters = () => {
   return (
     <div className="masters_list">
       <div className="master_data">
-        {masterData &&
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img src={"user.image"} alt="" />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">
+                {"user.first_name"} {"user.last_name"}
+              </p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img src={"user.image"} alt="" />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">
+                {"user.first_name"} {"user.last_name"}
+              </p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+        <div className="master">
+          <div className="left-in-responsive">
+            <div className="photo">
+              <img src={"user.image"} alt="" />
+              <div>
+                <HiOutlineExclamationCircle className="i" />
+              </div>
+            </div>
+            <div className="master_name">
+              <p className="name">
+                {"user.first_name"} {"user.last_name"}
+              </p>
+              <p className="duty">Barber</p>
+            </div>
+          </div>
+
+          <div>
+            <HiOutlineChevronRight className="icon" />
+          </div>
+        </div>
+
+        {/* {masterData &&
           masterData.map((user,index) => {
             return (
               <div className="master" key={index}>
@@ -45,7 +105,7 @@ const Masters = () => {
                 </div>
               </div>
             );
-          })}
+          })} */}
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ const Home = () => {
           <p className="text">aloqa orqali bog'laning</p>
           <p className="phone-number">+7 (906) 061-96-53</p>
         </div>
-
+        
         <div className="link-btn">
           <button>
             <Link to="/uz/barbershop">recording</Link>

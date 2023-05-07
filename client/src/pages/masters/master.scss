@@ -1,5 +1,4 @@
 .masters_list {
-
   padding: 10px 10px;
   background: rgb(245, 245, 245);
   .master_data {
@@ -81,30 +80,14 @@
   }
 }
 
-@media (min-width: 1501px) {
+
+@media (min-width: 1400px) {
   .masters_list {
-    .master_data {
-      display: flex;
-      flex-wrap: wrap;
-      .master {
-        .master_name {
-          .name {
-            font-size: 20px;
-          }
-          .duty {
-            font-size: 16px;
-          }
-        }
-      }
-    }
-  }
-}
-@media (min-width: 1390px) {
-  .masters_list {
-    width: 72%;
+    width: 78%;
     .master_data {
       grid-template-columns: auto auto auto;
       .master {
+        width: 100%;
         .master_name {
           .name {
             font-size: 18px;
@@ -128,13 +111,13 @@
     }
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 1140px) {
   .masters_list {
-    width: 60%;
+    width: 63%;
+    margin: 0 auto;
     .master_data {
       grid-template-columns: auto;
       .master {
-        width: 100%;
         justify-content: space-between;
         .left-in-responsive {
           margin-left: 20px;
@@ -145,6 +128,11 @@
         }
       }
     }
+  }
+}
+@media (max-width: 992px) {
+  .masters_list {
+    width: 55%;
   }
 }
 @media (max-width: 768px) {

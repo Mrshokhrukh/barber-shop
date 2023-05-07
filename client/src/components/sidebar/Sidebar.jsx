@@ -15,7 +15,7 @@ const Sidebar = (props) => {
     <div className={props.isOpen ? "sidebar open" : " sidebar"}>
       <MdClose className="close-icon" onClick={close} />
       <div className="sidebar-image">
-        <img src="https://widget.sonline.su/i/place_picture.jpg" alt="sidebar" />
+        <img src="https://media.istockphoto.com/id/872361244/photo/man-getting-his-beard-trimmed-with-electric-razor.jpg?s=612x612&w=0&k=20&c=_IjZcrY0Gp-2z6AWTQederZCA9BLdl-iqWkH0hGMTgg=" alt="sidebar" />
       </div>
 
       <div className="sidebar_layer-center">
