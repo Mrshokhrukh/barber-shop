@@ -10,7 +10,7 @@ from config.db import get_db
 
 class MasterSchema(BaseModel):
     first_name: str
-    last_name: str | None
+    last_name: str
     phone: str
     image: UploadFile
     master_services: str
