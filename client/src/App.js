@@ -16,6 +16,7 @@ import "./style/main.style.scss";
 import AdminRoutes from "./admin/adminRoutes";
 import AdminTable from "./admin/adminComponents/table/Table";
 import SingleUser from "./admin/adminPages/single/Single";
+import Verify from "./pages/auth/Verify";
 const App = () => {
   
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="auth" element={<Auth />}>
               <Route path="login" element={<Login />}></Route>
               <Route path="register" element={<Register />}></Route>
+              <Route path="verify" element={<Verify />}></Route>
             </Route>
             <Route path="admin/dashboard" element={<AdminRoutes />}>
               <Route index element={<AdminHome />} />

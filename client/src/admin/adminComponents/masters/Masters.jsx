@@ -45,7 +45,7 @@ const Datatable = () => {
               <TableCell className="tableCell">account</TableCell>
               <TableCell className="tableCell">Ism Familiya</TableCell>
               <TableCell className="tableCell">Telefon Raqam</TableCell>
-              {/* <TableCell className="tableCell"></TableCell> */}
+              <TableCell className="tableCell"></TableCell>
               <TableCell className="tableCell">tahrirlash</TableCell>
             </TableRow>
           </TableHead>
@@ -59,12 +59,12 @@ const Datatable = () => {
         </Table>
       </TableContainer>
 
-      <div>
+      {/* <div>
         {masterData &&
           masterData.map((datas, index) => {
             return <AllMasterServices key={index} serviceDatas={datas.master_services} />;
           })}
-      </div>
+      </div> */}
     </div>
   );
 };

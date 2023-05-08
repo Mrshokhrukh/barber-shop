@@ -15,7 +15,7 @@ const Register = () => {
     try {
       axios
         .post("https://server-1-x7613193.deta.app/register", registeredUser, {
-          headers: { "content-type": "application/x-www-form-urlencoded" }
+          headers: { "content-type": "application/x-www-form-urlencoded" },
         })
         .then((res) => {
           console.log(res.data);
@@ -45,7 +45,7 @@ const Register = () => {
         />
         <button>submit</button>
       </form>
-      
+      <Link to="/auth/verify">Verify</Link>
     </>
   );
 };

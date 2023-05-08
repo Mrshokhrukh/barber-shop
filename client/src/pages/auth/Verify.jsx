@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Verify = () => {
   const [verify, setVerify] = useState({});
-
+  let navigate = useNavigate();
   const change = (e) => {
     setVerify({ ...verify, [e.target.name]: e.target.value });
   };
@@ -11,12 +12,16 @@ const Verify = () => {
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post("https://server-1-x7613193.deta.app/activate-email", verify)
+      .post("https://server-1-x7613193.deta.app/activate-email", verify, {
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+      })
       .then((res) => {
-        console.log(res.data);
+        navigate("/uz/barbershop");
       })
       .catch((err) => {
-        console.log(err);
+        if (err) {
+          console.log(err.response.data);
+        }
       });
   };
   return (

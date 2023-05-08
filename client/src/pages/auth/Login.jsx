@@ -44,14 +44,15 @@ const Login = () => {
         <input
           type="text"
           name="phone"
-          // value={loginUser.email || ""}
+          value={loginUser.email || ""}
           onChange={change}
           placeholder="phone number"
         />
+        
         <input
           type="text"
           name="code"
-          // value={loginUser.email || ""}
+          value={loginUser.username || ""}
           onChange={change}
           placeholder="verify code"
         />

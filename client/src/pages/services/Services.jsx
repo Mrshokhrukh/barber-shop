@@ -7,7 +7,7 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get("https://server-1-x7613193.deta.app/get-masters")
+      .get("https://server-1-x7613193.deta.app/services")
       .then((response) => {
         setServiceData(response.data);
       })
@@ -33,11 +33,11 @@ const Services = () => {
       <div className="service-details">
         <p className="entry-text">hairdressing services</p>
         {serviceData &&
-          serviceData.map((user, index) => {
+          serviceData.map((service, index) => {
             return (
               <div className="details" key={index}>
                 <div className="left">
-                  <p className="service_name">{user.first_name}'s Haircut</p>
+                  <p className="service_name">{service.name}</p>
                   <div className="time_price">
                     <p className="price">100 000</p>
                     <p className="time">60 min</p>

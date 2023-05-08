@@ -7,7 +7,7 @@ const Masters = () => {
   const [masterData, setMasterData] = useState();
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/get-masters")
+      .get("https://server-1-x7613193.deta.app/get-masters")
       .then((response) => {
         setMasterData(response.data);
       })
@@ -17,72 +17,12 @@ const Masters = () => {
         }
       });
   }, []);
+  
   return (
     <div className="masters_list">
       <div className="master_data">
-        <div className="master">
-          <div className="left-in-responsive">
-            <div className="photo">
-              <img src={"user.image"} alt="" />
-              <div>
-                <HiOutlineExclamationCircle className="i" />
-              </div>
-            </div>
-            <div className="master_name">
-              <p className="name">
-                {"user.first_name"} {"user.last_name"}
-              </p>
-              <p className="duty">Barber</p>
-            </div>
-          </div>
-
-          <div>
-            <HiOutlineChevronRight className="icon" />
-          </div>
-        </div>
-        <div className="master">
-          <div className="left-in-responsive">
-            <div className="photo">
-              <img src={"user.image"} alt="" />
-              <div>
-                <HiOutlineExclamationCircle className="i" />
-              </div>
-            </div>
-            <div className="master_name">
-              <p className="name">
-                {"user.first_name"} {"user.last_name"}
-              </p>
-              <p className="duty">Barber</p>
-            </div>
-          </div>
-
-          <div>
-            <HiOutlineChevronRight className="icon" />
-          </div>
-        </div>
-        <div className="master">
-          <div className="left-in-responsive">
-            <div className="photo">
-              <img src={"user.image"} alt="" />
-              <div>
-                <HiOutlineExclamationCircle className="i" />
-              </div>
-            </div>
-            <div className="master_name">
-              <p className="name">
-                {"user.first_name"} {"user.last_name"}
-              </p>
-              <p className="duty">Barber</p>
-            </div>
-          </div>
-
-          <div>
-            <HiOutlineChevronRight className="icon" />
-          </div>
-        </div>
-
-        {/* {masterData &&
-          masterData.map((user,index) => {
+        {masterData &&
+          masterData.map((user, index) => {
             return (
               <div className="master" key={index}>
                 <div className="left-in-responsive">
@@ -105,7 +45,7 @@ const Masters = () => {
                 </div>
               </div>
             );
-          })} */}
+          })}
       </div>
     </div>
   );

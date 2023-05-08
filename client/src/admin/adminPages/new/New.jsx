@@ -44,9 +44,7 @@ const New = () => {
     let data = { ...newMaster, image: file };
 
     await axios
-      .post("https://server-1-x7613193.deta.app/add-master", data, {
-        headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
-      })
+      .post("https://server-1-x7613193.deta.app/add-master", data)
       .then((response) => {
         const notify = () => toast.success(response.data);
         notify();
