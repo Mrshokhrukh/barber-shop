@@ -1,7 +1,7 @@
 import typing as t
-from datetime import datetime, time
+from datetime import datetime, time, date
 
-from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time)
+from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date)
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -55,6 +55,7 @@ class Users(Base, CreateDateBase):
     email: Mapped[str] = mapped_column(String(200), unique=True)
 
     is_active: Mapped[bool] = mapped_column(Boolean, default=False)
+
 
 # class MasterOrder(Base, CreateDateBase):
 #     date: Mapped[date] = mapped_column(Date)
