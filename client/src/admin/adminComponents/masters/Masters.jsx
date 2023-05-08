@@ -5,6 +5,14 @@ import axios from "axios";
 import UserDetails from "./UserDetails";
 import AllMasterServices from "../../Services/AllMasterServices";
 
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
 const Datatable = () => {
   const [masterData, setMasterData] = useState();
 
@@ -13,10 +21,8 @@ const Datatable = () => {
       .get("http://127.0.0.1:8000/get-masters")
       .then((response) => {
         setMasterData(response.data);
-        
       })
       .catch((error) => {
-        console.log(error);
         if (error.response) {
           console.log(error.response.data.detail);
         }
@@ -31,27 +37,29 @@ const Datatable = () => {
           Add New
         </Link>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Surat.</th>
-            <th>Ism Familiya</th>
-            <th>Telefon Raqam</th>
-            <th></th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {masterData &&
-            masterData.map((master, index) => {
-              return <UserDetails master={master} key={index} />;
-            })}
-        </tbody>
-      </table>
+      <TableContainer component={Paper} className="table">
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell className="tableCell">Id.</TableCell>
+              <TableCell className="tableCell">account</TableCell>
+              <TableCell className="tableCell">Ism Familiya</TableCell>
+              <TableCell className="tableCell">Telefon Raqam</TableCell>
+              {/* <TableCell className="tableCell"></TableCell> */}
+              <TableCell className="tableCell">tahrirlash</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {masterData &&
+              masterData.map((master, index) => {
+                return <UserDetails master={master} key={index} />;
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
 
       <div>
-        
         {masterData &&
           masterData.map((datas, index) => {
             return <AllMasterServices key={index} serviceDatas={datas.master_services} />;

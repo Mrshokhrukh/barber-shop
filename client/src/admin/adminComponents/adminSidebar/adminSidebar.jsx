@@ -33,7 +33,7 @@ const AdminSidebar = () => {
           <Link to="/admin/dashboard/workers" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Sartaroshlar</span>
+              <span>Ishchilar</span>
             </li>
           </Link>
           <li>

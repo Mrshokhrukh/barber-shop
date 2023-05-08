@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
 
 const UserDetails = (props) => {
   let navigate = useNavigate();
@@ -41,25 +43,28 @@ const UserDetails = (props) => {
   };
 
   return (
-    <tr>
-      <td>{user.id}</td>
-      <td>
-        <img src={user.image} alt="404" className="user-img" />
-      </td>
-      <td>
+    <TableRow>
+      <TableCell className="tableCell">{user.id}</TableCell>
+      <TableCell className="tableCell">
+        <div className="cellWrapper">
+          <img src={user.image} alt="" className="image" />
+        </div>
+      </TableCell>
+      <TableCell className="tableCell">
         {user.first_name} {user.last_name}
-      </td>
-      <td>{user.phone}</td>
-      <td>{""}</td>
-      <td>
+      </TableCell>
+      <TableCell className="tableCell">{user.phone}</TableCell>
+      <TableCell className="tableCell">
         <button className="updateButton" onClick={() => updatingUser(user.id)}>
           Ko'rish
         </button>
-      </td>
-      <td>
+      </TableCell>
+      <TableCell className="tableCell">
         <button className="deleteButton" onClick={() => deleteUser(user.id)}>
           O'chirish
         </button>
+      </TableCell>
+      <TableCell className="tableCell">
         <ToastContainer
           position="top-right"
           autoClose={900}
@@ -70,8 +75,8 @@ const UserDetails = (props) => {
           theme="dark"
           className="alert-msg"
         />
-      </td>
-    </tr>
+      </TableCell>
+    </TableRow>
   );
 };
 
