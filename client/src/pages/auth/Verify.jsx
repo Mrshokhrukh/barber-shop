@@ -1,29 +1,41 @@
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 const Verify = () => {
-  let ref = useRef();
+  const [verify, setVerify] = useState({});
 
-  const change = (e) => {};
+  const change = (e) => {
+    setVerify({ ...verify, [e.target.name]: e.target.value });
+  };
 
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post("http://127.0.0.1:8000/activate-email", {})
+      .post("https://server-1-x7613193.deta.app/activate-email", verify)
       .then((res) => {
-        ref = res.data;
-        // console.log(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
-        
       });
   };
   return (
     <div className="verify">
       <form onSubmit={submit}>
-        <input type="email" name="email" onChange={change} placeholder="email" />
-        <input type="number" name="code" onChange={change} placeholder="verification code" />
+        <input
+          type="email"
+          value={verify.email || ""}
+          name="email"
+          onChange={change}
+          placeholder="email"
+        />
+        <input
+          type="number"
+          value={verify.code || ""}
+          name="code"
+          onChange={change}
+          placeholder="verification code"
+        />
         <button>verify</button>
       </form>
     </div>

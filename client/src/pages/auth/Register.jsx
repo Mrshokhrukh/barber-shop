@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [registeredUser, setRegisteredUser] = useState({});
@@ -13,7 +14,7 @@ const Register = () => {
 
     try {
       axios
-        .post("http://127.0.0.1:8000/register", registeredUser, {
+        .post("https://server-1-x7613193.deta.app/register", registeredUser, {
           headers: { "content-type": "application/x-www-form-urlencoded" }
         })
         .then((res) => {
@@ -44,6 +45,7 @@ const Register = () => {
         />
         <button>submit</button>
       </form>
+      
     </>
   );
 };

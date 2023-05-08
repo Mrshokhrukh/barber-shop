@@ -12,7 +12,7 @@ const UserDetails = (props) => {
 
   const updatingUser = (id) => {
     axios
-      .get(`http://127.0.0.1:8000/get-master/${id}`)
+      .get(`https://server-1-x7613193.deta.app/get-master/${id}`)
       .then((res) => {
         if (res.status === 200) {
           navigate(`/admin/dashboard/workers/${id}`, { state: res.data });
@@ -27,7 +27,7 @@ const UserDetails = (props) => {
 
   const deleteUser = (id) => {
     axios
-      .delete(`http://127.0.0.1:8000/delete-master/${id}`)
+      .delete(`https://server-1-x7613193.deta.app/delete-master/${id}`)
       .then((response) => {
         const notify = () => toast.success(response.data);
         notify();

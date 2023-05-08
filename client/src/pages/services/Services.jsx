@@ -7,7 +7,7 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/get-masters")
+      .get("https://server-1-x7613193.deta.app/get-masters")
       .then((response) => {
         setServiceData(response.data);
       })
@@ -17,6 +17,10 @@ const Services = () => {
         }
       });
   }, []);
+
+  const clickedService = () => {
+    console.log("as");
+  };
 
   return (
     <div className="services">
@@ -28,22 +32,7 @@ const Services = () => {
       </div>
       <div className="service-details">
         <p className="entry-text">hairdressing services</p>
-
-        <div className="details">
-          <div className="left">
-            <p className="service_name">{"user.first_name"}'s Haircut</p>
-            <div className="time_price">
-              <p className="price">100 000</p>
-              <p className="time">60 min</p>
-            </div>
-          </div>
-
-          <div className="right-checkbox">
-            <div className="check"></div>
-          </div>
-        </div>
-
-        {/* {serviceData &&
+        {serviceData &&
           serviceData.map((user, index) => {
             return (
               <div className="details" key={index}>
@@ -60,7 +49,7 @@ const Services = () => {
                 </div>
               </div>
             );
-          })} */}
+          })}
       </div>
     </div>
   );

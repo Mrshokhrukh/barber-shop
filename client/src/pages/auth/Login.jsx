@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("http://127.0.0.1:8000/login", loginUser)
+      .post("https://server-1-x7613193.deta.app/login", loginUser)
       .then((response) => {
         
         if (response.data.is_admin) {

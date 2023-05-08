@@ -18,7 +18,7 @@ const Datatable = () => {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/get-masters")
+      .get("https://server-1-x7613193.deta.app/get-masters")
       .then((response) => {
         setMasterData(response.data);
       })

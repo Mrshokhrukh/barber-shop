@@ -21,7 +21,7 @@ const New = () => {
   };
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/services`).then((response) => {
+    axios.get(`https://server-1-x7613193.deta.app/services`).then((response) => {
       setCheckBoxes(response.data);
     });
   }, []);
@@ -42,8 +42,9 @@ const New = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = { ...newMaster, image: file };
+
     await axios
-      .post("http://127.0.0.1:8000/add-master", data, {
+      .post("https://server-1-x7613193.deta.app/add-master", data, {
         headers: { Accept: "application/json", "Content-Type": "multipart/form-data" },
       })
       .then((response) => {
