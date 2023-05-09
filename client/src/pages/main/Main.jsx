@@ -2,16 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Login from "../auth/Login";
-import { IoClose } from "react-icons/io5";
-import { GiHamburgerMenu } from "react-icons/gi";
+
 
 import "./style.scss";
+import Header from "../../components/header/Header";
 const Main = () => {
   let isOutOfWidth = useRef(false);
   const inOpenSidebar = useRef("");
   const [isOpen, setIsOpen] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
-  let navigate = useNavigate();
+ 
   useEffect(() => {
     const handleWidth = () => {
       setWidth(window.innerWidth);
@@ -48,17 +48,7 @@ const Main = () => {
   return (
     <div className="main-app-wrapper">
       <div className={isOpen ? inOpenSidebar.current : ""}></div>
-      <div className="main-app-header">
-        <button onClick={openSidebar}>
-          <GiHamburgerMenu className="icon" />
-        </button>
-        <div className="head-text">
-          <p>BARBERSHOP ELEVEN </p> <span>SERVICE SELECTION</span>
-        </div>
-        <button onClick={() => navigate("/")}>
-          <IoClose className="icon" />
-        </button>
-      </div>
+      <Header openSidebar={openSidebar}/>
       <div className="main-app">
         <Sidebar isOpen={isOpen} closeSidebar={closeSidebar} />
         <Outlet />

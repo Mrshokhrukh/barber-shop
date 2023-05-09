@@ -3,53 +3,10 @@
   gap: 4px;
 }
 
-.main-app-header {
-  background-color: var();
-  padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  background-color: rgb(211, 210, 210);
-  display: none;
-  .icon {
-    font-size: 26px;
-    width: 45px;
-    height: 30px;
-    cursor: pointer;
-    &:hover {
-      color: var(--gray);
-    }
-  }
-
-  .head-text {
-    color: var(--gray);
-    text-align: center;
-    p {
-      font-size: 16px;
-    }
-    span {
-      font-size: 12px;
-    }
-  }
-}
-
 .inSidebarOpen {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
   z-index: 10;
-}
-@media (max-width: 768px) {
-  .main-app-header {
-    display: flex;
-  }
-}
-@media (max-width: 408px) {
-  .main-app-header {
-    .head-text p {
-      font-size: 14px;
-      line-height: 15px;
-    }
-    padding: 15px 10px;
-  }
 }

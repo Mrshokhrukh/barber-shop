@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./service.scss";
 import { BsSearch } from "react-icons/bs";
 import axios from "axios";
+import { BsCheck } from "react-icons/bs";
 const Services = () => {
   const [serviceData, setServiceData] = useState();
+  const [checkedServices, setCheckedServices] = useState([]);
 
   useEffect(() => {
     axios
@@ -18,8 +20,15 @@ const Services = () => {
       });
   }, []);
 
-  const clickedService = () => {
-    console.log("as");
+  const handleCheck = (data) => {
+    const currentIndex = checkedServices.indexOf(data);
+    const newCheckedItems = [...checkedServices];
+    if (currentIndex === -1) {
+      newCheckedItems.push(data);
+    } else {
+      newCheckedItems.splice(currentIndex, 1);
+    }
+    setCheckedServices(newCheckedItems);
   };
 
   return (
@@ -30,22 +39,28 @@ const Services = () => {
           <input type="text" placeholder="Search in Price Eleven (total 0)" />
         </form>
       </div>
+
       <div className="service-details">
         <p className="entry-text">hairdressing services</p>
         {serviceData &&
           serviceData.map((service, index) => {
             return (
-              <div className="details" key={index}>
+              <div
+                className={checkedServices.includes(service) ? "details checked" : "details"}
+                onClick={() => handleCheck(service)}
+                key={index}
+              >
                 <div className="left">
                   <p className="service_name">{service.name}</p>
                   <div className="time_price">
-                    <p className="price">100 000</p>
+                    <p className="price">{service.price}</p>
                     <p className="time">60 min</p>
                   </div>
                 </div>
-
                 <div className="right-checkbox">
-                  <div className="check"></div>
+                  <div className="check">
+                    <BsCheck />
+                  </div>
                 </div>
               </div>
             );

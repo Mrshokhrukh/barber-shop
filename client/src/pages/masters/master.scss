@@ -1,10 +1,14 @@
 .masters_list {
   padding: 10px 10px;
   background: rgb(245, 245, 245);
+  position: relative;
+  left: 385px;
+ 
   .master_data {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 7px 10px;
+
     .master {
       width: 310px;
       height: 97px;
@@ -80,7 +84,6 @@
   }
 }
 
-
 @media (min-width: 1400px) {
   .masters_list {
     width: 78%;
@@ -114,7 +117,6 @@
 @media (max-width: 1140px) {
   .masters_list {
     width: 63%;
-    margin: 0 auto;
     .master_data {
       grid-template-columns: auto;
       .master {
@@ -138,6 +140,8 @@
 @media (max-width: 768px) {
   .masters_list {
     width: 100%;
+    top: 80px;
+    left: 0;
     .master_data {
       grid-template-columns: auto;
       .master {

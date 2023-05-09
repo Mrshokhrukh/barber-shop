@@ -1,9 +1,47 @@
-.header {
-  display: none;
+.fixed_header {
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
-@media (max-width: 576px) {
-  .header {
-    display: block;
+.main-app-header {
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(211, 210, 210);
+  display: none;
+  .icon {
+    font-size: 26px;
+    width: 45px;
+    height: 30px;
+    cursor: pointer;
+    &:hover {
+      color: var(--gray);
+    }
+  }
+
+  .head-text {
+    color: var(--gray);
+    text-align: center;
+    p {
+      font-size: 16px;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .main-app-header {
+    display: flex;
+  }
+}
+@media (max-width: 408px) {
+  .main-app-header {
+    .head-text p {
+      font-size: 14px;
+      line-height: 15px;
+    }
+    padding: 15px 10px;
   }
 }
