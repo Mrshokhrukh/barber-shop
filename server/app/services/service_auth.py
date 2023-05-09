@@ -1,15 +1,15 @@
-from fastapi import BackgroundTasks, HTTPException
+from fastapi import HTTPException
 from fastapi.responses import UJSONResponse
 from sqlalchemy.orm import Session
 
 from app import models
 from app.caching_redis import generate_verification_code, cache_redis, get_from_cache
-from app.schemas import ActivateSchema, RegisterSchema
+from app.schemas import ActivateSchema, RegisterSchema, LoginSchema
 from app.send_email import send_verification_email
 from config.settings import settings
 
 
-async def register_worker(schema: RegisterSchema, db: Session, background_tasks: BackgroundTasks):
+async def register_worker(schema: RegisterSchema, db: Session):
     # save database
     data: dict = schema.dict(exclude_none=True)
     user = models.Users(**data)
@@ -20,7 +20,7 @@ async def register_worker(schema: RegisterSchema, db: Session, background_tasks:
     time = settings.REDIS_VERIFY_TIME
     cache_redis(user.email, code, time)
     print(code)
-    background_tasks.add_task(send_verification_email, user, code)
+    await send_verification_email(user, code)
     message = f"{user.name} tasdiqlash kodi yuborildi !"
     return UJSONResponse(message, 200)
 
@@ -39,3 +39,14 @@ async def activate_email_worker(schema: ActivateSchema, db: Session):
             return HTTPException(200, "Muvaffaqiyatli tasdiqlandi")
         return HTTPException(400, "Tasdiqlash kodi xato !")
     raise HTTPException(404, "Tasdiqlash kodi eskirgan !")
+
+
+async def get_all_users_worker(db: Session):
+    users = db.query(models.Users).all()
+    return users
+
+
+async def login_user_worker(db: Session, form: LoginSchema):
+    phone = form.phone
+    user = db.query(models.Masters).filter_by(phone=phone).first()
+    return user

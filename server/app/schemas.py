@@ -39,7 +39,7 @@ class MasterSchema(BaseModel):
     def as_form(
             cls,
             first_name: str = Form(...),
-            last_name: str = Form(None),
+            last_name: str = Form(...),
             phone: str = Form(...),
             image: UploadFile = File(...),
             master_services: str = Form(...)
@@ -53,7 +53,7 @@ class MasterSchema(BaseModel):
         )
 
 
-class Login(BaseModel):
+class LoginSchema(BaseModel):
     phone: str
     code: str
 

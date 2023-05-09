@@ -47,7 +47,6 @@ class Services(Base):
     name: Mapped[str] = mapped_column(String(200))
     price: Mapped[int] = mapped_column(Integer)
     busy_time: Mapped[time] = mapped_column(Time, nullable=True)
-    master_service: Mapped[list['MasterServices']] = relationship(lazy='selectin')
 
 
 class Users(Base, CreateDateBase):
@@ -55,7 +54,6 @@ class Users(Base, CreateDateBase):
     email: Mapped[str] = mapped_column(String(200), unique=True)
 
     is_active: Mapped[bool] = mapped_column(Boolean, default=False)
-
 
 # class MasterOrder(Base, CreateDateBase):
 #     date: Mapped[date] = mapped_column(Date)

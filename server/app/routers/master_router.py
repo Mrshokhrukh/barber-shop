@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services.services_master import add_master_worker, get_masters_worker, login_user_worker, get_master_worker, \
+from app.services.services_master import add_master_worker, get_masters_worker, get_master_worker, \
     update_master_worker, delete_master_worker, get_all_services_worker
 from config.db import get_db
 
@@ -49,10 +49,6 @@ async def get_all_services(db: Session = Depends(get_db)):
     return response
 
 
-@master.post('/login', summary='login')
-async def login(form: schemas.Login, db: Session = Depends(get_db)):
-    user = await login_user_worker(db, form)
-    return user
 
 #
 # @master.get('/time/{pk}', summary='get free time for master')

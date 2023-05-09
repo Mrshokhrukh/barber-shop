@@ -11,8 +11,8 @@ class Settings:
     PROJECT_DESCRIPTION: str = "New project"
     PROJECT_VERSION: str = "1.0.0"
     POSTGRES_USER: str = os.getenv("POSTGRES_USER", 'postgres')
-    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", '7vQ3QWgVEKEZ7eam')
-    POSTGRES_SERVER: str = os.getenv("POSTGRES_SERVER", 'db.gbsawvfihwixwaaxorlj.supabase.co')
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD", 'ZgVLP7eD9pNT0FHL')
+    POSTGRES_SERVER: str = os.getenv("POSTGRES_SERVER", 'db.xtynyxkzrlcyakeoaouo.supabase.co')
     POSTGRES_PORT: str = os.getenv("POSTGRES_PORT", 5432)
     POSTGRES_DB: str = os.getenv("POSTGRES_DB", 'postgres')
     PG_URL: str = f'{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_SERVER}/{POSTGRES_DB}'
@@ -26,7 +26,7 @@ class Settings:
 
     # redis
 
-    REDIS_VERIFY_TIME: int = 120  # in sec
+    REDIS_VERIFY_TIME: int = 300  # in sec
     REDIS_CLIENT = redis.Redis.from_url(
         url='rediss://red-chcfofqk728tp998o0f0:QJrqYcRpWG2GIcVdCVg8bD7uEhQhlUbh@oregon-redis.render.com:6379',
         decode_responses=True)

@@ -12,7 +12,7 @@ def __send_email_message(msg):
         server.send_message(msg)
 
 
-def send_verification_email(user: Users, verify_code: int) -> None:
+async def send_verification_email(user: Users, verify_code: int) -> None:
     message = MIMEMultipart()
     message['Subject'] = 'Tasdiqlash kodi'
     message['From'] = settings.SMTP_EMAIL
