@@ -33,7 +33,7 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
         if num:
             master_services.append(
                 models.MasterServices(
-                    services_id=num,
+                    services_id=int(num),
                     master_id=user.id,
                 )
             )
@@ -66,10 +66,6 @@ async def get_masters_worker(db: Session):
     return users
 
 
-async def login_user_worker(db: Session, form: schemas.Login):
-    phone = form.phone
-    user = db.query(models.Masters).filter_by(phone=phone).first()
-    return user
 
 
 async def get_time_worker(db: Session, pk: int):
