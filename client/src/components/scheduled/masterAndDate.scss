@@ -4,7 +4,7 @@
   height: 100vh;
   width: 100%;
   .wrapper {
-    padding: 20px;
+    padding: 15px;
     display: flex;
     gap: 30px;
     .pickedMaster {
@@ -82,6 +82,20 @@
       }
     }
     .date {
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .master-and-date {
+    position: relative;
+    z-index: -10;
+    margin-left: 0px;
+    margin-top: 75px;
+    .wrapper {
+      width: 100%;
+      align-items: center;
+      flex-direction: column;
     }
   }
 }
