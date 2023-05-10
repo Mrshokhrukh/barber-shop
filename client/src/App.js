@@ -17,6 +17,8 @@ import AdminRoutes from "./admin/adminRoutes";
 import AdminTable from "./admin/adminComponents/table/Table";
 import SingleUser from "./admin/adminPages/single/Single";
 import Verify from "./pages/auth/Verify";
+import ScheduleTime from "./components/scheduled/ScheduleTime";
+
 const App = () => {
   
   return (
@@ -27,6 +29,7 @@ const App = () => {
             <Route path="uz/barbershop" element={<Main />}>
               <Route path="services" element={<Services />}></Route>
               <Route path="masters" element={<Masters />}></Route>
+              <Route path="masters-and-date" element={<ScheduleTime />}></Route>
             </Route>
             <Route path="auth" element={<Auth />}>
               <Route path="login" element={<Login />}></Route>

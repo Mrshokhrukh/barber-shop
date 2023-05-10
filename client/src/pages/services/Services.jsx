@@ -49,7 +49,7 @@ const Services = () => {
                 className={checkedServices.includes(service) ? "details checked" : "details"}
                 onClick={() => handleCheck(service)}
                 key={index}
-              >
+              >  
                 <div className="left">
                   <p className="service_name">{service.name}</p>
                   <div className="time_price">

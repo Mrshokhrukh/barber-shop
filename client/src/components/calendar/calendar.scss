@@ -1,0 +1,50 @@
+.calendar {
+  width: 310px;
+  //   height: 290px;
+  background-color: #ffffff;
+  padding: 16px;
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: gray;
+    #cal-icon {
+      font-size: 25px;
+      cursor: pointer;
+      width: 35px;
+      margin: 0 10px;
+    }
+  }
+
+  .days {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    .weak_days {
+      font-size: 12px;
+      margin-top: 10px;
+      text-align: center;
+      color: var(--gray);
+    }
+    .month_days {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      margin: 3px;
+      font-size: 14px;
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .month_days.active {
+      background-color: var(--main-color);
+      color: #fff;
+    }
+  }
+}
