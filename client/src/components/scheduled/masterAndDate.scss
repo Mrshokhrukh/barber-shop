@@ -3,13 +3,83 @@
   background-color: var(--background);
   height: 100vh;
   width: 100%;
-  .wrapper{
+  .wrapper {
     display: flex;
-    .pickedMaster{
+    .pickedMaster {
+      .master {
+        width: 310px;
+        height: 97px;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        transition: 0.3s;
+        border: 1px solid #e7e7e7;
+        .left-in-responsive {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+        }
 
+        .photo {
+          position: relative;
+          top: 3px;
+          img {
+            border: 2px solid rgb(221, 220, 220);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-position: center;
+            background-size: cover;
+          }
+          .i {
+            position: absolute;
+            bottom: 5px;
+            right: 0px;
+            color: #fff;
+            background-color: dodgerblue;
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .master_name {
+          .name {
+            font-size: 15px;
+            line-height: 24px;
+          }
+          .duty {
+            font-size: 12px;
+            line-height: 20px;
+            color: #39394f;
+          }
+        }
+
+        .icon {
+          color: #39394f;
+          font-size: 20px;
+          font-weight: 900;
+          margin-top: 3px;
+        }
+
+        &:hover {
+          background-color: var(--main-color);
+          cursor: pointer;
+          * {
+            color: white !important;
+            img {
+              border-color: white;
+            }
+          }
+        }
+      }
     }
-    .date{
-        
+    .date {
     }
   }
 }
