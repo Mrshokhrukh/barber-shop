@@ -4,7 +4,7 @@ const CalendarDatePicker = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(null);
-  
+
   let months = [
     "January",
     "February",
@@ -24,14 +24,12 @@ const CalendarDatePicker = () => {
   const getNumberOfDaysInMonths = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
   };
-
   const getSortedDays = (year, month) => {
     const dayIndex = new Date(year, month, 1).getDay();
     const firstHalf = days.slice(dayIndex);
 
     return [...firstHalf, ...days.slice(0, dayIndex)];
   };
-
   const range = (start, end) => {
     const length = Math.abs((end - start) / 1);
 
@@ -44,7 +42,6 @@ const CalendarDatePicker = () => {
     );
     return result;
   };
-
   const nextMonth = () => {
     if (currentMonth < 11) {
       setCurrentMonth((prev) => prev + 1);
@@ -53,7 +50,6 @@ const CalendarDatePicker = () => {
       setCurrentYear((prev) => prev + 1);
     }
   };
-
   const prevMonth = () => {
     if (currentMonth > 1) {
       setCurrentMonth((prev) => prev - 1);
