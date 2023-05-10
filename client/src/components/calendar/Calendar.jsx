@@ -71,6 +71,7 @@ const CalendarDatePicker = () => {
       <header className="header">
         <ion-icon onClick={prevMonth} name="chevron-back-outline" id="cal-icon"></ion-icon>
         <p>
+            
           {months[currentMonth]} {currentYear}
         </p>
         <ion-icon onClick={nextMonth} name="chevron-forward-outline" id="cal-icon"></ion-icon>
