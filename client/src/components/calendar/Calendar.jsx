@@ -5,7 +5,7 @@ const CalendarDatePicker = () => {
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(null);
 
-  let months = [
+  const months = [
     "January",
     "February",
     "March",
@@ -19,7 +19,7 @@ const CalendarDatePicker = () => {
     "November",
     "December",
   ];
-  let days = ["пн", "вт", "cр", "чт", "пт", "сб", "вс"];
+  const days = ["пн", "вт", "cр", "чт", "пт", "сб", "вс"];
 
   const getNumberOfDaysInMonths = (year, month) => {
     return new Date(year, month + 1, 0).getDate();
@@ -67,7 +67,7 @@ const CalendarDatePicker = () => {
     <div className="calendar">
       <header className="header">
         <ion-icon onClick={prevMonth} name="chevron-back-outline" id="cal-icon"></ion-icon>
-        <p> 
+        <p>
           {months[currentMonth]} {currentYear}
         </p>
         <ion-icon onClick={nextMonth} name="chevron-forward-outline" id="cal-icon"></ion-icon>
