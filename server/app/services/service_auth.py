@@ -3,9 +3,9 @@ from fastapi.responses import UJSONResponse
 from sqlalchemy.orm import Session
 
 from app import models
-from app.caching_redis import generate_verification_code, cache_redis, get_from_cache
+from app.utils.caching_redis import generate_verification_code, cache_redis, get_from_cache
 from app.schemas import ActivateSchema, RegisterSchema, LoginSchema
-from app.send_email import send_verification_email
+from app.utils.send_email import send_verification_email
 from config.settings import settings
 
 
@@ -47,6 +47,6 @@ async def get_all_users_worker(db: Session):
 
 
 async def login_user_worker(db: Session, form: LoginSchema):
-    phone = form.phone
-    user = db.query(models.Masters).filter_by(phone=phone).first()
+    email = form.email
+    user = db.query(models.Masters).filter_by(email=email).first()
     return user

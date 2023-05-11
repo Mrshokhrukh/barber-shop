@@ -1,7 +1,7 @@
 import typing as t
-from datetime import datetime, time, date
+from datetime import datetime, time
 
-from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time, Date)
+from sqlalchemy import (DateTime, Integer, String, func, Boolean, ForeignKey, Time)
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -28,7 +28,7 @@ class CreateDateBase:
 class Masters(Base, CreateDateBase):
     first_name: Mapped[str] = mapped_column(String(200))
     last_name: Mapped[str] = mapped_column(String(200), nullable=True)
-    phone: Mapped[str] = mapped_column(String(200), unique=True)
+    email: Mapped[str] = mapped_column(String(200), unique=True)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
     image: Mapped[str] = mapped_column(String(300), nullable=True)
 

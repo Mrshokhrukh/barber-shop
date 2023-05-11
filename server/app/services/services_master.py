@@ -66,8 +66,6 @@ async def get_masters_worker(db: Session):
     return users
 
 
-
-
 async def get_time_worker(db: Session, pk: int):
     master = db.query(models.Masters).filter_by(id=pk).first().master_time
     time_now = datetime.now().time()
