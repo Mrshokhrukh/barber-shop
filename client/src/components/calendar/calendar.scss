@@ -10,11 +10,16 @@
     font-size: 18px;
     font-weight: bold;
     color: gray;
-    #cal-icon {
-      font-size: 25px;
-      cursor: pointer;
-      width: 35px;
-      margin: 0 10px;
+    button {
+      border: none;
+      outline: none;
+      background: none;
+      #cal-icon {
+        font-size: 25px;
+        cursor: pointer;
+        width: 35px;
+        margin: 0 10px;
+      }
     }
   }
   .days {
