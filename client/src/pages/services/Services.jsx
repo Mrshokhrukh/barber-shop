@@ -3,13 +3,14 @@ import "./service.scss";
 import { BsSearch } from "react-icons/bs";
 import axios from "axios";
 import { BsCheck } from "react-icons/bs";
+import apiURL from "../../http";
 const Services = () => {
   const [serviceData, setServiceData] = useState();
   const [checkedServices, setCheckedServices] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://server-1-x7613193.deta.app/services")
+      .get(`${apiURL}/services`)
       .then((response) => {
         setServiceData(response.data);
       })
@@ -49,7 +50,7 @@ const Services = () => {
                 className={checkedServices.includes(service) ? "details checked" : "details"}
                 onClick={() => handleCheck(service)}
                 key={index}
-              >  
+              >
                 <div className="left">
                   <p className="service_name">{service.name}</p>
                   <div className="time_price">

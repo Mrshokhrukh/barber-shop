@@ -12,13 +12,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import http from "../../../http";
+import apiURL from "../../../http";
 
 const Datatable = () => {
   const [masterData, setMasterData] = useState();
 
   useEffect(() => {
     axios
-      .get("https://server-1-x7613193.deta.app/get-masters")
+      .get(`${apiURL}/get-masters`)
       .then((response) => {
         setMasterData(response.data);
       })

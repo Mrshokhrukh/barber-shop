@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import apiURL from "../../http";
 
 const Verify = () => {
   const [verify, setVerify] = useState({});
@@ -12,7 +13,7 @@ const Verify = () => {
   const submit = (e) => {
     e.preventDefault();
     axios
-      .post("https://server-1-x7613193.deta.app/activate-email", verify, {
+      .post(`${apiURL}/activate-email`, verify, {
         headers: { "content-type": "application/x-www-form-urlencoded" },
       })
       .then((res) => {

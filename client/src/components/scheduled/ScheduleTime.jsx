@@ -1,13 +1,9 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { HiOutlineChevronRight, HiOutlineExclamationCircle } from "react-icons/hi";
 import CalendarDatePicker from "../calendar/Calendar";
 import "./masterAndDate.scss";
 
 const ScheduleTime = () => {
-  // const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  // const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  // const [currentDay, setCurrentDay] = useState(new Date().getDate());
-
   const workHours = [
     "09:00",
     "09:30",
@@ -30,6 +26,23 @@ const ScheduleTime = () => {
     "18:00",
     "18:30",
   ];
+
+  let selectedOnHover = [];
+  
+  const changeBackground = (e) => {
+    // e.target.style.backgroundColor = "#0273b9fd";
+    // e.target.style.color = "white";
+    if (selectedOnHover.length < 2) {
+      selectedOnHover.push(e.target);
+    } else if (selectedOnHover.length >= 2) {
+      selectedOnHover.splice(0, 2);
+      selectedOnHover.push(e.target);
+    }
+  };
+  const removeBack = (e) => {
+    e.target.style.backgroundColor = "";
+    e.target.style.color = "";
+  };
 
   return (
     <div className="master-and-date">
@@ -61,8 +74,12 @@ const ScheduleTime = () => {
         <div className="calendar_date">
           <CalendarDatePicker minDate={new Date(2023, 4, 11)} maxDate={new Date(2023, 11, 11)} />
           <div className="date_days">
-            {workHours?.map((a) => {
-              return <span key={a}>{a}</span>;
+            {workHours?.map((hours, i) => {
+              return (
+                <span onMouseOver={changeBackground} onMouseOut={removeBack} id={i + 1} key={i}>
+                  {hours}
+                </span>
+              );
             })}
           </div>
         </div>

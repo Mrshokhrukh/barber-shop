@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
+import apiURL from "../../../http";
 
 const UserDetails = (props) => {
   let navigate = useNavigate();
@@ -12,7 +13,7 @@ const UserDetails = (props) => {
 
   const updatingUser = (id) => {
     axios
-      .get(`https://server-1-x7613193.deta.app/get-master/${id}`)
+      .get(`${apiURL}/get-master/${id}`)
       .then((res) => {
         if (res.status === 200) {
           navigate(`/admin/dashboard/workers/${id}`, { state: res.data });
@@ -27,7 +28,7 @@ const UserDetails = (props) => {
 
   const deleteUser = (id) => {
     axios
-      .delete(`https://server-1-x7613193.deta.app/delete-master/${id}`)
+      .delete(`https://barber-1-x2605905.deta.app/#/delete-master/${id}`)
       .then((response) => {
         const notify = () => toast.success(response.data);
         notify();

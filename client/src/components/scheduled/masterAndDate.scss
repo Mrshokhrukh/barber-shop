@@ -85,7 +85,7 @@
 
     .date_days {
       width: 310px;
-      margin-top: 50px;
+      margin-top: 30px;
       gap: 5px;
       display: flex;
       flex-wrap: wrap;
@@ -137,4 +137,8 @@
       }
     }
   }
+}
+
+.helo{
+  color: red;
 }

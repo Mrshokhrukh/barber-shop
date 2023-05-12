@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./master.scss";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import apiURL from "../../http";
 const Masters = () => {
   const [masterData, setMasterData] = useState();
   useEffect(() => {
     axios
-      .get("https://server-1-x7613193.deta.app/get-masters")
+      .get(`${apiURL}/get-masters`)
       .then((response) => {
         setMasterData(response.data);
       })
@@ -17,7 +18,7 @@ const Masters = () => {
         }
       });
   }, []);
-  
+
   return (
     <div className="masters_list">
       <div className="master_data">

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import apiURL from "../../http";
 
 const Register = () => {
   const [registeredUser, setRegisteredUser] = useState({});
@@ -14,7 +15,7 @@ const Register = () => {
 
     try {
       axios
-        .post("https://server-1-x7613193.deta.app/register", registeredUser, {
+        .post(`${apiURL}/register`, registeredUser, {
           headers: { "content-type": "application/x-www-form-urlencoded" },
         })
         .then((res) => {

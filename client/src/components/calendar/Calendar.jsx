@@ -19,7 +19,6 @@ const CalendarDatePicker = ({ minDate, maxDate }) => {
     "November",
     "December",
   ];
-
   const days = ["пн", "вт", "cр", "чт", "пт", "сб", "вс"];
 
   const getNumberOfDaysInMonths = (year, month) => {
@@ -64,7 +63,7 @@ const CalendarDatePicker = ({ minDate, maxDate }) => {
       setSelectedDate(new Date(currentYear, currentMonth, event.target.getAttribute("data-day")));
     }
   };
-
+  
   const getTimeFromState = (_day) => {
     return new Date(currentYear, currentMonth, _day).getTime();
   };
@@ -118,7 +117,7 @@ const CalendarDatePicker = ({ minDate, maxDate }) => {
           })}
         </div>
       </div>
-      <div className="selectedDate">
+      <div className="selected_date_time">
         <p>
           {months[selectedDate.getMonth()]} {selectedDate.getDate()},{" "}
           {

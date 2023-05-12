@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import apiURL from "../../http";
 const Login = () => {
   let navigate = useNavigate();
   const [loginUser, setLoginUser] = useState({});
@@ -13,9 +14,8 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post("https://server-1-x7613193.deta.app/login", loginUser)
+      .post(`${apiURL}/login`, loginUser)
       .then((response) => {
-        
         if (response.data.is_admin) {
           navigate("/admin/dashboard");
         } else {
@@ -28,14 +28,6 @@ const Login = () => {
           console.log(error.response.data.detail);
         }
       });
-
-    // try {
-    //   await axios
-
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
     setLoginUser({});
   };
   return (
@@ -48,7 +40,7 @@ const Login = () => {
           onChange={change}
           placeholder="phone number"
         />
-        
+
         <input
           type="text"
           name="code"

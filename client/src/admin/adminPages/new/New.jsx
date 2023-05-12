@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiURL from "../../../http";
 
 const New = () => {
   const [file, setFile] = useState(null);
@@ -21,7 +22,7 @@ const New = () => {
   };
 
   useEffect(() => {
-    axios.get(`https://server-1-x7613193.deta.app/services`).then((response) => {
+    axios.get(`${apiURL}/services`).then((response) => {
       setCheckBoxes(response.data);
     });
   }, []);
@@ -44,7 +45,7 @@ const New = () => {
     let data = { ...newMaster, image: file };
 
     await axios
-      .post("https://server-1-x7613193.deta.app/add-master", data)
+      .post(`${apiURL}/add-master`, data)
       .then((response) => {
         const notify = () => toast.success(response.data);
         notify();
