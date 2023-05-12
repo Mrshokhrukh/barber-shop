@@ -41,6 +41,7 @@ class MasterServices(Base):
     master_id: Mapped[int] = mapped_column(Integer, ForeignKey('masters.id', ondelete='CASCADE'), nullable=True)
     services_id: Mapped[int] = mapped_column(Integer, ForeignKey('services.id', ondelete='CASCADE'),
                                              nullable=True)
+    services: Mapped[list['Services']] = relationship(lazy='selectin')
 
 
 class Services(Base):

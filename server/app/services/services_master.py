@@ -3,10 +3,11 @@ from random import randint
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import update, desc
+from sqlalchemy import update, desc, text
 from sqlalchemy.orm import Session
 
 from app import schemas, models
+from app.models import Masters
 from app.schemas import ServiceSchema
 from config.db import get_db
 
@@ -46,7 +47,17 @@ async def add_master_worker(schema: schemas.MasterSchema, db: Session):
 
 async def get_master_worker(pk: int, db: Session):
     user = db.query(models.Masters).filter_by(id=pk).first()
-    return user
+    master = {
+        "id": user.id,
+        "first_name": user.first_name,
+        "is_admin": user.is_admin,
+        "email": user.email,
+        "last_name": user.last_name,
+        "image": user.image,
+    }
+    services = [s.services for s in user.master_services]
+    master["services"] = services
+    return master
 
 
 async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Session):
@@ -63,7 +74,19 @@ async def update_master_worker(pk: int, schema: schemas.MasterSchema, db: Sessio
 
 
 async def get_masters_worker(db: Session):
-    users = db.query(models.Masters).order_by(desc(models.Masters.created_at or models.Masters.updated_at)).all()
+    masters = db.query(Masters).order_by(desc(Masters.created_at or Masters.updated_at))
+    users = []
+    for user in masters:
+        users.append(
+            {
+                'id': user.id,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'email': user.email,
+                'is_admin': user.is_admin,
+                'image': user.image
+            }
+        )
     return users
 
 
@@ -131,3 +154,7 @@ async def update_service_worker(pk: int, db: Session, schema: ServiceSchema):
     db.execute(query)
     db.commit()
     return UJSONResponse("Muvaffaqiyatli yangilandi !", 200)
+
+
+async def get_service_worker(pk: int, db: Session):
+    service = db.query(models.MasterServices).filter_by(services_id=pk).first()

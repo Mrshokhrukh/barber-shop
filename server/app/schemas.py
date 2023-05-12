@@ -11,7 +11,7 @@ from config.db import get_db
 
 class MasterSchema(BaseModel):
     first_name: str
-    last_name: str
+    last_name: str | None
     email: str
     image: UploadFile
     master_services: str
@@ -39,7 +39,7 @@ class MasterSchema(BaseModel):
     def as_form(
             cls,
             first_name: str = Form(...),
-            last_name: str = Form(None),
+            last_name: str | None = Form(None),
             email: str = Form(...),
             image: UploadFile = File(...),
             master_services: str = Form(...)
