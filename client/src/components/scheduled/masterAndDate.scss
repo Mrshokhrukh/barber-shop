@@ -7,6 +7,7 @@
     padding: 15px;
     display: flex;
     gap: 30px;
+
     .pickedMaster {
       .master {
         width: 310px;
@@ -81,21 +82,59 @@
         }
       }
     }
-    // .date {
-    // }
+
+    .date_days {
+      width: 310px;
+      margin-top: 50px;
+      gap: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 5px;
+      span {
+        width: 70px;
+        height: 28px;
+        background-color: #fff;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        border: 0.2px solid rgb(217, 213, 213);
+      }
+    }
   }
 }
 
 @media (max-width: 768px) {
   .master-and-date {
-    position: relative;
-    z-index: -10;
     margin-left: 0px;
     margin-top: 75px;
     .wrapper {
       width: 100%;
       align-items: center;
       flex-direction: column;
+      gap: 10px;
+
+      .pickedMaster {
+        width: 100%;
+        .master {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          padding: 0 20px;
+        }
+      }
+      .calendar_date {
+        width: 100%;
+        display: flex;
+        gap: 5px;
+        .calendar {
+          flex: 1;
+        }
+        .date_days {
+          flex: 1;
+        }
+      }
     }
   }
 }

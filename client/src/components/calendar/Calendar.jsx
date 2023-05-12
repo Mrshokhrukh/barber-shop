@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./calendar.scss";
-const CalendarDatePicker = () => {
+const CalendarDatePicker = ({ minDate, maxDate }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const months = [
     "January",
@@ -19,6 +19,7 @@ const CalendarDatePicker = () => {
     "November",
     "December",
   ];
+
   const days = ["пн", "вт", "cр", "чт", "пт", "сб", "вс"];
 
   const getNumberOfDaysInMonths = (year, month) => {
@@ -63,43 +64,71 @@ const CalendarDatePicker = () => {
       setSelectedDate(new Date(currentYear, currentMonth, event.target.getAttribute("data-day")));
     }
   };
+
+  const getTimeFromState = (_day) => {
+    return new Date(currentYear, currentMonth, _day).getTime();
+  };
+
   return (
-    <div className="calendar">
-      <header className="header">
-        <ion-icon onClick={prevMonth} name="chevron-back-outline" id="cal-icon"></ion-icon>
+    <>
+      <div className="calendar">
+        <header className="header">
+          <button onClick={prevMonth} disabled={minDate?.getTime() > getTimeFromState(1)}>
+            <ion-icon name="chevron-back-outline" id="cal-icon"></ion-icon>
+          </button>
+          <p>
+            {months[currentMonth]} {currentYear}
+          </p>
+          <button
+            onClick={nextMonth}
+            disabled={
+              maxDate?.getTime() <
+              getTimeFromState(getNumberOfDaysInMonths(currentYear, currentMonth))
+            }
+          >
+            <ion-icon name="chevron-forward-outline" id="cal-icon"></ion-icon>
+          </button>
+        </header>
+        <div className="days">
+          {getSortedDays(currentYear, currentMonth).map((day) => {
+            return (
+              <p className="weak_days" key={day}>
+                {day}
+              </p>
+            );
+          })}
+        </div>
+        <div className="days" onClick={handleSelect}>
+          {range(1, getNumberOfDaysInMonths(currentYear, currentMonth) + 1).map((day) => {
+            return (
+              <button
+                key={day}
+                disabled={minDate?.getTime() > getTimeFromState(day)}
+                id="day"
+                data-day={day}
+                className={
+                  selectedDate?.getDate() === new Date(currentYear, currentMonth, day).getDate()
+                    ? "month_days active"
+                    : "month_days"
+                }
+              >
+                {day}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <div className="selectedDate">
         <p>
-          {months[currentMonth]} {currentYear}
+          {months[selectedDate.getMonth()]} {selectedDate.getDate()},{" "}
+          {
+            ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][
+              selectedDate.getDay()
+            ]
+          }
         </p>
-        <ion-icon onClick={nextMonth} name="chevron-forward-outline" id="cal-icon"></ion-icon>
-      </header>
-      <div className="days">
-        {getSortedDays(currentYear, currentMonth).map((day) => {
-          return (
-            <p className="weak_days" key={day}>
-              {day}
-            </p>
-          );
-        })}
       </div>
-      <div className="days" onClick={handleSelect}>
-        {range(1, getNumberOfDaysInMonths(currentYear, currentMonth) + 1).map((day) => {
-          return (
-            <div
-              key={day}
-              id="day"
-              data-day={day}
-              className={
-                selectedDate?.getTime() === new Date(currentYear, currentMonth, day).getTime()
-                  ? "month_days active"
-                  : "month_days"
-              }
-            >
-              {day}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    </>
   );
 };
 
