@@ -7,6 +7,7 @@ from sqlalchemy import update, desc
 from sqlalchemy.orm import Session
 
 from app import schemas, models
+from app.schemas import ServiceSchema
 from config.db import get_db
 
 
@@ -108,3 +109,25 @@ async def add_services_worker():
     db.commit()
     db.close()
     print("Service qo'shildi")
+
+
+async def add_service_worker(db: Session, schema: ServiceSchema):
+    data = schema.dict(exclude_none=True)
+    service = models.Services(**data)
+    db.add(service), db.commit()
+    return data
+
+
+async def delete_service_worker(pk: int, db: Session):
+    service = db.query(models.Services).filter_by(id=pk).first()
+    db.delete(service)
+    db.commit()
+    return UJSONResponse("Muvaffaqiyatli o'chirildi !", 200)
+
+
+async def update_service_worker(pk: int, db: Session, schema: ServiceSchema):
+    data = schema.dict(exclude_none=True)
+    query = update(models.Services).values(**data).where(models.Services.id == pk)
+    db.execute(query)
+    db.commit()
+    return UJSONResponse("Muvaffaqiyatli yangilandi !", 200)

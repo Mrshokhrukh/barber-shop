@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app import schemas
+from app.schemas import ServiceSchema, MasterSchema
 from app.services.services_master import add_master_worker, get_masters_worker, get_master_worker, \
-    update_master_worker, delete_master_worker, get_all_services_worker
+    update_master_worker, delete_master_worker, get_all_services_worker, add_service_worker, delete_service_worker, \
+    update_service_worker
 from config.db import get_db
 
 master = APIRouter(tags=['master'])
@@ -11,7 +12,7 @@ master = APIRouter(tags=['master'])
 
 @master.post('/add-master', summary='Add master with phone')
 async def add_master(
-        schema: schemas.MasterSchema = Depends(),
+        schema: MasterSchema = Depends(MasterSchema.as_form),
         db: Session = Depends(get_db)
 ):
     user = await add_master_worker(schema, db)
@@ -31,8 +32,10 @@ async def get_master(pk: int, db: Session = Depends(get_db)):
 
 
 @master.put('/update-master/{pk}', summary='update master')
-async def update_master(pk: int, schema: schemas.MasterSchema = Depends(schemas.MasterSchema.as_form),
-                        db: Session = Depends(get_db)):
+async def update_master(
+        pk: int, schema: MasterSchema = Depends(MasterSchema.as_form),
+        db: Session = Depends(get_db)
+):
     response = await update_master_worker(pk, schema, db)
     return response
 
@@ -49,6 +52,29 @@ async def get_all_services(db: Session = Depends(get_db)):
     return response
 
 
+@master.post('/add-service', summary='add service')
+async def add_service(
+        db: Session = Depends(get_db),
+        schema: ServiceSchema = Depends(ServiceSchema.as_form)
+):
+    service = await add_service_worker(db, schema)
+    return service
+
+
+@master.delete('/delete-service', summary='delete service')
+async def delete_service(pk: int, db: Session = Depends(get_db)):
+    response = await delete_service_worker(pk, db)
+    return response
+
+
+@master.put('/update-service', summary='update service')
+async def update_service(
+        pk: int,
+        db: Session = Depends(get_db),
+        schema: ServiceSchema = Depends(ServiceSchema.as_form)
+):
+    response = await update_service_worker(pk, db, schema)
+    return response
 
 #
 # @master.get('/time/{pk}', summary='get free time for master')
