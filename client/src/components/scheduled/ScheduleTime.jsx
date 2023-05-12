@@ -1,43 +1,36 @@
 import React, { useRef, useState } from "react";
 import { HiOutlineChevronRight, HiOutlineExclamationCircle } from "react-icons/hi";
+import { months, weekDays, workHours } from "../../date";
 import CalendarDatePicker from "../calendar/Calendar";
 import "./masterAndDate.scss";
 
 const ScheduleTime = () => {
-  const workHours = [
-    "09:00",
-    "09:30",
-    "10:00",
-    "10:30",
-    "11:00",
-    "11:30",
-    "12:00",
-    "12:30",
-    "13:00",
-    "13:30",
-    "14:30",
-    "14:00",
-    "15:00",
-    "15:30",
-    "16:00",
-    "16:30",
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
-  ];
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+  const [currentDay, setcurrentDay] = useState(new Date().getDate());
+  const [currentYear, setcurrentYear] = useState(new Date().getFullYear());
+  const [weekday, setcurrentWeekDay] = useState(new Date().getDay());
+  const [selectedDate, setSelectedDate] = useState();
+  const [selectedTime, setSelectedTime] = useState();
+
+  const handleSelectDate = (month, date, day) => {
+    setSelectedDate({ month: month, date: date, day: day });
+    // console.log(months[selectedDate.getMonth()],selectedDate.getDate(),weekDays[selectedDate.getDay()]);
+    
+    console.log(selectedDate);
+  };
 
   let selectedOnHover = [];
-  
+
   const changeBackground = (e) => {
-    // e.target.style.backgroundColor = "#0273b9fd";
-    // e.target.style.color = "white";
-    if (selectedOnHover.length < 2) {
-      selectedOnHover.push(e.target);
-    } else if (selectedOnHover.length >= 2) {
-      selectedOnHover.splice(0, 2);
-      selectedOnHover.push(e.target);
-    }
+    e.target.style.backgroundColor = "#0273b9fd";
+    e.target.style.color = "white";
+
+    // if (selectedOnHover.length < 2) {
+    //   selectedOnHover.push(e.target);
+    // } else if (selectedOnHover.length >= 2) {
+    //   selectedOnHover.splice(0, 2);
+    //   selectedOnHover.push(e.target);
+    // }
   };
   const removeBack = (e) => {
     e.target.style.backgroundColor = "";
@@ -72,11 +65,21 @@ const ScheduleTime = () => {
         </div>
 
         <div className="calendar_date">
-          <CalendarDatePicker minDate={new Date(2023, 4, 11)} maxDate={new Date(2023, 11, 11)} />
+          <CalendarDatePicker
+            minDate={new Date(currentYear, currentMonth, currentDay)}
+            maxDate={new Date(2023, 11, 11)}
+            handleSelectDate={handleSelectDate}
+          />
           <div className="date_days">
             {workHours?.map((hours, i) => {
               return (
-                <span onMouseOver={changeBackground} onMouseOut={removeBack} id={i + 1} key={i}>
+                <span
+                  onMouseOver={changeBackground}
+                  onMouseOut={removeBack}
+                  id={hours}
+                  key={hours}
+                  onClick={() => handleSelectDate(hours)}
+                >
                   {hours}
                 </span>
               );

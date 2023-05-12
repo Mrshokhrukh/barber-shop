@@ -1,47 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getNumberOfDaysInMonths, getSortedDays, months, range, weekDays } from "../../date";
 import "./calendar.scss";
-const CalendarDatePicker = ({ minDate, maxDate }) => {
+const CalendarDatePicker = ({ minDate, maxDate, handleSelectDate }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const days = ["пн", "вт", "cр", "чт", "пт", "сб", "вс"];
-
-  const getNumberOfDaysInMonths = (year, month) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
-  const getSortedDays = (year, month) => {
-    const dayIndex = new Date(year, month, 1).getDay();
-    const firstHalf = days.slice(dayIndex);
-
-    return [...firstHalf, ...days.slice(0, dayIndex)];
-  };
-  const range = (start, end) => {
-    const length = Math.abs((end - start) / 1);
-
-    const { result } = Array.from({ length }).reduce(
-      ({ result, current }) => ({
-        result: [...result, current],
-        current: current + 1,
-      }),
-      { result: [], current: start }
-    );
-    return result;
-  };
   const nextMonth = () => {
     if (currentMonth < 11) {
       setCurrentMonth((prev) => prev + 1);
@@ -63,10 +27,18 @@ const CalendarDatePicker = ({ minDate, maxDate }) => {
       setSelectedDate(new Date(currentYear, currentMonth, event.target.getAttribute("data-day")));
     }
   };
-  
+
   const getTimeFromState = (_day) => {
     return new Date(currentYear, currentMonth, _day).getTime();
   };
+
+  useEffect(() => {
+    handleSelectDate.contex(
+      months[selectedDate.getMonth()],
+      selectedDate.getDate(),
+      weekDays[selectedDate.getDay()]
+    );
+  }, []);
 
   return (
     <>
@@ -120,11 +92,7 @@ const CalendarDatePicker = ({ minDate, maxDate }) => {
       <div className="selected_date_time">
         <p>
           {months[selectedDate.getMonth()]} {selectedDate.getDate()},{" "}
-          {
-            ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][
-              selectedDate.getDay()
-            ]
-          }
+          {weekDays[selectedDate.getDay()]}
         </p>
       </div>
     </>

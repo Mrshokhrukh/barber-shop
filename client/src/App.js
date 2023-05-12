@@ -20,34 +20,33 @@ import Verify from "./pages/auth/Verify";
 import ScheduleTime from "./components/scheduled/ScheduleTime";
 
 const App = () => {
-  
+  const MyContext = React.createContext();
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />}></Route>
-            <Route path="uz/barbershop" element={<Main />}>
-              <Route path="services" element={<Services />}></Route>
-              <Route path="masters" element={<Masters />}></Route>
-              <Route path="masters-and-date" element={<ScheduleTime />}></Route>
-            </Route>
-            <Route path="auth" element={<Auth />}>
-              <Route path="login" element={<Login />}></Route>
-              <Route path="register" element={<Register />}></Route>
-              <Route path="verify" element={<Verify />}></Route>
-            </Route>
-            <Route path="admin/dashboard" element={<AdminRoutes />}>
-              <Route index element={<AdminHome />} />
-              <Route path="workers">
-                <Route index element={<List />} />
-                <Route path=":userId" element={<SingleUser />} />
-                <Route path="new" element={<New title="Add New Masters" />} />
-              </Route>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="uz/barbershop" element={<Main />}>
+            <Route path="services" element={<Services />}></Route>
+            <Route path="masters" element={<Masters />}></Route>
+            <Route path="masters-and-date" element={<ScheduleTime />}></Route>
+          </Route>
+          <Route path="auth" element={<Auth />}>
+            <Route path="login" element={<Login />}></Route>
+            <Route path="register" element={<Register />}></Route>
+            <Route path="verify" element={<Verify />}></Route>
+          </Route>
+          <Route path="admin/dashboard" element={<AdminRoutes />}>
+            <Route index element={<AdminHome />} />
+            <Route path="workers">
+              <Route index element={<List />} />
+              <Route path=":userId" element={<SingleUser />} />
+              <Route path="new" element={<New title="Add New Masters" />} />
             </Route>
           </Route>
-        </Routes>
-      </BrowserRouter>
-  
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
