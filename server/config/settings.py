@@ -27,15 +27,15 @@ class Settings:
     # redis
 
     REDIS_VERIFY_TIME: int = 300  # in sec
-    REDIS_CLIENT = redis.Redis.from_url(
+    REDIS_CONNECTION = redis.Redis.from_url(
         url='rediss://red-chcfofqk728tp998o0f0:QJrqYcRpWG2GIcVdCVg8bD7uEhQhlUbh@oregon-redis.render.com:6379',
         decode_responses=True)
 
     # send email
     SMTP_HOST: str = os.getenv('SMTP_HOST', 'smtp.gmail.com')
     SMTP_PORT: int = os.getenv('SMTP_PORT', 465)
-    SMTP_EMAIL: str = os.getenv('SMTP_EMAIL', 'khasanjon.eng@gmail.com')
-    SMTP_PASSWORD: str = os.getenv('SMTP_PASSWORD', 'vqvaikrjhrjjbpwl')  # noqa
+    SMTP_EMAIL: str = os.getenv('SMTP_EMAIL', 'khasanjon7060@gmail.com')
+    SMTP_PASSWORD: str = os.getenv('SMTP_PASSWORD', 'onjxvbgxannaaaeq')  # noqa
 
 
 settings = Settings()

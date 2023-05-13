@@ -2,7 +2,9 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.services.service_auth import register_worker, activate_email_worker, get_all_users_worker, login_user_worker
+from app.schemas import LoginSchema
+from app.services.service_auth import register_worker, activate_email_worker, get_all_users_worker, login_create_token, \
+    get_current_user
 from config.db import get_db
 
 auth = APIRouter(tags=['auth'])
@@ -27,13 +29,15 @@ async def activate_email(
 
 
 @auth.get('/all-users', summary='get all users')
-async def get_all_users(db: Session = Depends(get_db)):
+async def get_all_users(
+        db: Session = Depends(get_db),
+        current_user=Depends(get_current_user)
+):
     users = await get_all_users_worker(db)
     return users
 
 
-
 @auth.post('/login', summary='login')
-async def login(form: schemas.LoginSchema, db: Session = Depends(get_db)):
-    user = await login_user_worker(db, form)
+async def login(form: schemas.LoginSchema = Depends(LoginSchema.as_form), db: Session = Depends(get_db)):
+    user = login_create_token(form, db)
     return user

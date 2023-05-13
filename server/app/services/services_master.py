@@ -3,7 +3,7 @@ from random import randint
 
 import httpx
 from fastapi.responses import UJSONResponse
-from sqlalchemy import update, desc, text
+from sqlalchemy import update, desc
 from sqlalchemy.orm import Session
 
 from app import schemas, models
@@ -19,7 +19,6 @@ def uploading_image(path_image):
 
 async def add_master_worker(schema: schemas.MasterSchema, db: Session):
     # save database
-
     data: dict = schema.dict(exclude_none=True)
     services: str = data.pop('master_services')
     if image := data.get('image'):

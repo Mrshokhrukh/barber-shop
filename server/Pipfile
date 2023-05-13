@@ -16,7 +16,6 @@ pipfile = "*"
 httpx = "*"
 redis = "*"
 
-
 [dev-packages]
 
 [requires]

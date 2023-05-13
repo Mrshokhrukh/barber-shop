@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi.security import HTTPBearer
 from sqlalchemy.orm import Session
 
 from app.schemas import ServiceSchema, MasterSchema
@@ -9,11 +10,14 @@ from config.db import get_db
 
 master = APIRouter(tags=['master'])
 
+security = HTTPBearer()
+
 
 @master.post('/add-master', summary='Add master with phone')
 async def add_master(
         schema: MasterSchema = Depends(MasterSchema.as_form),
-        db: Session = Depends(get_db)
+        db: Session = Depends(get_db),
+        # credentials: HTTPAuthorizationCredentials = Depends(security),
 ):
     user = await add_master_worker(schema, db)
     return user
