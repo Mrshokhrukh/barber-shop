@@ -55,36 +55,43 @@ class MasterSchema(BaseModel):
 
 class LoginSchema(BaseModel):
     email: str
-    code: str
+    password: str
 
     class Config:
         orm_mode = True
 
-    @root_validator()
-    def validation(cls, values):
-        code = values.get('code')
-        email = values.get('email')
-        db = next(get_db())
+    # @root_validator()
+    # def validation(cls, values):
+    #     password = values.get('password')
+    #     email = values.get('email')
+    #     db = next(get_db())
+    #
+    #     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+    #     if not re.search(regex, email):
+    #         raise HTTPException(400, "Email yaroqsiz !")
+    #
+    #     user = db.query(models.Masters).filter_by(phone=email).first()
+    #     if not user:
+    #         raise HTTPException(404, "Email ro'yxatdan o'tmagan !")
+    #     return values
 
-        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
-        if not re.search(regex, email):
-            raise HTTPException(400, "Email yaroqsiz !")
+    @classmethod
+    def as_form(
+            cls,
+            email: str = Form(...),
+            password: str = Form(...),
 
-        user = db.query(models.Masters).filter_by(phone=email).first()
-        if not user:
-            raise HTTPException(404, "Email ro'yxatdan o'tmagan !")
-        if code != '123456' and code != '123':
-            raise HTTPException(400, "Tasdiqlash kodi xato !")
-        if code == '123':
-            user.is_admin = True
-            db.commit()
-        db.close()
-        return values
+    ):
+        return cls(
+            email=email,
+            password=password,
+        )
 
 
 class RegisterSchema(BaseModel):
     name: str
     email: str
+    password: str
 
     class Config:
         orm_mode = True
@@ -110,11 +117,13 @@ class RegisterSchema(BaseModel):
             cls,
             name: str = Form(...),
             email: str = Form(...),
+            password: str = Form(...),
 
     ):
         return cls(
             name=name,
             email=email,
+            password=password,
         )
 
 

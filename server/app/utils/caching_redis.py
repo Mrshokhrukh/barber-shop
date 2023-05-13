@@ -3,7 +3,7 @@ from random import randint
 
 from config.settings import settings
 
-cache = settings.REDIS_CONNECTION
+cache = settings.REDIS_CLIENT
 
 
 def generate_verification_code() -> int:
