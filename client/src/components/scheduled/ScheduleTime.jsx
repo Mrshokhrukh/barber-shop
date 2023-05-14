@@ -12,12 +12,12 @@ const ScheduleTime = () => {
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState();
 
-  const handleSelectDate = (month, date, day) => {
-    setSelectedDate({ month: month, date: date, day: day });
-    // console.log(months[selectedDate.getMonth()],selectedDate.getDate(),weekDays[selectedDate.getDay()]);
-    
-    console.log(selectedDate);
-  };
+  // const handleSelectDate = (month, date, day) => {
+  //   setSelectedDate({ month, date, day });
+  //   // console.log(months[selectedDate.getMonth()],selectedDate.getDate(),weekDays[selectedDate.getDay()]);
+
+  //   console.log(selectedDate);
+  // };
 
   let selectedOnHover = [];
 
@@ -68,22 +68,25 @@ const ScheduleTime = () => {
           <CalendarDatePicker
             minDate={new Date(currentYear, currentMonth, currentDay)}
             maxDate={new Date(2023, 11, 11)}
-            handleSelectDate={handleSelectDate}
+            // handleSelectDate={handleSelectDate}
           />
           <div className="date_days">
-            {workHours?.map((hours, i) => {
-              return (
-                <span
-                  onMouseOver={changeBackground}
-                  onMouseOut={removeBack}
-                  id={hours}
-                  key={hours}
-                  onClick={() => handleSelectDate(hours)}
-                >
-                  {hours}
-                </span>
-              );
-            })}
+            <h3>O'zingizga qulay vaqtni tanlang</h3> <br />
+            <div className="hours">
+              {workHours?.map((hours, i) => {
+                return (
+                  <span
+                    onMouseOver={changeBackground}
+                    onMouseOut={removeBack}
+                    id={hours}
+                    key={hours}
+                    // onClick={handleSelectDate}
+                  >
+                    {hours}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

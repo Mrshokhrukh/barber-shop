@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getNumberOfDaysInMonths, getSortedDays, months, range, weekDays } from "../../date";
 import "./calendar.scss";
-const CalendarDatePicker = ({ minDate, maxDate, handleSelectDate }) => {
+const CalendarDatePicker = ({ minDate, maxDate }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -32,16 +32,16 @@ const CalendarDatePicker = ({ minDate, maxDate, handleSelectDate }) => {
     return new Date(currentYear, currentMonth, _day).getTime();
   };
 
-  useEffect(() => {
-    handleSelectDate.contex(
-      months[selectedDate.getMonth()],
-      selectedDate.getDate(),
-      weekDays[selectedDate.getDay()]
-    );
-  }, []);
+  // useEffect(() => {
+  //   handleSelectDate(
+  //     months[selectedDate.getMonth()],
+  //     selectedDate.getDate(),
+  //     weekDays[selectedDate.getDay()]
+  //   );
+  // }, []);
 
   return (
-    <>
+    <div className="calendar_wrapper">
       <div className="calendar">
         <header className="header">
           <button onClick={prevMonth} disabled={minDate?.getTime() > getTimeFromState(1)}>
@@ -95,7 +95,7 @@ const CalendarDatePicker = ({ minDate, maxDate, handleSelectDate }) => {
           {weekDays[selectedDate.getDay()]}
         </p>
       </div>
-    </>
+    </div>
   );
 };
 

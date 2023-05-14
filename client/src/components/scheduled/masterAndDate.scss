@@ -1,8 +1,9 @@
 .master-and-date {
   margin-left: 385px;
   background-color: var(--background);
-  height: 100vh;
   width: 100%;
+  position: relative;
+  z-index: -2;
   .wrapper {
     padding: 15px;
     display: flex;
@@ -18,6 +19,7 @@
         align-items: center;
         transition: 0.3s;
         border: 1px solid #e7e7e7;
+        cursor: pointer;
         .left-in-responsive {
           display: flex;
           align-items: center;
@@ -72,7 +74,7 @@
 
         &:hover {
           background-color: var(--main-color);
-          cursor: pointer;
+
           * {
             color: white !important;
             img {
@@ -84,31 +86,42 @@
     }
 
     .date_days {
+      h3 {
+        text-align: center;
+        font-size: 14px;
+        border-bottom: var(--bottom-line);
+        line-height: 30px;
+      }
       width: 310px;
       margin-top: 30px;
-      gap: 5px;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       margin-left: 5px;
-      span {
-        width: 70px;
-        height: 28px;
-        background-color: #fff;
-        cursor: pointer;
+      .hours {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 14px;
-        border: 0.2px solid rgb(217, 213, 213);
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 5px;
+        span {
+          width: 70px;
+          height: 28px;
+          background-color: #fff;
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 14px;
+          border: 0.2px solid rgb(217, 213, 213);
+        }
       }
     }
-  }
+  } 
 }
 
 @media (max-width: 768px) {
   .master-and-date {
     margin-left: 0px;
-    margin-top: 75px;
+    margin-top: 85px;
     .wrapper {
       width: 100%;
       align-items: center;
@@ -128,17 +141,33 @@
         width: 100%;
         display: flex;
         gap: 5px;
-        .calendar {
+        .calendar_wrapper {
           flex: 1;
         }
+
         .date_days {
           flex: 1;
+          margin-top: 0px;
         }
       }
     }
   }
 }
 
-.helo{
-  color: red;
-}
+// @media (max-width: 600px) {
+//   .master-and-date {
+//     margin-top: 70px;
+//   }
+//   .wrapper {
+//     padding: 0;
+//     .date_days {
+//       margin-top: 20px !important;
+//     }
+//   }
+//   .calendar_date {
+//     width: 100%;
+//     align-items: center;
+//     display: flex;
+//     flex-direction: column;
+//   }
+// }
