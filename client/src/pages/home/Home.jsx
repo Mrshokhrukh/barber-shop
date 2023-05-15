@@ -2,12 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import "./home.scss";
-
+import video from "../../assets/EPIC_B_roll___Cinematic_BarberShop_mr_Bond___sony_a6500_16_50_mm.mp4";
 const Home = () => {
   return (
     <>
       <div className="home-bg-enterance">
-        
+        <video autoPlay muted loop>
+          <source src={video} type="video/mp4" />
+        </video>
       </div>
 
       <Container fixed className="container">
