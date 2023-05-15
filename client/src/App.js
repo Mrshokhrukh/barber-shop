@@ -18,6 +18,7 @@ import AdminTable from "./admin/adminComponents/table/Table";
 import SingleUser from "./admin/adminPages/single/Single";
 import Verify from "./pages/auth/Verify";
 import ScheduleTime from "./components/scheduled/ScheduleTime";
+import NavigateServices from "./components/path-indexFile/NavigateServices";
 
 const App = () => {
   const MyContext = React.createContext();
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path="uz/barbershop" element={<Main />}>
+            <Route index element={<NavigateServices />}></Route>
             <Route path="services" element={<Services />}></Route>
             <Route path="masters" element={<Masters />}></Route>
             <Route path="master-and-date" element={<ScheduleTime />}></Route>

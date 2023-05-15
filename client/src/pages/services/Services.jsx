@@ -10,8 +10,7 @@ const Services = () => {
   let location = useLocation();
   const [serviceData, setServiceData] = useState();
   const [checkedServices, setCheckedServices] = useState([]);
-  let checkStorage = localStorage.getItem(`master:${location.state.id}`);
-
+  let checkStorage = localStorage.getItem(`master:${location?.state?.id}`);
 
   useEffect(() => {
     axios
@@ -35,6 +34,7 @@ const Services = () => {
       newCheckedItems.splice(currentIndex, 1);
     }
     setCheckedServices(newCheckedItems);
+    localStorage.setItem(`services:${JSON.stringify(checkedServices)}`);
   };
 
   return (
