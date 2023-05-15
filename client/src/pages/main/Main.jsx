@@ -46,7 +46,7 @@ const Main = () => {
 
   return (
     <div className="main-app-wrapper">
-      <div className={isOpen ? inOpenSidebar.current : ""}></div>
+      <div className={isOpen ? inOpenSidebar.current : ""} onClick={() => setIsOpen(false)}></div>
       <Header openSidebar={openSidebar} />
       <div className="main-app">
         <Sidebar isOpen={isOpen} closeSidebar={closeSidebar} />

@@ -5,27 +5,28 @@ import "./home.scss";
 
 const Home = () => {
   return (
-    <Container fixed className="container">
-      <div className="home">
-        <div className="enter-text">
-          <p className="text">Telefon orqali bog'lanishni istaysizmi ?</p>
-        </div>
-
-        <div className="phone">
-          <p className="text">aloqa orqali bog'laning</p>
-          <p className="phone-number">+7 (906) 061-96-53</p>
-        </div>
+    <>
+      <div className="home-bg-enterance">
         
-        <div className="link-btn">
-          <button>
-            <Link to="/uz/barbershop">recording</Link>
-          </button>
-          <button>
-            <Link to="/uz/barbershop">cancell</Link>
-          </button>
-        </div>
       </div>
-    </Container>
+
+      <Container fixed className="container">
+        <div className="home">
+          <div className="home-entrance-text">
+            <p className="home-text">Telefon o'rqali bog'lanishni istaysizmi ?</p>
+            <p className="phone-number">+998 (91) 523-60-03</p>
+          </div>
+          <div className="home-link-btns">
+            <Link to="/uz/barbershop">
+              <button className="button home-btn cancel">ishchilar</button>
+            </Link>
+            <Link to="/uz/barbershop">
+              <button className="button home-btn continue">hizmatlar</button>
+            </Link>
+          </div>
+        </div>
+      </Container>
+    </>
   );
 };
 

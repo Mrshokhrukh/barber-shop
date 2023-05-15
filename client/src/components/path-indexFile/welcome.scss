@@ -1,9 +1,11 @@
 .welcome {
+  padding: 12px;
   margin-left: 385px;
 }
 
 @media (max-width: 768px) {
   .welcome {
-    margin-top: 85px;
+    margin-top: 75px;
+    margin-left: 0;
   }
 }

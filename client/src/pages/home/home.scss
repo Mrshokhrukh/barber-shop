@@ -1,0 +1,60 @@
+.home-bg-enterance {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  z-index: -100;
+  left: 0;
+  top: 0;
+  video {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.home {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  text-transform: capitalize;
+
+  .home-entrance-text {
+    font-size: 16px;
+    text-align: center;
+    .phone-number {
+      line-height: 42px;
+      font-size: 26px;
+    }
+  }
+
+  .home-link-btns {
+    display: flex;
+    // flex-direction: column;
+    gap: 15px;
+    .home-btn {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      width: 200px;
+      height: 45px;
+      background-color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .home-btn.continue {
+      border: 1px solid black;
+    }
+  }
+}
+
+@media (max-width: 512px) {
+  .home {
+    .home-link-btns {
+      flex-direction: column;
+    }
+  }
+}

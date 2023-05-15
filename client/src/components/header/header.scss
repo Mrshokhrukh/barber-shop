@@ -6,15 +6,14 @@
 }
 
 .main-app-header {
-  padding: 15px 25px;
+  padding: 12px 20px;
   display: flex;
   justify-content: space-between;
   background-color: rgb(211, 210, 210);
   display: none;
   .icon {
-    font-size: 26px;
-    width: 45px;
-    height: 30px;
+    width: 33px;
+    height: 28px;
     cursor: pointer;
     &:hover {
       color: var(--gray);
