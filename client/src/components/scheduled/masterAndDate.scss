@@ -2,8 +2,8 @@
   margin-left: 385px;
   background-color: var(--background);
   width: 100%;
-  position: relative;
-  z-index: -2;
+  // position: relative;
+  // z-index: -2;
   .wrapper {
     padding: 15px;
     display: flex;
@@ -115,7 +115,7 @@
         }
       }
     }
-  } 
+  }
 }
 
 @media (max-width: 768px) {
@@ -154,20 +154,20 @@
   }
 }
 
-// @media (max-width: 600px) {
-//   .master-and-date {
-//     margin-top: 70px;
-//   }
-//   .wrapper {
-//     padding: 0;
-//     .date_days {
-//       margin-top: 20px !important;
-//     }
-//   }
-//   .calendar_date {
-//     width: 100%;
-//     align-items: center;
-//     display: flex;
-//     flex-direction: column;
-//   }
-// }
+@media (max-width: 600px) {
+  .master-and-date {
+    margin-top: 70px;
+  }
+  .wrapper {
+    padding: 0;
+    .date_days {
+      margin-top: 20px !important;
+    }
+  }
+  .calendar_date {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}

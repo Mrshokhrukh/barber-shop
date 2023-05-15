@@ -3,7 +3,6 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Login from "../auth/Login";
 
-
 import "./style.scss";
 import Header from "../../components/header/Header";
 const Main = () => {
@@ -11,7 +10,7 @@ const Main = () => {
   const inOpenSidebar = useRef("");
   const [isOpen, setIsOpen] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
- 
+
   useEffect(() => {
     const handleWidth = () => {
       setWidth(window.innerWidth);
@@ -48,7 +47,7 @@ const Main = () => {
   return (
     <div className="main-app-wrapper">
       <div className={isOpen ? inOpenSidebar.current : ""}></div>
-      <Header openSidebar={openSidebar}/>
+      <Header openSidebar={openSidebar} />
       <div className="main-app">
         <Sidebar isOpen={isOpen} closeSidebar={closeSidebar} />
         <Outlet />

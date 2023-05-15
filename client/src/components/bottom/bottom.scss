@@ -1,0 +1,35 @@
+.bottom-link {
+  position: fixed;
+  left: 385px;
+  bottom: 0;
+  height: 65px;
+  width: 72%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    height: 100%;
+    width: 100%;
+    background-color: var(--main-color);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    color: white;
+    &:disabled {
+      cursor: no-drop;
+      background-color: rgb(216, 216, 216);
+    }
+  }
+}
+@media (max-width: 992px) {
+  .bottom-link {
+    width: 60%;
+  }
+}
+@media (max-width: 768px) {
+  .bottom-link {
+    left: 0px;
+    width: 100%;
+  }
+}
