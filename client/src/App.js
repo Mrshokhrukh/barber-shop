@@ -32,12 +32,15 @@ const App = () => {
             <Route path="services" element={<Services />}></Route>
             <Route path="masters" element={<Masters />}></Route>
             <Route path="master-and-date" element={<ScheduleTime />}></Route>
+
+            <Route path="auth" element={<Auth />}>
+              <Route path="login" element={<Login />}></Route>
+              <Route path="register" element={<Register />}></Route>
+              <Route path="verify" element={<Verify />}></Route>
+            </Route>
+            
           </Route>
-          <Route path="auth" element={<Auth />}>
-            <Route path="login" element={<Login />}></Route>
-            <Route path="register" element={<Register />}></Route>
-            <Route path="verify" element={<Verify />}></Route>
-          </Route>
+
           <Route path="admin/dashboard" element={<AdminRoutes />}>
             <Route index element={<AdminHome />} />
             <Route path="workers">

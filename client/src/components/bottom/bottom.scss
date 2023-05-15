@@ -16,6 +16,15 @@
     letter-spacing: 2px;
     cursor: pointer;
     color: white;
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .rightCircle-icon {
+        font-size: 20px;
+        margin: 0px 20px;
+      }
+    }
     &:disabled {
       cursor: no-drop;
       background-color: rgb(216, 216, 216);
