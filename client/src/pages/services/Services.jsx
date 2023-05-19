@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./service.scss";
 import { BsSearch } from "react-icons/bs";
 import axios from "axios";
@@ -53,7 +53,11 @@ const Services = () => {
             serviceData.map((service, index) => {
               return (
                 <div
-                  className={checkedServices.includes(service) ? "details checked" : "details"}
+                  className={
+                    checkedServices.includes(service)
+                      ? "details checked"
+                      : "details"
+                  }
                   onClick={() => handleCheck(service)}
                   key={index}
                 >

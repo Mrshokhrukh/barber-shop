@@ -12,7 +12,6 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     try {
       axios
         .post(`${apiURL}/register`, registeredUser, {
@@ -28,7 +27,7 @@ const Register = () => {
     setRegisteredUser({});
   };
   return (
-    <>
+    <div className="register">
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -44,10 +43,24 @@ const Register = () => {
           onChange={handleChange}
           placeholder="email"
         />
+        <input
+          type="password"
+          name="password"
+          value={registeredUser.password || ""}
+          onChange={handleChange}
+          placeholder="password"
+        />
+        <input
+          type="password"
+          name="confirm_password"
+          value={registeredUser.confirm_password || ""}
+          onChange={handleChange}
+          placeholder="confirm password"
+        />
         <button>submit</button>
       </form>
       <Link to="/auth/verify">Verify</Link>
-    </>
+    </div>
   );
 };
 

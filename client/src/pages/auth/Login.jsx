@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiURL from "../../http";
 import "./auth.scss";
@@ -11,9 +11,8 @@ const Login = () => {
     setLoginUser({ ...loginUser, [e.target.name]: e.target.value });
   };
 
-  const Submit = async (e) => {
+  const Submit = (e) => {
     e.preventDefault();
-
     axios
       .post(`${apiURL}/login`, loginUser)
       .then((response) => {
@@ -36,18 +35,18 @@ const Login = () => {
       <form onSubmit={Submit}>
         <input
           type="text"
-          name="phone"
+          name="email"
           value={loginUser.email || ""}
           onChange={change}
-          placeholder="phone number"
+          placeholder="email"
         />
 
         <input
           type="text"
-          name="code"
-          value={loginUser.username || ""}
+          name="password"
+          value={loginUser.password || ""}
           onChange={change}
-          placeholder="verify code"
+          placeholder="password"
         />
         <button>submit</button>
       </form>

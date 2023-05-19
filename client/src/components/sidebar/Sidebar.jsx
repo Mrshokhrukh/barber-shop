@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Login from "../../pages/auth/Login";
 import { BsChevronRight } from "react-icons/bs";
 import { SlLogin } from "react-icons/sl";
 import "./sidebar.scss";
