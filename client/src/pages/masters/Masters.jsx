@@ -24,6 +24,7 @@ const Masters = () => {
   }, []);
 
   let checkServicesIsDone = localStorage.getItem("services");
+
   const showServices = (user) => {
     localStorage.setItem(`master:${user.id}`, JSON.stringify(user));
 
@@ -37,7 +38,6 @@ const Masters = () => {
   setTimeout(() => {
     localStorage.clear();
   }, 1000);
-  // localStorage.clear()
 
   return (
     <div className="masters_list">
@@ -48,14 +48,14 @@ const Masters = () => {
               <div className="master" key={index} onClick={() => showServices(user)}>
                 <div className="left-in-responsive">
                   <div className="photo">
-                    <img src={"user.image"} alt="" />
+                    <img src={user.image} alt="" />
                     <div>
                       <HiOutlineExclamationCircle className="i" />
                     </div>
                   </div>
                   <div className="master_name">
                     <p className="name">
-                      {"user.first_name"} {"user.last_name"}
+                      {user.first_name} {user.last_name}
                     </p>
                     <p className="duty">Barber</p>
                   </div>

@@ -34,7 +34,7 @@ const Services = () => {
       newCheckedItems.splice(currentIndex, 1);
     }
     setCheckedServices(newCheckedItems);
-    localStorage.setItem(`services:${JSON.stringify(checkedServices)}`);
+    localStorage.setItem("services", JSON.stringify(newCheckedItems));
   };
 
   return (

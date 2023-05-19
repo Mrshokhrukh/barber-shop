@@ -15,7 +15,7 @@
   }
 }
 
-.home {
+.home-container {
   height: 60vh;
   display: flex;
   justify-content: center;
@@ -57,7 +57,7 @@
 }
 
 @media (max-width: 512px) {
-  .home {
+  .home-container {
     .home-link-btns {
       flex-direction: column;
       width: 100%;

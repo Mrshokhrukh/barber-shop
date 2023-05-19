@@ -13,16 +13,16 @@ const Home = () => {
       </div>
 
       <Container fixed className="container">
-        <div className="home">
+        <div className="home-container">
           <div className="home-entrance-text">
             <p className="home-text">Telefon o'rqali bog'lanishni istaysizmi ?</p>
             <p className="phone-number">+998 (91) 523-60-03</p>
           </div>
           <div className="home-link-btns">
-            <Link to="/uz/barbershop">
+            <Link to="/uz/barbershop/masters">
               <button className="button home-btn cancel">ishchilar</button>
             </Link>
-            <Link to="/uz/barbershop">
+            <Link to="/uz/barbershop/services">
               <button className="button home-btn continue">hizmatlar</button>
             </Link>
           </div>

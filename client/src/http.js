@@ -6,6 +6,6 @@
 
 // export default http;
 
-const apiURL = "https://barber-1-x2605905.deta.app";
+const apiURL = "http://77.232.138.203";
 
 export default apiURL;

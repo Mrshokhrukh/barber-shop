@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiURL from "../../http";
+import "./auth.scss";
 const Login = () => {
   let navigate = useNavigate();
   const [loginUser, setLoginUser] = useState({});
@@ -50,7 +51,7 @@ const Login = () => {
         />
         <button>submit</button>
       </form>
-      <Link to="/auth/register">Register</Link>
+      <Link to="/uz/barbershop/auth/register">Register</Link>
     </div>
   );
 };

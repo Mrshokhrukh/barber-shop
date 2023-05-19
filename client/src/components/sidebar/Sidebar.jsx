@@ -48,7 +48,7 @@ const Sidebar = (props) => {
         </div>
         {/* <div className="layer-line"></div> */}
         <div className="auth-link-sidebar">
-          <Link to="/auth/login">
+          <Link to="/uz/barbershop/auth/login">
             {" "}
             <span>
               <SlLogin />

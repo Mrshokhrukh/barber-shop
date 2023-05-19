@@ -32,7 +32,6 @@ const App = () => {
             <Route path="services" element={<Services />}></Route>
             <Route path="masters" element={<Masters />}></Route>
             <Route path="master-and-date" element={<ScheduleTime />}></Route>
-
             <Route path="auth" element={<Auth />}>
               <Route path="login" element={<Login />}></Route>
               <Route path="register" element={<Register />}></Route>
