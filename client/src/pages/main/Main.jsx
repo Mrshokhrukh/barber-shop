@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Login from "../auth/Login";
 
 import "./style.scss";
 import Header from "../../components/header/Header";
@@ -39,6 +38,7 @@ const Main = () => {
       inOpenSidebar.current = "inSidebarOpen";
     }
   };
+
   const closeSidebar = (p) => {
     setIsOpen(p);
     inOpenSidebar.current = "";
@@ -46,7 +46,10 @@ const Main = () => {
 
   return (
     <div className="main-app-wrapper">
-      <div className={isOpen ? inOpenSidebar.current : ""} onClick={() => setIsOpen(false)}></div>
+      <div
+        className={isOpen ? inOpenSidebar.current : ""}
+        onClick={() => setIsOpen(false)}
+      ></div>
       <Header openSidebar={openSidebar} />
       <div className="main-app">
         <Sidebar isOpen={isOpen} closeSidebar={closeSidebar} />
