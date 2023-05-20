@@ -4,8 +4,9 @@
   display: flex;
   gap: 25px;
   height: 100vh;
+  width: 100%;
   background-color: var(--background);
-
+  
   .navlink-auth {
     text-decoration: none;
 
@@ -26,6 +27,7 @@
         font-size: 22px;
         margin-right: 10px;
       }
+
       p {
         padding: 0 15px;
       }
@@ -37,6 +39,7 @@
   }
 
   .navlink-auth.active {
+
     .login-link,
     .register-link {
       background-color: var(--main-color);
