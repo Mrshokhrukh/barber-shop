@@ -33,24 +33,28 @@ const Login = () => {
   return (
     <div className="login">
       <form onSubmit={Submit}>
-        <input
-          type="text"
-          name="email"
-          value={loginUser.email || ""}
-          onChange={change}
-          placeholder="email"
-        />
-
-        <input
-          type="text"
-          name="password"
-          value={loginUser.password || ""}
-          onChange={change}
-          placeholder="password"
-        />
-        <button>submit</button>
+        <div className="form-email">
+          <label htmlFor="email">Email </label>
+          <input
+            id="email"
+            type="text"
+            name="email"
+            value={loginUser.email || ""}
+            onChange={change}
+          />
+        </div>
+        <div className="form-password">
+          <label htmlFor="password">password </label>
+          <input
+            id="password"
+            type="text"
+            name="password"
+            value={loginUser.password || ""}
+            onChange={change}
+          />
+        </div>
+        <button className="submit-button">submit</button>
       </form>
-      <Link to="/uz/barbershop/auth/register">Register</Link>
     </div>
   );
 };

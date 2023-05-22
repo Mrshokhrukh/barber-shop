@@ -29,37 +29,52 @@ const Register = () => {
   return (
     <div className="register">
       <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          name="name"
-          value={registeredUser.name || ""}
-          onChange={handleChange}
-          placeholder="first name"
-        />
-        <input
-          type="email"
-          name="email"
-          value={registeredUser.email || ""}
-          onChange={handleChange}
-          placeholder="email"
-        />
-        <input
-          type="password"
-          name="password"
-          value={registeredUser.password || ""}
-          onChange={handleChange}
-          placeholder="password"
-        />
-        <input
-          type="password"
-          name="confirm_password"
-          value={registeredUser.confirm_password || ""}
-          onChange={handleChange}
-          placeholder="confirm password"
-        />
-        <button>submit</button>
+        <div>
+          <label htmlFor="name">name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            value={registeredUser.name || ""}
+            onChange={handleChange}
+            placeholder="first name"
+          />
+        </div>
+        <div>
+          <label htmlFor="email">email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            value={registeredUser.email || ""}
+            onChange={handleChange}
+            placeholder="email"
+          />
+        </div>
+        <div>
+          <label htmlFor="password">password</label>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            value={registeredUser.password || ""}
+            onChange={handleChange}
+            placeholder="password"
+          />
+        </div>
+        <div>
+          <label htmlFor="confirm_pass">confirm </label>
+          <input
+            id="confirm_pass"
+            type="password"
+            name="confirm_password"
+            value={registeredUser.confirm_password || ""}
+            onChange={handleChange}
+            placeholder="confirm password"
+          />
+        </div>
+        <button className="submit-button">submit</button>
       </form>
-      <Link to="/auth/verify">Verify</Link>
     </div>
   );
 };

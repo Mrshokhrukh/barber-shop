@@ -6,46 +6,116 @@
   height: 100vh;
   width: 100%;
   background-color: var(--background);
-  
-  .navlink-auth {
-    text-decoration: none;
 
-    .login-link,
-    .register-link {
-      width: 220px;
-      background-color: #fff;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 16px;
-      font-weight: 500;
-      color: black;
-      cursor: pointer;
+  .auth-links {
+    height: 180px;
 
-      .icon {
-        font-size: 22px;
-        margin-right: 10px;
+    .navlink-auth {
+      text-decoration: none;
+
+      .login-link,
+      .register-link {
+        width: 220px;
+        background-color: #fff;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 16px;
+        font-weight: 500;
+        color: black;
+        cursor: pointer;
+
+        .icon {
+          font-size: 22px;
+          margin-right: 10px;
+        }
+
+        p {
+          padding: 0 15px;
+        }
       }
 
-      p {
-        padding: 0 15px;
+      .register-link {
+        margin-top: 15px;
       }
     }
 
-    .register-link {
-      margin-top: 15px;
+    .navlink-auth.active {
+
+      .login-link,
+      .register-link {
+        background-color: var(--main-color);
+        color: #fff;
+      }
+    }
+
+  }
+
+  .login,
+  .register {
+    width: 450px;
+    background-color: #fff;
+    height: 210px;
+    padding: 20px;
+
+    form {
+      width: 100%;
+      display: grid;
+      row-gap: 20px;
+
+      div {
+        text-transform: capitalize;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid red;
+        height: 50px;
+        gap: 15px;
+
+        label {
+          font-size: 17px;
+
+        }
+
+
+        input {
+          font-size: 15px;
+          color: var(--gray);
+          height: 40px;
+          border: none;
+          outline: none;
+          font-size: 16px;
+          background-color: transparent;
+          width: 300px;
+
+        }
+
+
+
+      }
+
+
+      .submit-button {
+        width: 100%;
+        color: #fff;
+        font-size: 16px;
+        height: 40px;
+        cursor: pointer;
+        background-color: var(--main-color);
+
+        &:disabled {
+          cursor: no-drop;
+        }
+      }
     }
   }
 
-  .navlink-auth.active {
-
-    .login-link,
-    .register-link {
-      background-color: var(--main-color);
-      color: #fff;
-    }
+  .register {
+    width: 450px;
+    height: 350px;
   }
+
 
 }
 
@@ -53,5 +123,7 @@
   .authentication {
     margin-left: 0;
     margin-top: 80px;
+    flex-direction: column;
+
   }
 }

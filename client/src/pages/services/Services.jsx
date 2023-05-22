@@ -10,6 +10,7 @@ const Services = () => {
   let location = useLocation();
   const [serviceData, setServiceData] = useState();
   const [checkedServices, setCheckedServices] = useState([]);
+  const [query, setQuery] = useState("");
   let checkStorage = localStorage.getItem(`master:${location?.state?.id}`);
 
   useEffect(() => {
@@ -43,39 +44,48 @@ const Services = () => {
         <div className="search">
           <form>
             <BsSearch className="search-icon" />
-            <input type="text" placeholder="Search in Price Eleven (total 0)" />
+            <input
+              type="text"
+              name="search"
+              placeholder="Search in Price Eleven (total 0)"
+              onChange={(e) => setQuery(e.target.value)}
+            />
           </form>
         </div>
 
         <div className="service-details">
           <p className="entry-text">hairdressing services</p>
           {serviceData &&
-            serviceData.map((service, index) => {
-              return (
-                <div
-                  className={
-                    checkedServices.includes(service)
-                      ? "details checked"
-                      : "details"
-                  }
-                  onClick={() => handleCheck(service)}
-                  key={index}
-                >
-                  <div className="left">
-                    <p className="service_name">{service.name}</p>
-                    <div className="time_price">
-                      <p className="price">{service.price}</p>
-                      <p className="time">60 min</p>
+            serviceData
+              .filter((i) => {
+                return query === "" ? i : i.name.toLowerCase().includes(query);
+              })
+              .map((service, index) => {
+                return (
+                  <div
+                    className={
+                      checkedServices.includes(service)
+                        ? "details checked"
+                        : "details"
+                    }
+                    onClick={() => handleCheck(service)}
+                    key={index}
+                  >
+                    <div className="left">
+                      <p className="service_name">{service.name}</p>
+                      <div className="time_price">
+                        <p className="price">{service.price}</p>
+                        <p className="time">60 min</p>
+                      </div>
+                    </div>
+                    <div className="right-checkbox">
+                      <div className="check">
+                        <BsCheck />
+                      </div>
                     </div>
                   </div>
-                  <div className="right-checkbox">
-                    <div className="check">
-                      <BsCheck />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
         </div>
       </div>
       <Bottom checkStorage={checkStorage} checkedServices={checkedServices} />

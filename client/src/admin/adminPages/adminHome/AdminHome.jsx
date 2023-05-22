@@ -5,7 +5,7 @@ import Navbar from "../../adminComponents/navbar/Navbar";
 import AdminTable from "../../adminComponents/table/Table";
 import Widget from "../../adminComponents/widget/Widget";
 import List from "../list/List";
-import './home.scss'
+import "./home.scss";
 const AdminHome = () => {
   return (
     <div className="home">
