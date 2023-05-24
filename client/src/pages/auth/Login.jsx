@@ -13,10 +13,19 @@ const Login = () => {
 
   const Submit = (e) => {
     e.preventDefault();
+
     axios
-      .post(`${apiURL}/login`, loginUser)
+      .post(`${apiURL}/login`, loginUser, {
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+      })
       .then((response) => {
-        if (response.data.is_admin) {
+        localStorage.setItem(
+          "access_token",
+          JSON.stringify(response.data.access_token)
+        );
+        if (response.data) {
+          navigate("/uz/barbershop/services");
+        } else if (response.data.is_admin) {
           navigate("/admin/dashboard");
         } else {
           console.log("user");
@@ -37,7 +46,7 @@ const Login = () => {
           <label htmlFor="email">Email </label>
           <input
             id="email"
-            type="text"
+            type="email"
             name="email"
             value={loginUser.email || ""}
             onChange={change}

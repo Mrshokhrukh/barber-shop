@@ -9,7 +9,6 @@ const Register = () => {
   const handleChange = (e) => {
     setRegisteredUser({ ...registeredUser, [e.target.name]: e.target.value });
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     try {

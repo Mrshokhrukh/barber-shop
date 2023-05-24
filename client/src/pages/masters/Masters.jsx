@@ -9,10 +9,13 @@ import { useNavigate } from "react-router-dom";
 const Masters = () => {
   let navigate = useNavigate();
   const [masterData, setMasterData] = useState();
+  let access_token = localStorage.getItem("access_token");
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/get-masters`)
+      .get(`${apiURL}/get-masters`, {
+        headers: { Authorization: `Bearer ${access_token}` },
+      })
       .then((response) => {
         setMasterData(response.data);
       })
@@ -37,7 +40,7 @@ const Masters = () => {
 
   setTimeout(() => {
     localStorage.clear();
-  }, 1000);
+  }, 3600000);
 
   return (
     <div className="masters_list">
@@ -45,7 +48,11 @@ const Masters = () => {
         {masterData &&
           masterData.map((user, index) => {
             return (
-              <div className="master" key={index} onClick={() => showServices(user)}>
+              <div
+                className="master"
+                key={index}
+                onClick={() => showServices(user)}
+              >
                 <div className="left-in-responsive">
                   <div className="photo">
                     <img src={user.image} alt="" />
