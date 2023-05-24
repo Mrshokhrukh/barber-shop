@@ -9,13 +9,10 @@ import { useNavigate } from "react-router-dom";
 const Masters = () => {
   let navigate = useNavigate();
   const [masterData, setMasterData] = useState();
-  let access_token = localStorage.getItem("access_token");
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/get-masters`, {
-        headers: { Authorization: `Bearer ${access_token}` },
-      })
+      .get(`${apiURL}/get-masters`)
       .then((response) => {
         setMasterData(response.data);
       })
@@ -29,7 +26,7 @@ const Masters = () => {
   let checkServicesIsDone = localStorage.getItem("services");
 
   const showServices = (user) => {
-    localStorage.setItem(`master:${user.id}`, JSON.stringify(user));
+    localStorage.setItem(`master`, JSON.stringify(user));
 
     if (checkServicesIsDone) {
       navigate("/uz/barbershop/master-and-date");
@@ -37,10 +34,6 @@ const Masters = () => {
       navigate(`/uz/barbershop/services`, { state: user });
     }
   };
-
-  setTimeout(() => {
-    localStorage.clear();
-  }, 3600000);
 
   return (
     <div className="masters_list">

@@ -4,28 +4,33 @@
   position: relative;
   left: 385px;
   height: 100%;
+
   .master_data {
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 7px 10px;
+
     .master {
       width: 310px;
       height: 97px;
       background-color: #fff;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       transition: 0.3s;
       border: 1px solid #e7e7e7;
+
       .left-in-responsive {
         display: flex;
         align-items: center;
         gap: 15px;
+        padding-left: 20px;
       }
 
       .photo {
         position: relative;
         top: 3px;
+
         img {
           border: 2px solid rgb(221, 220, 220);
           width: 80px;
@@ -35,6 +40,7 @@
           background-position: center;
           background-size: cover;
         }
+
         .i {
           position: absolute;
           bottom: 5px;
@@ -47,14 +53,17 @@
           display: grid;
           align-items: center;
           justify-content: center;
+
         }
       }
 
       .master_name {
+
         .name {
           font-size: 15px;
           line-height: 24px;
         }
+
         .duty {
           font-size: 12px;
           line-height: 20px;
@@ -64,16 +73,20 @@
 
       .icon {
         color: #39394f;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 900;
         margin-top: 3px;
+        position: relative;
+        right: 20px;
       }
 
       &:hover {
         background-color: var(--main-color);
         cursor: pointer;
+
         * {
           color: white !important;
+
           img {
             border-color: white;
           }
@@ -86,14 +99,20 @@
 @media (min-width: 1400px) {
   .masters_list {
     width: 78%;
+
     .master_data {
       grid-template-columns: auto auto auto;
+
       .master {
         width: 100%;
+
+
+
         .master_name {
           .name {
             font-size: 18px;
           }
+
           .duty {
             font-size: 14px;
           }
@@ -102,28 +121,36 @@
     }
   }
 }
+
 @media (max-width: 1390px) {
   .masters_list {
     width: 71%;
+
     .master_data {
       grid-template-columns: 50% 50%;
+
       .master {
         width: 100%;
       }
     }
   }
 }
+
 @media (max-width: 1140px) {
   .masters_list {
     width: 63%;
+
     .master_data {
-      grid-template-columns: auto;
+      grid-template-columns: auto auto;
+
       .master {
         justify-content: space-between;
+
         .left-in-responsive {
           margin-left: 20px;
           gap: 25px;
         }
+
         .icon {
           margin-right: 15px;
         }
@@ -131,35 +158,43 @@
     }
   }
 }
+
 @media (max-width: 992px) {
   .masters_list {
     width: 57%;
   }
 }
+
 @media (max-width: 768px) {
   .masters_list {
     width: 100%;
     top: 80px;
     left: 0;
+
     .master_data {
       grid-template-columns: auto;
+
       .master {
         width: 100%;
         justify-content: space-between;
+
         .left-in-responsive {
-          margin-left: 15px;
+          margin-left: 0px;
           gap: 15px;
+
           .master_name {
             .name {
               font-size: 14px;
             }
+
             .duty {
               font-size: 11px;
             }
           }
         }
+
         .icon {
-          margin-right: 15px;
+          right: 5px;
         }
       }
     }

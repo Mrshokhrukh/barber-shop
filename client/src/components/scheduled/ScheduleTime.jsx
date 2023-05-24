@@ -1,16 +1,28 @@
 import React, { useRef, useState } from "react";
-import { HiOutlineChevronRight, HiOutlineExclamationCircle } from "react-icons/hi";
+import {
+  HiOutlineChevronRight,
+  HiOutlineExclamationCircle,
+} from "react-icons/hi";
 import { months, weekDays, workHours } from "../../date";
 import CalendarDatePicker from "../calendar/Calendar";
 import "./masterAndDate.scss";
+import { useLocation } from "react-router-dom";
 
 const ScheduleTime = () => {
+
+  let location = useLocation();
+
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
   const [currentDay, setcurrentDay] = useState(new Date().getDate());
   const [currentYear, setcurrentYear] = useState(new Date().getFullYear());
-  const [weekday, setcurrentWeekDay] = useState(new Date().getDay());
-  const [selectedDate, setSelectedDate] = useState();
-  const [selectedTime, setSelectedTime] = useState();
+  let getMasterFromStore = localStorage.getItem("master");
+
+  getMasterFromStore = JSON.parse(getMasterFromStore);
+
+  console.log();
+  // const [weekday, setcurrentWeekDay] = useState(new Date().getDay());
+  // const [selectedDate, setSelectedDate] = useState();
+  // const [selectedTime, setSelectedTime] = useState();
 
   // const handleSelectDate = (month, date, day) => {
   //   setSelectedDate({ month, date, day });
@@ -44,16 +56,13 @@ const ScheduleTime = () => {
           <div className="master">
             <div className="left-in-responsive">
               <div className="photo">
-                <img
-                  src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ba/29/5c/img-worlds-of-adventure.jpg?w=1200&h=1200&s=1"
-                  alt="404"
-                />
+                <img src={getMasterFromStore.image} alt="404" />
                 <div>
                   <HiOutlineExclamationCircle className="i" />
                 </div>
               </div>
               <div className="master_name">
-                <p className="name">shokhrukhabdvokhidov</p>
+                <p className="name">{getMasterFromStore.first_name}</p>
                 <p className="duty">Barber</p>
               </div>
             </div>

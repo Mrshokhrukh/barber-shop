@@ -11,7 +11,7 @@ const Services = () => {
   const [serviceData, setServiceData] = useState();
   const [checkedServices, setCheckedServices] = useState([]);
   const [query, setQuery] = useState("");
-  let checkStorage = localStorage.getItem(`master:${location?.state?.id}`);
+  let checkStorage = localStorage.getItem(`master`);
 
   useEffect(() => {
     axios

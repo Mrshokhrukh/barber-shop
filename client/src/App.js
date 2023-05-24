@@ -18,8 +18,13 @@ import SingleUser from "./admin/adminPages/single/Single";
 import Verify from "./pages/auth/Verify";
 import ScheduleTime from "./components/scheduled/ScheduleTime";
 import NavigateServices from "./components/path-indexFile/NavigateServices";
+import NotFound from "./pages/404/NotFound";
 
 const App = () => {
+  setTimeout(() => {
+    localStorage.clear();
+  }, 360000);
+
   const MyContext = React.createContext();
   return (
     <BrowserRouter>
@@ -45,6 +50,7 @@ const App = () => {
               <Route path="new" element={<New title="Add New Masters" />} />
             </Route>
           </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
