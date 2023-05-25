@@ -21,9 +21,9 @@ import NavigateServices from "./components/path-indexFile/NavigateServices";
 import NotFound from "./pages/404/NotFound";
 
 const App = () => {
-  setTimeout(() => {
-    localStorage.clear();
-  }, 360000);
+  // setTimeout(() => {
+  //   localStorage.clear();
+  // }, 360000);
 
   const MyContext = React.createContext();
   return (

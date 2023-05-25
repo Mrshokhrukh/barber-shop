@@ -20,8 +20,9 @@ const New = () => {
   const handleChange = (e) => {
     setNewMaster({ ...newMaster, [e.target.name]: e.target.value });
   };
-  
+
   let access_token = localStorage.getItem("access_token");
+  access_token = JSON.parse(access_token);
 
   useEffect(() => {
     axios.get(`${apiURL}/services`).then((response) => {
@@ -45,10 +46,12 @@ const New = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = { ...newMaster, image: file };
-
+console.log( {
+  headers: { Authorization: `Bearer ${access_token}` },
+});
     await axios
       .post(`${apiURL}/add-master`, data, {
-        headers: { Authorization: `Bearer ${JSON.parse(access_token)}` },
+        headers: { Authorization: `Bearer ${access_token}` },
       })
       .then((response) => {
         const notify = () => toast.success(response.data);
